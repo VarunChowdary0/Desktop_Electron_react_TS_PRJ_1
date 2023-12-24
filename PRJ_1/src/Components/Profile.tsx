@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PenIcon from '../icons/PenIcon'
 import CloseIcon from '../icons/CloseIcon'
 import ArrowIcon from '../icons/ArrowIcon'
+import { Social_Media } from '../widgets/Social_Media'
 
 const Profile:React.FC = () => {
     const Skills = ['Web','Python','Java','Computer Science','React','Node',
@@ -55,13 +56,13 @@ const Profile:React.FC = () => {
     }
 
   return (
-    <div className=' w-full h-full flex justify-center 
-     mt-[200px] overflow-x-auto'>
-        <div className=' h-fit max-w-[500px] w-fit shadow-xl 
+    <div className=' w-full h-full flex mt-[200px] items-center gap-16
+     max-sm:mt-[100px] flex-col mb-11'>
+        <div className=' h-fit max-w-[500px] w-fit shadow-xl overflow-hidden
         bg-white 
-        max-sm:w-[250px] rounded-md overflow-hidden relative'>
+        max-sm:w-[250px] rounded-md  relative'>
             <div className=' absolute h-[150px] w-[150px] top-[20%]
-             bg-[#4c4b4b] left-1 rounded-full overflow-hidden max-sm:top-[20%]'>
+             bg-[#4c4b4b] left-1 rounded-full  max-sm:top-[20%] overflow-hidden'>
                 <img className=' select-none' src={profileLink}/>
              </div>
             <div className={` h-[180px] 
@@ -78,7 +79,7 @@ const Profile:React.FC = () => {
                     {name}
                 </div>
                 <div className=' mt-4 p-2 w-full h-full 
-                flex flex-row flex-wrap gap-4 pb-5
+                flex flex-row flex-wrap gap-4 pb-5 
                 '>
                     {
                         Skills.map((ele,idx)=>
@@ -138,6 +139,9 @@ const Profile:React.FC = () => {
                 
                 </div>
             </div>
+        </div>
+        <div className=' __widgets__ '>
+            <Social_Media/>
         </div>
     </div>
   )

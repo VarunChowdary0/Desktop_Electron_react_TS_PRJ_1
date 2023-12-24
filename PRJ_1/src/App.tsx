@@ -38,11 +38,12 @@ const router = createBrowserRouter([
 function App() {
   return (
     <React.StrictMode>
-        <div className=" flex flex-row select-none">
+        <div className=" flex flex-row select-none dark:bg-[#393939] ">
           <Colors_theam/>
           <div className=" z-50"><MenuBar/></div>
-          <div className="fixed flex items-center justify-center
-            top-0 bottom-0 left-0 right-0">
+          <div className=" flex items-center justify-center
+               w-screen h-fit bg-white
+             overscroll-auto ">
             <RouterProvider router={router} />
           </div>
         </div>
