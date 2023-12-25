@@ -3,6 +3,7 @@ import PenIcon from '../icons/PenIcon'
 import CloseIcon from '../icons/CloseIcon'
 import ArrowIcon from '../icons/ArrowIcon'
 import { Social_Media } from '../widgets/Social_Media'
+import ContactInfo from './ContactInfo'
 
 const Profile:React.FC = () => {
     const Skills = ['Web','Python','Java','Computer Science','React','Node',
@@ -57,7 +58,7 @@ const Profile:React.FC = () => {
 
   return (
     <div className=' w-full h-full flex mt-[200px] items-center gap-16
-     max-sm:mt-[100px] flex-col mb-11'>
+     max-sm:mt-[100px] flex-col mb-11 max-sm:mb-0'>
         <div className=' h-fit max-w-[500px] w-fit shadow-xl overflow-hidden
         bg-white 
         max-sm:w-[250px] rounded-md  relative'>
@@ -69,7 +70,7 @@ const Profile:React.FC = () => {
             max-sm:h-[230px]
             text-3xl font-bold text-white
              flex items-center justify-end pr-5 max-sm:items-start max-sm:pt-[50px]
-             w-full bg-${coverBG_color}-400 max-md:text-2xl `}>
+             w-full bg-gradient-to-r from_custom_${coverBG_color} to_custom_${SkillBG_col} max-md:text-2xl `}>
             {occupation}
             </div>
             <div className=' h-[40%] w-full '>
@@ -142,6 +143,9 @@ const Profile:React.FC = () => {
         </div>
         <div className=' __widgets__ '>
             <Social_Media/>
+        </div>
+        <div>
+            <ContactInfo/>
         </div>
     </div>
   )
