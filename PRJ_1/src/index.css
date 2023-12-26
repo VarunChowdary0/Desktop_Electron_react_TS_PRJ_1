@@ -2,25 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #3d3d3d;
-  cursor: pointer;
-  transition: border-color 0.25s;
-  color : white;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}img {
+img {
   pointer-events: none
 }
 .from_custom_blue{
@@ -97,3 +87,68 @@ button:focus-visible {
 .to_custom_pink{
   --tw-gradient-to: #f472b6 var(--tw-gradient-to-position);
 }
+
+/* button */
+button {
+  width: 9em;
+  height: 3em;
+  border-radius: 30em;
+  font-size: 15px;
+  font-family: inherit;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 6px 6px 12px #c5c5c5,
+              -6px -6px 12px #ffffff;
+ }
+ 
+ button::before {
+  content: '';
+  width: 0;
+  height: 3em;
+  border-radius: 30em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
+  transition: .5s ease;
+  display: block;
+  z-index: -1;
+ }
+ 
+ button:hover::before {
+  width: 9em;
+ }
+
+ /* @keyframes wave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+
+.wave__:nth-child(1){
+  animation: wave 0.9s infinite ;
+}
+.wave__:nth-child(2){
+  animation: wave 0.9s infinite 0.1s ;
+}
+.wave__:nth-child(3){
+  animation: wave 0.9s infinite 0.2s ;
+}
+.wave__:nth-child(4){
+  animation: wave 0.9s infinite 0.3s ;
+}
+.wave__:nth-child(5){
+  animation: wave 0.9s infinite 0.4s ;
+}
+.wave__:nth-child(6){
+  animation: wave 0.9s infinite 0.5s ;
+}
+.wave__:nth-child(7){
+  animation: wave 0.9s infinite 0.5s ;
+} */

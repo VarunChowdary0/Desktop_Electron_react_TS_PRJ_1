@@ -1,19 +1,14 @@
-import React from 'react'
-
 const HomePage = () => {
-    const ToHome = () =>{
-        window.location.href="/";
-    }
   return (
-    <div className=' w-screen h-[200vh] flex items-center justify-center'>
-        <div className=' w-[40%] h-[50%] border border-gray-600 rounded-md '>
-            <div className=' text-center px-5 py-10 text-4xl'>
-                 This is My First Desktop Application
-            </div>
-            <div className=' w-full flex items-center justify-center'>
-                <button onClick={ToHome}>Click here to Go Back</button>
-            </div>
-        </div>
+    <div className=' w-screen h-screen flex
+     items-center justify-center text-8xl font-light'>
+        <div className=' even:text-indigo-500 odd:text-purple-700 hover:scale-125 transition-all'>R</div>
+        <div className=' even:text-indigo-500 odd:text-purple-700 hover:scale-125 transition-all'>E</div>
+        <div className=' even:text-indigo-500 odd:text-purple-700 hover:scale-125 transition-all'>z</div>
+        <div className=' even:text-indigo-500 odd:text-purple-700 hover:scale-125 transition-all'>Z</div>
+        <div className=' even:text-indigo-500 odd:text-purple-700 hover:scale-125 transition-all'>U</div>
+        <div className=' even:text-indigo-500 odd:text-purple-700 hover:scale-125 transition-all'>M</div>
+        <div className=' even:text-indigo-500 odd:text-purple-700 hover:scale-125 transition-all'>Y</div>
     </div>
   )
 }

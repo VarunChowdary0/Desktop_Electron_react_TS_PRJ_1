@@ -1,19 +1,25 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import PenIcon from '../icons/PenIcon'
 import CloseIcon from '../icons/CloseIcon'
 import ArrowIcon from '../icons/ArrowIcon'
 import { Social_Media } from '../widgets/Social_Media'
 import ContactInfo from './ContactInfo'
+import About_me from '../widgets/About_me'
+import Eduacation from '../widgets/Eduacation'
+import InternShips from '../widgets/InternShips'
+import MiniProject_Wid from '../widgets/MiniProject_Wid'
+import { GlobalContext } from '../Contexts/GlobalContext'
 
 const Profile:React.FC = () => {
-    const Skills = ['Web','Python','Java','Computer Science','React','Node',
-    'Web','Python','Java','Computer Science','React','Node']
-    const name = "Sai Varun Chowdary Poludasu"
-    const occupation = "Software Enginner"
+    const {Skills} = useContext<any>(GlobalContext)
+    const {name} = useContext<any>(GlobalContext)
+    const {occupation} = useContext<any>(GlobalContext)
+    const {profileLink} = useContext<any>(GlobalContext)
+
     const AllColors = ['green','red','blue','yellow','pink','violet','orange','teal','purple']
     const [coverBG_color,setCoverBG] = useState<string>(AllColors[0])
     const [SkillBG_col,setSkillBG] = useState<string>(AllColors[5])
-    const profileLink = "https://blog-it-backend-sandy.vercel.app/images/896313-56067455-5-post.png"
+    const [AboutBG,setAboutBG] = useState<string>(AllColors[2])
     const [editMODE,setEditMode] = useState<boolean>(false)
 
     const handleEditor = () =>{
@@ -57,7 +63,7 @@ const Profile:React.FC = () => {
     }
 
   return (
-    <div className=' w-full h-full flex mt-[200px] items-center gap-16
+    <div className=' w-full h-full flex mt-[150px] items-center gap-16
      max-sm:mt-[100px] flex-col mb-11 max-sm:mb-0'>
         <div className=' h-fit max-w-[500px] w-fit shadow-xl overflow-hidden
         bg-white 
@@ -75,15 +81,15 @@ const Profile:React.FC = () => {
             </div>
             <div className=' h-[40%] w-full '>
                 <div className=' ml-[150px] pl-1 text-lg 
-                max-sm:ml-0 max-sm:mt-10
-                font-light mt-2 '>
+                max-sm:ml-0 max-sm:mt-14
+                font-light mt-2  '>
                     {name}
                 </div>
                 <div className=' mt-4 p-2 w-full h-full 
                 flex flex-row flex-wrap gap-4 pb-5 
                 '>
                     {
-                        Skills.map((ele,idx)=>
+                        Skills.map((ele:any,idx:number)=>
                         <a key={"Skill-"+idx} className={` bg-${SkillBG_col}-400 w-fit px-3 h-fit
                             py-1 rounded-md text-white shadow-md 
                             hover:shadow-3xl hover:cursor-pointer transition-shadow
@@ -111,7 +117,7 @@ const Profile:React.FC = () => {
                 </div>
             </div>
             <div className='w-[10vw] shadow-xl'>
-                <div className=' flex mt-[150px] flex-col items-center gap-4'>
+                <div className=' flex mt-[170px] flex-col items-center gap-4'>
                     <div onClick={left_to_CoverBG} 
                     className=' h-10 w-10 flex items-center justify-center
                     bg-black/20 rounded-full active:bg-black/10 transition-colors'> 
@@ -124,7 +130,7 @@ const Profile:React.FC = () => {
                         <ArrowIcon color='white' size={100} angle='180deg'/>
                       </div>
                 </div>
-                <div className=' mt-[100px] flex flex-col items-center max-sm:mt-[185px] gap-4'>
+                <div className=' mt-[120px] flex flex-col items-center max-sm:mt-[185px] gap-4'>
 
                     <div onClick={right_to_Skill_BG} 
                    className=' h-10 w-10 flex items-center justify-center
@@ -142,11 +148,24 @@ const Profile:React.FC = () => {
             </div>
         </div>
         <div className=' __widgets__ '>
+            <About_me bg_Color={AboutBG}/>
+        </div>
+        <div className=' __widgets__ '>
+            <Eduacation bg_color={coverBG_color}/>
+        </div>
+        <div className=' __widgets__ '>
+            <InternShips bgCol={SkillBG_col}/>
+        </div>
+        <div className=' __widgets__ '>
+            <MiniProject_Wid/>
+        </div>
+        <div className=' __widgets__ '>
             <Social_Media/>
         </div>
         <div>
             <ContactInfo/>
         </div>
+
     </div>
   )
 }

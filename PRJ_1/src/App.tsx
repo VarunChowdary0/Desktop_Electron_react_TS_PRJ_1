@@ -1,5 +1,4 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -10,6 +9,7 @@ import HomePage from "./Components/HomePage";
 import { MenuBar } from "./Components/MenuBar";
 import Profile from "./Components/Profile"
 import Colors_theam from "./assets/Colors_theam";
+import { GlobalContextProvider } from "./Contexts/GlobalContext";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +37,8 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <React.StrictMode>
+   <GlobalContextProvider>
+     <React.StrictMode>
         <div className=" flex flex-row select-none dark:bg-[#393939] ">
           <Colors_theam/>
           <div className=" z-50"><MenuBar/></div>
@@ -48,6 +49,7 @@ function App() {
           </div>
         </div>
     </React.StrictMode>
+   </GlobalContextProvider>
   )
 }
 
