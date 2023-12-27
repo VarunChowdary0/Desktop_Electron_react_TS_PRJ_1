@@ -24,7 +24,8 @@ const MiniProject_Wid:React.FC = () => {
                 ProjectDetails.slice(0,project_limit).map((ele:any,idx:number)=>
                 <div key={"project_info_"+idx}>
                      <div id='3432ji'></div>
-                    <div className=' text-2xl font-semibold mb-2'>{ele.Title}</div>
+                    <a href={ele.link} target='_blank' 
+                    className=' text-2xl font-semibold mb-2'>{ele.Title}</a>
                     <div>
                         {
                             (ele.git_hub_frontEnd.trim() !== "") ?

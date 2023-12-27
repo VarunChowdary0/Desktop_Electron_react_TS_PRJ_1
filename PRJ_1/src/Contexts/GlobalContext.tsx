@@ -140,30 +140,35 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
      [
         { 
             Title : "BlogIT",
+            link : "https://blog-it-ten.vercel.app/",
             git_hub_frontEnd : "https://github.com/VarunChowdary0/BlogIT",
             git_hub_BackEnd : "https://github.com/VarunChowdary0/blogITt_backend",
             description : "A social media platfrom, where you can blog an do post."
         },
         { 
             Title : "Chat-Room",
+            link : "https://chat-room-kohl-pi.vercel.app/",
             git_hub_frontEnd : "https://github.com/VarunChowdary0/Chat-client",
             git_hub_BackEnd : "https://github.com/VarunChowdary0/Chat-Server",
             description : "A real time chat application with new features ( made with web sockets )"
         },
         { 
             Title : "Peek.. a.. boo....",
+            link : "https://video-calling-web-rtc.vercel.app/",
             git_hub_frontEnd : "https://github.com/VarunChowdary0/WEB_RTC_FRONTEND",
             git_hub_BackEnd : "https://github.com/VarunChowdary0/WEB_RTC_SERVER",
             description : "A video calling application makes connections with stranges ( made with web RTC )"
         },
         {
             Title : "Face Reconition",
+            link : "https://github.com/VarunChowdary0/face_detection_python",
             git_hub_frontEnd : "",
-            git_hub_BackEnd : "https://github.com/VarunChowdary0/",
+            git_hub_BackEnd : "https://github.com/VarunChowdary0/face_detection_python",
             description : "Python project uses machine learning to recognise people."
         },
         {
             Title : "More Mini projects",
+            link : "https://github.com/VarunChowdary0/",
             git_hub_frontEnd : "",
             git_hub_BackEnd : "https://github.com/VarunChowdary0/",
             description : "6+ mini projects on my git hub profile."
