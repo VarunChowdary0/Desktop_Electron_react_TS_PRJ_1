@@ -10,6 +10,7 @@ import { MenuBar } from "./Components/MenuBar";
 import Profile from "./Components/Profile"
 import Colors_theam from "./assets/Colors_theam";
 import { GlobalContextProvider } from "./Contexts/GlobalContext";
+import Manage from "./Components/Manage";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path : "/profile",
     element:<Profile/>
+  },
+  {
+    path:"/manage",
+    element : <Manage/>
   }
 ]);
 

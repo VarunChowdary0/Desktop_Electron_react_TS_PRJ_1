@@ -1,4 +1,4 @@
-import React, { ReactNode, createContext ,useState } from "react";
+import React, { ReactNode, createContext ,useEffect,useState } from "react";
 import Linked_in from "../icons/Linked_in";
 import Git_hub from "../icons/Git_hub";
 import Leet_Code from "../icons/Leet_Code";
@@ -10,7 +10,8 @@ import Spoj from "../icons/Spoj";
 interface Profile{
     name : string;
     setName : React.Dispatch<React.SetStateAction<string>>;
-    Skills : any;
+    Skills : Array<string>;
+    updateSkills: React.Dispatch<React.SetStateAction<Array<string>>>;
     occupation : string;
     profileLink : string;
 }
@@ -34,12 +35,19 @@ interface ContactInfo{
     phoneNumber:string;
     SocialMediaLinks:any;
 }
-
-
+interface ProfileUI_colors{
+    AllColors : any;
+    coverBG_color:string;
+    setCoverBG : React.Dispatch<React.SetStateAction<string>>;
+    SkillBG_col:string;
+    setSkillBG : React.Dispatch<React.SetStateAction<string>>;
+    AboutBG:string;
+    setAboutBG : React.Dispatch<React.SetStateAction<string>>;
+}
 
 
 interface GlobalContextType extends Profile,About,EducationDetails,
-InternshipDetails,ProjectDetails,CodingPlatform,ContactInfo{}
+InternshipDetails,ProjectDetails,CodingPlatform,ContactInfo,ProfileUI_colors{}
 
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
 
@@ -51,10 +59,17 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
 
     //------------| Profile | ---------------
     const [name,setName] = useState(localStorage.getItem('myName')||"Sai Varun Chowdary Poludasu");
-    const Skills = localStorage.getItem('mySkills')||['Web','React','Node','MongoDB','MERN','Python','Linux',
-                        'Java','Electron Js','Javascript','html','css',
-                        'Tailwind css','Machine Learning']
-    const occupation = localStorage.getItem('myOccupation')||"Software Enginner"
+    const storedSkills = localStorage.getItem("mySkills");
+    const defaultSkills = [
+    'Web', 'React', 'Node', 'MongoDB', 'MERN', 'Python', 'Linux',
+    'Java', 'Electron Js', 'Javascript', 'html', 'css',
+    'Tailwind css', 'Machine Learning'
+    ];
+
+    const [Skills, updateSkills] = useState(
+    storedSkills ? JSON.parse(storedSkills) : defaultSkills
+    );
+    const occupation = localStorage.getItem('myOccupation')||"Software Engineer"
     const profileLink = localStorage.getItem('myPicUrl')||
                         "https://blog-it-backend-sandy.vercel.app/images/896313-56067455-5-post.png"
     //------------|  About | ---------------
@@ -115,7 +130,7 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
             description : "A real time chat application with new features ( made with web sockets )"
         },
         { 
-            Title : "Pee.. a.. boo....",
+            Title : "Peek.. a.. boo....",
             git_hub_frontEnd : "https://github.com/VarunChowdary0/WEB_RTC_FRONTEND",
             git_hub_BackEnd : "https://github.com/VarunChowdary0/WEB_RTC_SERVER",
             description : "A video calling application makes connections with stranges ( made with web RTC )"
@@ -173,13 +188,19 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
             twitter:"https://twitter.com/SaiPoludasu",
             linkedin:"https://www.linkedin.com/in/sai-varun-chowdary-poludasu-908051259/"
         }
+    //------------| ProfileUI_colors | ---------------
+        const AllColors = ['green','red','blue','yellow','pink','violet','orange','teal','purple']
+        const [coverBG_color,setCoverBG] = useState<string>(localStorage.getItem("coverBG_color")||AllColors[0])
+        const [SkillBG_col,setSkillBG] = useState<string>(localStorage.getItem("SkillBG_col")||AllColors[5])
+        const [AboutBG,setAboutBG] = useState<string>(AllColors[2])
+
 
     return (
         <GlobalContext.Provider
             value={{
                 name,
                 setName,
-                Skills,
+                Skills,updateSkills,
                 occupation,
                 profileLink,
                 about_me,
@@ -189,7 +210,11 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
                 Links,
                 email,
                 phoneNumber,
-                SocialMediaLinks
+                SocialMediaLinks,
+                AllColors,
+                coverBG_color,setCoverBG,
+                SkillBG_col,setSkillBG,
+                AboutBG,setAboutBG
             }}>
                 {children}
             </GlobalContext.Provider>

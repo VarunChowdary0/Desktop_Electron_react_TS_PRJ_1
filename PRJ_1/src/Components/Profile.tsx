@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import PenIcon from '../icons/PenIcon'
 import CloseIcon from '../icons/CloseIcon'
 import ArrowIcon from '../icons/ArrowIcon'
@@ -9,6 +9,7 @@ import Eduacation from '../widgets/Eduacation'
 import InternShips from '../widgets/InternShips'
 import MiniProject_Wid from '../widgets/MiniProject_Wid'
 import { GlobalContext } from '../Contexts/GlobalContext'
+import { save_cover_BG_to_local, save_skill_bg_to_local } from '../Functions/Manage_Functions'
 
 const Profile:React.FC = () => {
     const {Skills} = useContext<any>(GlobalContext)
@@ -16,10 +17,13 @@ const Profile:React.FC = () => {
     const {occupation} = useContext<any>(GlobalContext)
     const {profileLink} = useContext<any>(GlobalContext)
 
-    const AllColors = ['green','red','blue','yellow','pink','violet','orange','teal','purple']
-    const [coverBG_color,setCoverBG] = useState<string>(AllColors[0])
-    const [SkillBG_col,setSkillBG] = useState<string>(AllColors[5])
-    const [AboutBG,setAboutBG] = useState<string>(AllColors[2])
+    const {
+        AllColors,
+        coverBG_color,setCoverBG,
+        SkillBG_col,setSkillBG,
+        AboutBG,setAboutBG
+    } = useContext<any>(GlobalContext)
+
     const [editMODE,setEditMode] = useState<boolean>(false)
 
     const handleEditor = () =>{
@@ -29,36 +33,46 @@ const Profile:React.FC = () => {
         const idx = AllColors.indexOf(coverBG_color);
         if(idx === AllColors.length-1){
             setCoverBG(AllColors[0]);
+            save_cover_BG_to_local(AllColors[0]);
         }
         else{
             setCoverBG(AllColors[idx+1])
+            save_cover_BG_to_local(AllColors[idx+1]);
         }
     }
     const left_to_CoverBG = () =>{
         const idx = AllColors.indexOf(coverBG_color);
         if(idx === 0){
             setCoverBG(AllColors[AllColors.length-1]);
+            save_cover_BG_to_local(AllColors[AllColors.length-1]);
         }
         else{
             setCoverBG(AllColors[idx-1])
+            save_cover_BG_to_local(AllColors[idx-1]);
         }
+        save_cover_BG_to_local(SkillBG_col);
     }
+
     const right_to_Skill_BG = () =>{
         const idx = AllColors.indexOf(SkillBG_col);
         if(idx === AllColors.length-1){
             setSkillBG(AllColors[0]);
+            save_skill_bg_to_local(AllColors[0]);
         }
         else{
             setSkillBG(AllColors[idx+1])
+            save_skill_bg_to_local(AllColors[idx+1]);
         }
     }
     const left_to_Skill_BG = () =>{
         const idx = AllColors.indexOf(SkillBG_col);
         if(idx === 0){
             setSkillBG(AllColors[AllColors.length-1]);
+            save_skill_bg_to_local(AllColors[AllColors.length-1]);
         }
         else{
             setSkillBG(AllColors[idx-1])
+            save_skill_bg_to_local(AllColors[idx-1]);
         }
     }
 

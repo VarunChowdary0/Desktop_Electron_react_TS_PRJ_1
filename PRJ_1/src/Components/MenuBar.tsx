@@ -21,6 +21,9 @@ export const MenuBar: React.FC = () => {
                 <div>
                     <a href='/test'>Test</a>
                 </div>
+                <div>
+                    <a href='/manage'>Manage</a>
+                </div>
             </div>
         </div>
             {
