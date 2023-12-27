@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Leet_Code = () => {
+const Leet_Code:React.FC = () => {
   return (
     <div className=' scale-50'>
         <svg style={{ fill:'#393939'}}

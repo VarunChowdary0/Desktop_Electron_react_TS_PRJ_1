@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Git_hub = () => {
+const Git_hub:React.FC = () => {
   return (
     <svg style={{scale:200}} xmlns="http://www.w3.org/2000/svg" height="16" 
     width="15.5" viewBox="0 0 496 512">

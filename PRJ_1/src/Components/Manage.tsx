@@ -51,7 +51,8 @@ const Manage:React.FC = () => {
         AllColors,
         coverBG_color,setCoverBG,
         SkillBG_col,setSkillBG,
-        AboutBG,setAboutBG
+        AboutBG,
+        // setAboutBG
     } = useContext<any>(GlobalContext)
 
     const [editMODE,setEditMode] = useState<boolean>(false)

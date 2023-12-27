@@ -1,7 +1,5 @@
-import React, { useState } from 'react'
-import reactLogo from '../assets/react.svg'
-const TestPage = () => {
-    const [count, setCount] = useState(0)
+import React from 'react'
+const TestPage:React.FC = () => {
   return (
     <>
       <div className=' h-screen w-screen flex items-center justify-center'>

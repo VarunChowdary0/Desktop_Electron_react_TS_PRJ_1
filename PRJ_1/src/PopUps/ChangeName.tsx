@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { GlobalContext } from '../Contexts/GlobalContext'
 import CheckIcon from '../icons/CheckIcon';
 

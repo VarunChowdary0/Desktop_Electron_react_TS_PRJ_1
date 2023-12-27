@@ -4,7 +4,7 @@ import { GlobalContext } from '../Contexts/GlobalContext'
 interface CurrentProps{
     bg_color : string
 }
-const Eduacation:React.FC<CurrentProps> = (props) => {
+const Eduacation:React.FC<CurrentProps> = () => {
     const {EducationDetails} = useContext<any>(GlobalContext)
   return (
     <div className={` bg-${'white'}-400 w-[500px] max-sm:w-[300px]

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Code_Chef = () => {
+const Code_Chef:React.FC = () => {
   return (
     <div className=' scale-100'>
         <svg 

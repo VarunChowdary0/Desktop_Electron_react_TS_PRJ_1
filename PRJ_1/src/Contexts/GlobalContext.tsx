@@ -1,4 +1,4 @@
-import React, { ReactNode, createContext ,useEffect,useState } from "react";
+import React, { ReactNode, createContext ,useState } from "react";
 import Linked_in from "../icons/Linked_in";
 import Git_hub from "../icons/Git_hub";
 import Leet_Code from "../icons/Leet_Code";
