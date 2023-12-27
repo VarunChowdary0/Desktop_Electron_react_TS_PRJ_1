@@ -14,6 +14,13 @@ interface Profile{
     updateSkills: React.Dispatch<React.SetStateAction<Array<string>>>;
     occupation : string;
     profileLink : string;
+
+    showNamePopup:boolean
+    setNamePopupView: React.Dispatch<React.SetStateAction<boolean>>;
+
+    showAddSkillPopUp:boolean;
+    setAddSkillPopupView:React.Dispatch<React.SetStateAction<boolean>>;
+
 }
 interface About{
     about_me : string
@@ -65,7 +72,8 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
     'Java', 'Electron Js', 'Javascript', 'html', 'css',
     'Tailwind css', 'Machine Learning'
     ];
-
+    const [showNamePopup,setNamePopupView] = useState<boolean>(false)
+    const [showAddSkillPopUp,setAddSkillPopupView] = useState<boolean>(false)
     const [Skills, updateSkills] = useState(
     storedSkills ? JSON.parse(storedSkills) : defaultSkills
     );
@@ -199,8 +207,11 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
         <GlobalContext.Provider
             value={{
                 name,
+                showNamePopup,
+                setNamePopupView,
                 setName,
                 Skills,updateSkills,
+                showAddSkillPopUp,setAddSkillPopupView,
                 occupation,
                 profileLink,
                 about_me,

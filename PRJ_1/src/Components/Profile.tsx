@@ -1,7 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
-import PenIcon from '../icons/PenIcon'
-import CloseIcon from '../icons/CloseIcon'
-import ArrowIcon from '../icons/ArrowIcon'
+import React, { useContext } from 'react'
+
 import { Social_Media } from '../widgets/Social_Media'
 import ContactInfo from './ContactInfo'
 import About_me from '../widgets/About_me'
@@ -9,7 +7,6 @@ import Eduacation from '../widgets/Eduacation'
 import InternShips from '../widgets/InternShips'
 import MiniProject_Wid from '../widgets/MiniProject_Wid'
 import { GlobalContext } from '../Contexts/GlobalContext'
-import { save_cover_BG_to_local, save_skill_bg_to_local } from '../Functions/Manage_Functions'
 
 const Profile:React.FC = () => {
     const {Skills} = useContext<any>(GlobalContext)
@@ -18,63 +15,11 @@ const Profile:React.FC = () => {
     const {profileLink} = useContext<any>(GlobalContext)
 
     const {
-        AllColors,
-        coverBG_color,setCoverBG,
-        SkillBG_col,setSkillBG,
-        AboutBG,setAboutBG
+        coverBG_color,
+        SkillBG_col,
+        AboutBG,
     } = useContext<any>(GlobalContext)
 
-    const [editMODE,setEditMode] = useState<boolean>(false)
-
-    const handleEditor = () =>{
-        setEditMode(!editMODE)
-    }
-    const right_to_CoverBG = () =>{
-        const idx = AllColors.indexOf(coverBG_color);
-        if(idx === AllColors.length-1){
-            setCoverBG(AllColors[0]);
-            save_cover_BG_to_local(AllColors[0]);
-        }
-        else{
-            setCoverBG(AllColors[idx+1])
-            save_cover_BG_to_local(AllColors[idx+1]);
-        }
-    }
-    const left_to_CoverBG = () =>{
-        const idx = AllColors.indexOf(coverBG_color);
-        if(idx === 0){
-            setCoverBG(AllColors[AllColors.length-1]);
-            save_cover_BG_to_local(AllColors[AllColors.length-1]);
-        }
-        else{
-            setCoverBG(AllColors[idx-1])
-            save_cover_BG_to_local(AllColors[idx-1]);
-        }
-        save_cover_BG_to_local(SkillBG_col);
-    }
-
-    const right_to_Skill_BG = () =>{
-        const idx = AllColors.indexOf(SkillBG_col);
-        if(idx === AllColors.length-1){
-            setSkillBG(AllColors[0]);
-            save_skill_bg_to_local(AllColors[0]);
-        }
-        else{
-            setSkillBG(AllColors[idx+1])
-            save_skill_bg_to_local(AllColors[idx+1]);
-        }
-    }
-    const left_to_Skill_BG = () =>{
-        const idx = AllColors.indexOf(SkillBG_col);
-        if(idx === 0){
-            setSkillBG(AllColors[AllColors.length-1]);
-            save_skill_bg_to_local(AllColors[AllColors.length-1]);
-        }
-        else{
-            setSkillBG(AllColors[idx-1])
-            save_skill_bg_to_local(AllColors[idx-1]);
-        }
-    }
 
   return (
     <div className=' w-full h-full flex mt-[150px] items-center gap-16
@@ -114,51 +59,6 @@ const Profile:React.FC = () => {
                         )
                     }
                     </div>
-            </div>
-        </div>
-        <div className={` fixed top-0 bottom-0 right-0 flex transition-transform
-             duration-300
-        ${editMODE ? ' translate-x-0': 'translate-x-[10vw]' } `}>
-            <div  onClick={handleEditor}>
-                <div className=' w-10 mt-3 mr-3 h-10 bg-black/20 
-                rounded-full flex items-center justify-center'>
-                    {
-                        editMODE ? 
-                        <CloseIcon color='white' size={100}/>
-                        :
-                        <PenIcon color='white' size={100}/>
-                    }
-                </div>
-            </div>
-            <div className='w-[10vw] shadow-xl'>
-                <div className=' flex mt-[170px] flex-col items-center gap-4'>
-                    <div onClick={left_to_CoverBG} 
-                    className=' h-10 w-10 flex items-center justify-center
-                    bg-black/20 rounded-full active:bg-black/10 transition-colors'> 
-                        <ArrowIcon color='white' size={100} angle='0deg'/>
-                     </div>
-
-                    <div onClick={right_to_CoverBG} 
-                    className=' h-10 w-10 flex items-center justify-center
-                    bg-black/20 rounded-full active:bg-black/10 transition-colors'> 
-                        <ArrowIcon color='white' size={100} angle='180deg'/>
-                      </div>
-                </div>
-                <div className=' mt-[120px] flex flex-col items-center max-sm:mt-[185px] gap-4'>
-
-                    <div onClick={right_to_Skill_BG} 
-                   className=' h-10 w-10 flex items-center justify-center
-                   bg-black/20 rounded-full active:bg-black/10 transition-colors'> 
-                   <ArrowIcon color='white' size={100} angle='0deg'/>
-                   </div>
-                    
-                    <div onClick={left_to_Skill_BG} 
-                    className=' h-10 w-10 flex items-center justify-center
-                    bg-black/20 rounded-full active:bg-black/10 transition-colors'> 
-                           <ArrowIcon color='white' size={100} angle='180deg'/>
-                    </div>
-                
-                </div>
             </div>
         </div>
         <div className=' __widgets__ '>
