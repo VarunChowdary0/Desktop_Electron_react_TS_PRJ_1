@@ -15,3 +15,9 @@ export const save_mySkills_to_local = (skills:Array<string>) =>{
 export const save_profile_url_to_local = (link:string) => {
     localStorage.setItem("myPicUrl",link);
 }
+export const save_occupation_to_locat = (occ:string) =>{
+    localStorage.setItem("myOccupation",occ);
+} 
+export const save_about_me_to_local = (abt:string) =>{
+    localStorage.setItem("about_me",abt);
+}

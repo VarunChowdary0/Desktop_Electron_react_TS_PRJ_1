@@ -12,7 +12,9 @@ const Add_Skill:React.FC = () => {
         }
         else{            
             console.log("new skill : "+newSkill);
-            updateSkills([...Skills,newSkill])
+            if(newSkill.trim()!==""){
+                updateSkills([...Skills,newSkill])
+            }
         }
     }
     const closePopup = () => {

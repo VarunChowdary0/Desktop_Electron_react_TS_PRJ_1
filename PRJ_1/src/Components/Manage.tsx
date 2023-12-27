@@ -6,12 +6,17 @@ import PenIcon from '../icons/PenIcon';
 import ChangeName from '../PopUps/ChangeName';
 import Add_Skill from '../PopUps/Add_Skill';
 import ArrowIcon from '../icons/ArrowIcon';
+import ChangeProfile_popUp from '../PopUps/ChangeProfile_popUp';
+import ChangeOccupation from '../PopUps/ChangeOccupation';
+import Editable_About_me from '../widgets/Editable_About_me';
 
 const Manage:React.FC = () => {
     
     const {
         showNamePopup,setNamePopupView,
         showAddSkillPopUp,setAddSkillPopupView,
+        showChangeProfilePopUp,setChangeProfileShow,
+        showChangeOccupation,setChangeOccupationShow,
             } = useContext<any>(GlobalContext)
     const {
         Skills,updateSkills,
@@ -34,6 +39,12 @@ const Manage:React.FC = () => {
     }
     const _Add_Skill_ = () =>{
         setAddSkillPopupView(true);
+    }
+    const _ChangeProfile_ = () =>{
+        setChangeProfileShow(true)
+    }
+    const _ChangeOccupation_ = () =>{
+        setChangeOccupationShow(true)
     }
 
     const {
@@ -97,27 +108,37 @@ const Manage:React.FC = () => {
 
   return (
     <div className=' w-full h-fit
-     flex justify-center pt-[150px]
+     flex items-center pt-[100px] flex-col gap-14 mb-16
     '>
         <div className=' h-fit max-w-[500px] w-fit shadow-xl overflow-hidden
         bg-white 
-        max-sm:w-[250px] rounded-md  relative'>
+        max-sm:w-[280px] rounded-md  relative'>
             <div className=' absolute h-[150px] w-[150px] top-[20%]
-             bg-[#4c4b4b] left-1 rounded-full  max-sm:top-[20%] overflow-hidden'>
+             bg-[#4c4b4b] left-1 rounded-full  max-sm:top-[100px] overflow-hidden'>
                 <img className=' select-none' src={profileLink}/>
+                <div onClick={_ChangeProfile_}
+                className=' absolute top-0 bg-black/50 flex items-center opacity-0
+                 justify-center text-white font-thin text-2xl 
+                 h-[150px] w-[150px] hover:opacity-100 transition-all'>
+                    Change
+                </div>
              </div>
             <div className={` h-[180px] 
             max-sm:h-[230px]
             text-3xl font-bold text-white
-             flex items-center justify-end pr-5 max-sm:items-start max-sm:pt-[50px]
+             flex items-center justify-end pr-1 max-sm:items-start max-sm:pt-[50px]
              w-full bg-gradient-to-r from_custom_${coverBG_color} 
-             to_custom_${SkillBG_col} max-md:text-2xl `}>
+             to_custom_${SkillBG_col} max-md:text-2xl mr-[170px]`}>
             {occupation}
+            <div onClick={_ChangeOccupation_}
+                    className=' scale-75 p-2 hover:bg-black/20 transition-all duration-300
+                     rounded-full mt-4'><PenIcon color='#4d4d4dad' size={0.7}/>
+            </div>
             </div>
             <div className=' h-[40%] w-full '>
                 <div className=' ml-[150px] pl-1 text-lg 
-                max-sm:ml-0 max-sm:mt-14
-                font-light mt-2 flex items-center gap-3 '>
+                max-sm:ml-0 max-sm:mt-[70px]
+                font-light mt-2 flex items-center gap-3 justify-between '>
                     {name}
                     <div onClick={_ChangeName_}
                     className=' scale-75 p-2 hover:bg-black/20 transition-all duration-300
@@ -155,8 +176,13 @@ const Manage:React.FC = () => {
                     </div>
             </div>
         </div>
+        <div className=' __widget__ '>
+            <Editable_About_me bg_Color={AboutBG}/>
+        </div>
         {showNamePopup && <ChangeName/>}
         {showAddSkillPopUp&&<Add_Skill/>}
+        {showChangeProfilePopUp&&<ChangeProfile_popUp/>}
+        {showChangeOccupation&&<ChangeOccupation/>}
         <div className={` fixed top-0 bottom-0 right-0 flex transition-transform
              duration-300
         ${editMODE ? ' translate-x-0': 'translate-x-[10vw]' } `}>

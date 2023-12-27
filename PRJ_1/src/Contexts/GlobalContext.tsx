@@ -10,10 +10,18 @@ import Spoj from "../icons/Spoj";
 interface Profile{
     name : string;
     setName : React.Dispatch<React.SetStateAction<string>>;
+
     Skills : Array<string>;
     updateSkills: React.Dispatch<React.SetStateAction<Array<string>>>;
+
     occupation : string;
+    setOccupation : React.Dispatch<React.SetStateAction<string>>;
+    
+    showChangeOccupation:boolean
+    setChangeOccupationShow: React.Dispatch<React.SetStateAction<boolean>>;
+
     profileLink : string;
+    setProfile:React.Dispatch<React.SetStateAction<string>>;
 
     showNamePopup:boolean
     setNamePopupView: React.Dispatch<React.SetStateAction<boolean>>;
@@ -21,9 +29,12 @@ interface Profile{
     showAddSkillPopUp:boolean;
     setAddSkillPopupView:React.Dispatch<React.SetStateAction<boolean>>;
 
+    showChangeProfilePopUp:boolean;
+    setChangeProfileShow:React.Dispatch<React.SetStateAction<boolean>>;
 }
 interface About{
     about_me : string
+    setAboutME : React.Dispatch<React.SetStateAction<string>>;
 }
 interface EducationDetails{
     EducationDetails : any;
@@ -66,6 +77,7 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
 
     //------------| Profile | ---------------
     const [name,setName] = useState(localStorage.getItem('myName')||"Sai Varun Chowdary Poludasu");
+    const [occupation,setOccupation] = useState(localStorage.getItem('myOccupation')||"Software Engineer");
     const storedSkills = localStorage.getItem("mySkills");
     const defaultSkills = [
     'Web', 'React', 'Node', 'MongoDB', 'MERN', 'Python', 'Linux',
@@ -74,15 +86,16 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
     ];
     const [showNamePopup,setNamePopupView] = useState<boolean>(false)
     const [showAddSkillPopUp,setAddSkillPopupView] = useState<boolean>(false)
+    const [showChangeProfilePopUp,setChangeProfileShow] = useState<boolean>(false);
+    const [showChangeOccupation,setChangeOccupationShow] = useState<boolean>(false);
     const [Skills, updateSkills] = useState(
     storedSkills ? JSON.parse(storedSkills) : defaultSkills
     );
-    const occupation = localStorage.getItem('myOccupation')||"Software Engineer"
-    const profileLink = localStorage.getItem('myPicUrl')||
-                        "https://blog-it-backend-sandy.vercel.app/images/896313-56067455-5-post.png"
+    const [profileLink,setProfile] = useState(localStorage.getItem('myPicUrl')||
+    "https://blog-it-backend-sandy.vercel.app/images/896313-56067455-5-post.png")
     //------------|  About | ---------------
-    const about_me = localStorage.getItem("About_me")
-                    ||"A hardworking and passionate job seeker with strong organizational skills eager to secure an entry-level software Engineer position. Ready to help the team achieve company goals."
+    const [about_me,setAboutME] = useState(localStorage.getItem("about_me")|| 
+                    "A hardworking and passionate job seeker with strong organizational skills eager to secure an entry-level software Engineer position. Ready to help the team achieve company goals.")
     //------------| Education | ---------------
     const EducationDetails = localStorage.getItem('EducationDetails')|| 
     [
@@ -212,9 +225,11 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
                 setName,
                 Skills,updateSkills,
                 showAddSkillPopUp,setAddSkillPopupView,
-                occupation,
-                profileLink,
-                about_me,
+                occupation,setOccupation,
+                showChangeOccupation,setChangeOccupationShow,
+                profileLink,setProfile,
+                showChangeProfilePopUp,setChangeProfileShow,
+                about_me,setAboutME,
                 EducationDetails,
                 InternshipINFO,
                 ProjectDetails,
