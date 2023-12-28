@@ -10,14 +10,18 @@ import ChangeProfile_popUp from '../PopUps/ChangeProfile_popUp';
 import ChangeOccupation from '../PopUps/ChangeOccupation';
 import Editable_About_me from '../widgets/Editable_About_me';
 import Editable_Eduacation from '../widgets/Editable_Education';
+import Editable_InternShips from '../widgets/Editable_Internships';
+import Editable_MiniProject_Wid from '../widgets/Editable_MiniProject_Wid';
+
 
 const Manage:React.FC = () => {
-    
     const {
         showNamePopup,setNamePopupView,
         showAddSkillPopUp,setAddSkillPopupView,
         showChangeProfilePopUp,setChangeProfileShow,
         showChangeOccupation,setChangeOccupationShow,
+        whatHapped,
+        toWho,handlePopUp
             } = useContext<any>(GlobalContext)
     const {
         Skills,updateSkills,
@@ -29,6 +33,7 @@ const Manage:React.FC = () => {
     const Remove_This_Skill = (idx: number) => {
         const updatedSkills = [...Skills.slice(0, idx), ...Skills.slice(idx + 1)];
         updateSkills(updatedSkills);
+        handlePopUp("Removed","Skill")
     };
       
     useEffect(()=>{
@@ -108,6 +113,7 @@ const Manage:React.FC = () => {
         }
     }
 
+    const {show,setShow} = useContext<any>(GlobalContext);
   return (
     <div className=' w-full h-fit
      flex items-center pt-[100px] flex-col gap-14 mb-16
@@ -158,7 +164,7 @@ const Manage:React.FC = () => {
                             >
                                 <div onClick={()=>{Remove_This_Skill(idx)}} 
                                 className='__Remove__ scale-110 absolute top-[-3px] right-[-3px] rounded-full
-                                 h-4 w-4 bg-black/20'>
+                                 h-4 w-4 bg-black/20  hover:bg-red-500'>
                                     <div className=' scale-50 flex items-center 
                                     justify-center'>
                                         <CloseIcon color='white' size={1}/>
@@ -182,7 +188,13 @@ const Manage:React.FC = () => {
             <Editable_About_me bg_Color={AboutBG}/>
         </div>
         <div className=' __widget__ '>
-                    <Editable_Eduacation bg_color={coverBG_color}/>
+            <Editable_Eduacation bg_color={coverBG_color}/>
+        </div>
+        <div className=' __widget__ '>
+            <Editable_InternShips bgCol={SkillBG_col}/>
+        </div>
+        <div className=' __widget__ '>
+            <Editable_MiniProject_Wid/>
         </div>
         {showNamePopup && <ChangeName/>}
         {showAddSkillPopUp&&<Add_Skill/>}
@@ -233,6 +245,18 @@ const Manage:React.FC = () => {
                 </div>
             </div>
         </div>
+       <div>
+       <div className=' fixed bottom-10 left-0 right-0 flex justify-center'>
+        <div className={` min-w-[150px] px-3 h-[80px] bg-black/80 
+            border-[1px] transition-all
+            border-[#8b8a8a] rounded-md text-white flex 
+            items-center justify-center gap-2 text-xl delay-150 
+            ${show?"":"translate-y-[150px]"}`}>
+            <div>{toWho}</div>
+            <div>{whatHapped}</div>
+        </div>
+    </div>
+       </div>
     </div>
   )
 }

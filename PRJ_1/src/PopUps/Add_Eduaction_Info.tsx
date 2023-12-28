@@ -11,8 +11,10 @@ const Add_Eduaction_Info:React.FC = () => {
     const[Adderss,setAddress]=useState<string>("")
     const[fromDate,setFromDate]=useState<string>("")
     const[toDate,settoDate]=useState<string>("")
+
     const {setShowEducationPopUp,
-        EducationDetails,setEducationDetails,} = useContext<any>(GlobalContext)
+        EducationDetails,setEducationDetails,
+        handlePopUp} = useContext<any>(GlobalContext)
     const closePopup =() =>{
         setShowEducationPopUp(false)
     }
@@ -35,6 +37,7 @@ const Add_Eduaction_Info:React.FC = () => {
                             setEducationDetails([...EducationDetails,thisDetail])
                             save_Education_details_to_local([...EducationDetails,thisDetail])
                             closePopup();
+                            handlePopUp("Added","Eduaction info");
                         }
                         else{
                             handleFlash()
@@ -78,9 +81,9 @@ const Add_Eduaction_Info:React.FC = () => {
   return (
     <>
     <div onClick={closePopup} className='fixed top-0 bottom-0 left-0 right-0 backdrop-blur-sm
-    h-screen w-screen bg-black/30 flex items-center justify-center'>
+    h-screen w-screen bg-black/30 flex items-center justify-center z-10'>
     </div>
-    <div className=' fixed h-fit w-fit top-[20%]
+    <div className=' fixed h-fit w-fit top-[20%] z-10
     bg-white px-3 py-10 rounded-md max-w-[550px] max-sm:w-[300px]'>
         <div className=' px-4 pb-6 text-lg text-[#6c6c6c]'>Add Eduaction Info</div>
         <div className=' flex relative flex-col gap-7'>
@@ -141,7 +144,7 @@ const Add_Eduaction_Info:React.FC = () => {
             }
         </div>
     </div>
-</>
+    </>
   )
 }
 

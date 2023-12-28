@@ -161,3 +161,42 @@ button {
 .__Skill__:hover .__Remove__{
   opacity: 1;
 }
+
+/* .fade-away {
+  position: fixed;
+  bottom: 20px;
+  right: 0px;
+  transform: translateX(-50%);
+  padding: 20px;
+  color: #fff;
+  animation: fade 1.7s 0.3s 1 ease-out;
+  opacity: 0;
+}
+@keyframes fade {
+  0%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  25%{
+    opacity: 0.8;
+    transform: translateY(-10vh);
+  }
+  100%{
+    opacity: 0;
+    transform: translateY(-60vh);
+  }
+} */
+
+*::-webkit-scrollbar {
+  width: 12px; /* width of the entire scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+  background: #f1f1f1; /* color of the track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #888; /* color of the thumb */
+  border-radius: 6px; /* roundness of the thumb */
+  border: 3px solid #f1f1f1; /* border around the thumb */
+}

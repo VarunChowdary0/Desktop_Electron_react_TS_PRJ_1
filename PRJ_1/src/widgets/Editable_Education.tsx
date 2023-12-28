@@ -10,14 +10,17 @@ interface CurrentProps{
 const Editable_Eduacation:React.FC<CurrentProps> = () => {
     const {
         EducationDetails,setEducationDetails,
-        showAddEduactionDetailPopup,setShowEducationPopUp
+        showAddEduactionDetailPopup,setShowEducationPopUp,
+        handlePopUp
     } = useContext<any>(GlobalContext)
     const Remove_This_Detail = (idx:number) =>{
         const updated_Education_Details = [...EducationDetails.slice(0,idx),...EducationDetails.slice(idx+1)]
         console.log(updated_Education_Details)
         setEducationDetails(updated_Education_Details)
         save_Education_details_to_local(updated_Education_Details)
+        handlePopUp("Removed","Eduaction Detail")
     }
+    
   return (
     <div className={` bg-${'white'}-400 w-[500px] max-sm:w-[300px]
      h-fit border-2  text-[#3b3b3b] rounded-lg p-4 max-sm:p-2`}>
@@ -28,7 +31,7 @@ const Editable_Eduacation:React.FC<CurrentProps> = () => {
                 <div className=' relative __Skill__' key={"education_detail"+idx}>
                     <div onClick={()=>{Remove_This_Detail(idx)}} 
                                 className='__Remove__ scale-125 absolute top-0 right-3 rounded-full
-                                 h-4 w-4 bg-black/40'>
+                                 h-4 w-4 bg-black/40  hover:bg-red-500'>
                                     <div className=' scale-50 flex items-center 
                                     justify-center'>
                                         <CloseIcon color='white' size={1}/>

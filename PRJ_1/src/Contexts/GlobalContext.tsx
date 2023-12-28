@@ -44,10 +44,30 @@ interface EducationDetails{
     setShowEducationPopUp:React.Dispatch<React.SetStateAction<boolean>>;
 }
 interface InternshipDetails{
-    InternshipINFO:any;
+    InternshipINFO:Array<object>;
+    setIntenshipInfo:React.Dispatch<React.SetStateAction<Array<object>>>
+
+    showIntershipAdder:boolean
+    setInterAdderShow:React.Dispatch<React.SetStateAction<boolean>>;
+}
+interface mini_PopUp{
+    whatHapped : string;
+    setWhatHappended : React.Dispatch<React.SetStateAction<string>>;
+    
+    toWho : string;
+    setToWho : React.Dispatch<React.SetStateAction<string>>;
+    
+    show : boolean;
+    setShow : React.Dispatch<React.SetStateAction<boolean>>;
+
+    handlePopUp: (what: string, Who: string) => void;
 }
 interface ProjectDetails{
     ProjectDetails:any;
+    setProjects :React.Dispatch<React.SetStateAction<Array<object>>>;
+
+    showAddProjectPopUp:boolean
+    setShowAddProjectPOPup:React.Dispatch<React.SetStateAction<boolean>>;
 }
 interface CodingPlatform{
     Links : any;
@@ -68,7 +88,7 @@ interface ProfileUI_colors{
 }
 
 
-interface GlobalContextType extends Profile,About,EducationDetails,
+interface GlobalContextType extends Profile,About,EducationDetails,mini_PopUp,
 InternshipDetails,ProjectDetails,CodingPlatform,ContactInfo,ProfileUI_colors{}
 
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
@@ -78,6 +98,22 @@ interface GlobalContextProviderProps {
 }
 
 const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}) =>{
+
+    const [whatHapped,setWhatHappended] = useState("");
+    const [toWho,setToWho] = useState("")
+    const [show,setShow] = useState(false)
+
+    const handlePopUp = (what:string,Who:string) =>{
+        setWhatHappended(what)
+        setToWho(Who)
+        setShow(true)
+        setTimeout(()=>{
+            setShow(false);
+            setWhatHappended("")
+            setToWho("")
+        },1300)
+    }
+
 
     //------------| Profile | ---------------
     const [name,setName] = useState(localStorage.getItem('myName')||"Sai Varun Chowdary Poludasu");
@@ -134,8 +170,9 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
     )
     const [showAddEduactionDetailPopup,setShowEducationPopUp] = useState(false) 
     //------------| Internship | ---------------
-    const InternshipINFO = localStorage.getItem("InternshipDetails") ||
-    [
+    const [showIntershipAdder,setInterAdderShow] = useState(false);
+    const saved_internInfo = localStorage.getItem("InternshipDetails");
+    const defaultInterShipInfo =  [
         {
             Title : "DATA SCIENCE",
             at : "NSIC",
@@ -144,9 +181,11 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
             description: " Internship on Data science - machine learning and building an rainfall prediction model"
         },
     ]
+    const [InternshipINFO,setIntenshipInfo] = useState(
+        saved_internInfo ? JSON.parse(saved_internInfo) : defaultInterShipInfo
+    )  
     //------------| Projects | ---------------
-    const ProjectDetails =  localStorage.getItem("ProjectDetails")  ||
-     [
+    const default_prjs:Array<object> = [
         { 
             Title : "BlogIT",
             link : "https://blog-it-ten.vercel.app/",
@@ -169,7 +208,7 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
             description : "A video calling application makes connections with stranges ( made with web RTC )"
         },
         {
-            Title : "Face Reconition",
+            Title : "Face Recognition",
             link : "https://github.com/VarunChowdary0/face_detection_python",
             git_hub_frontEnd : "",
             git_hub_BackEnd : "https://github.com/VarunChowdary0/face_detection_python",
@@ -183,6 +222,12 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
             description : "6+ mini projects on my git hub profile."
         }
         ]
+    const saved_prjs = localStorage.getItem("ProjectDetails") ;
+    const [ProjectDetails , setProjects] =  useState(
+         saved_prjs ? JSON.parse(saved_prjs) : default_prjs
+    )
+    const [showAddProjectPopUp,setShowAddProjectPOPup] = useState(false)
+     
     //------------| Coding Platform | ---------------
         const Links = {
             Linked_in : {
@@ -246,8 +291,10 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
                 about_me,setAboutME,
                 EducationDetails,setEducationDetails,
                 showAddEduactionDetailPopup,setShowEducationPopUp,
-                InternshipINFO,
-                ProjectDetails,
+                InternshipINFO,setIntenshipInfo,
+                showIntershipAdder,setInterAdderShow,
+                ProjectDetails,setProjects,
+                showAddProjectPopUp,setShowAddProjectPOPup,
                 Links,
                 email,
                 phoneNumber,
@@ -255,7 +302,11 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
                 AllColors,
                 coverBG_color,setCoverBG,
                 SkillBG_col,setSkillBG,
-                AboutBG,setAboutBG
+                AboutBG,setAboutBG,
+                whatHapped,setWhatHappended,
+                toWho,setToWho,
+                show,setShow,
+                handlePopUp
             }}>
                 {children}
             </GlobalContext.Provider>

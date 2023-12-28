@@ -3,7 +3,8 @@ import { GlobalContext } from '../Contexts/GlobalContext'
 import CheckIcon from '../icons/CheckIcon';
 
 const ChangeName:React.FC = () => {
-    const {setNamePopupView}=useContext<any>(GlobalContext);
+    const {setNamePopupView,
+        handlePopUp}=useContext<any>(GlobalContext);
     const {name,setName} = useContext<any>(GlobalContext);
     const def_name = name;
     const [current_name,change_name] = useState(name);
@@ -12,6 +13,7 @@ const ChangeName:React.FC = () => {
     }
     const handleSave = () =>{
         setName(current_name);
+        handlePopUp("Changed","Name");
         closePopup();
         localStorage.setItem("myName",current_name);
     }

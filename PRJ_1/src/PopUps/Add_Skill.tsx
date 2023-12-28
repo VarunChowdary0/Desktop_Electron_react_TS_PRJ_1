@@ -5,7 +5,7 @@ import {  save_mySkills_to_local } from '../Functions/Manage_Functions';
 
 const Add_Skill:React.FC = () => {
     const [newSkill,setNewSkill] = useState<string>(""); 
-    const {setAddSkillPopupView,Skills,updateSkills} = useContext<any>(GlobalContext);
+    const {setAddSkillPopupView,Skills,updateSkills,handlePopUp} = useContext<any>(GlobalContext);
     const handleSave = () =>{
         if(Skills.includes(newSkill)){
             console.log("Exists")
@@ -14,6 +14,7 @@ const Add_Skill:React.FC = () => {
             console.log("new skill : "+newSkill);
             if(newSkill.trim()!==""){
                 updateSkills([...Skills,newSkill])
+                handlePopUp("Added","Skill")
             }
         }
     }
