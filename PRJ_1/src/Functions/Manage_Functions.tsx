@@ -1,3 +1,5 @@
+import { json } from "react-router-dom";
+
 export const Manage_Functions = () => {
 }
 export const sayHello = (name:string) =>{
@@ -20,4 +22,8 @@ export const save_occupation_to_locat = (occ:string) =>{
 } 
 export const save_about_me_to_local = (abt:string) =>{
     localStorage.setItem("about_me",abt);
+}
+
+export const save_Education_details_to_local = (eduaction_info : Array<object>) =>{
+    localStorage.setItem("EducationDetails",JSON.stringify(eduaction_info))
 }

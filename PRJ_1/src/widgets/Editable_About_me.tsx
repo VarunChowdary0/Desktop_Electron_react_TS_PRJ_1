@@ -27,9 +27,7 @@ const Editable_About_me:React.FC<CurrentProps>= (props) => {
         <textarea id="autoresizing" rows={Current_about.length/43}
          className=' bg-black/0 w-full border-none outline-none py-2 ' 
          value={Current_about} onChange={(e)=>{setCurrent(e.target.value)}}
-         >
-
-         </textarea>
+         ></textarea>
     </div>
   )
 }

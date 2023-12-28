@@ -37,7 +37,11 @@ interface About{
     setAboutME : React.Dispatch<React.SetStateAction<string>>;
 }
 interface EducationDetails{
-    EducationDetails : any;
+    EducationDetails : Array<object>;
+    setEducationDetails : React.Dispatch<React.SetStateAction<Array<object>>>;
+
+    showAddEduactionDetailPopup:boolean
+    setShowEducationPopUp:React.Dispatch<React.SetStateAction<boolean>>;
 }
 interface InternshipDetails{
     InternshipINFO:any;
@@ -97,7 +101,8 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
     const [about_me,setAboutME] = useState(localStorage.getItem("about_me")|| 
                     "A hardworking and passionate job seeker with strong organizational skills eager to secure an entry-level software Engineer position. Ready to help the team achieve company goals.")
     //------------| Education | ---------------
-    const EducationDetails = localStorage.getItem('EducationDetails')|| 
+    const Stored_Education_info= localStorage.getItem('EducationDetails')
+    const default_education =
     [
         {
             institue_name : "INSTITUTE OF AREONAUTICAL ENGINEERING",
@@ -124,6 +129,10 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
             time_of_study : "2011 to  2020"
         }
     ]
+    const [EducationDetails , setEducationDetails] = useState(
+        Stored_Education_info ? JSON.parse(Stored_Education_info) : default_education
+    )
+    const [showAddEduactionDetailPopup,setShowEducationPopUp] = useState(false) 
     //------------| Internship | ---------------
     const InternshipINFO = localStorage.getItem("InternshipDetails") ||
     [
@@ -235,7 +244,8 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
                 profileLink,setProfile,
                 showChangeProfilePopUp,setChangeProfileShow,
                 about_me,setAboutME,
-                EducationDetails,
+                EducationDetails,setEducationDetails,
+                showAddEduactionDetailPopup,setShowEducationPopUp,
                 InternshipINFO,
                 ProjectDetails,
                 Links,

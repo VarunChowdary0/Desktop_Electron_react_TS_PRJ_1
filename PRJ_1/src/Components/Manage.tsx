@@ -9,6 +9,7 @@ import ArrowIcon from '../icons/ArrowIcon';
 import ChangeProfile_popUp from '../PopUps/ChangeProfile_popUp';
 import ChangeOccupation from '../PopUps/ChangeOccupation';
 import Editable_About_me from '../widgets/Editable_About_me';
+import Editable_Eduacation from '../widgets/Editable_Education';
 
 const Manage:React.FC = () => {
     
@@ -179,6 +180,9 @@ const Manage:React.FC = () => {
         </div>
         <div className=' __widget__ '>
             <Editable_About_me bg_Color={AboutBG}/>
+        </div>
+        <div className=' __widget__ '>
+                    <Editable_Eduacation bg_color={coverBG_color}/>
         </div>
         {showNamePopup && <ChangeName/>}
         {showAddSkillPopUp&&<Add_Skill/>}
