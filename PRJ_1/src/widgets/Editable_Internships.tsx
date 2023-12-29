@@ -29,34 +29,37 @@ const Editable_InternShips:React.FC<CurrentProps>= (props) => {
         <div className='flex flex-col gap-8'>
             {
                 InternshipINFO.map((ele:any,idx:number)=>
-                    <div key={"internship_"+idx} className=' __Skill__ relative t'>
-                        <div onClick={()=>{Remove_This_Detail(idx)}} 
-                                className='__Remove__ scale-125 absolute rounded-full
-                                 h-4 w-4 bg-black/40 top-[-17px] right-1  hover:bg-red-500'>
-                                <div className=' scale-50 flex items-center 
-                                justify-center'>
-                                    <CloseIcon color='white' size={1}/>
+                    <>
+                        {/* {console.log(ele)} */}
+                        <div key={"internship_"+idx} className=' __Skill__ relative t'>
+                            <div onClick={()=>{Remove_This_Detail(idx)}} 
+                                    className='__Remove__ scale-125 absolute rounded-full
+                                    h-4 w-4 bg-black/40 top-[-17px] right-1  hover:bg-red-500'>
+                                    <div className=' scale-50 flex items-center 
+                                    justify-center'>
+                                        <CloseIcon color='white' size={1}/>
+                                    </div>
+                            </div>
+                            <div className=' flex justify-between pr-4 max-sm:pr-1'>
+                                <div className=' flex gap-3'>
+                                    <div className=' text-[#ffffff]'>{ele.Title}</div>
+                                    <div className=' mt-1 text-[10px]'> [ {ele.at} ] </div>
+                                    <a target='_blank'
+                                    href={ele.CertificateLink}>
+                                        <CertificateIcon/>
+                                    </a>
                                 </div>
-                        </div>
-                        <div className=' flex justify-between pr-4 max-sm:pr-1'>
-                            <div className=' flex gap-3'>
-                                <div className=' text-[#ffffff]'>{ele.Title}</div>
-                                <div className=' mt-1 text-[10px]'> [ {ele.at} ] </div>
-                                <a target='_blank'
-                                href={ele.CertificateLink}>
-                                    <CertificateIcon/>
-                                </a>
+                                <div className=' text-[11px]'>
+                                    {ele.work_time}
+                                </div>
                             </div>
-                            <div className=' text-[11px]'>
-                                {ele.work_time}
+                            <div>
+                                <p className=' text-[14px] mt-2'>
+                            {ele.description}
+                                </p>
                             </div>
                         </div>
-                        <div>
-                            <p className=' text-[14px] mt-2'>
-                           {ele.description}
-                            </p>
-                        </div>
-                    </div>
+                    </>
             )
             }
             <div className=' flex items-center justify-center

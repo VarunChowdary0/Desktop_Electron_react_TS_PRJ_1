@@ -10,7 +10,7 @@ const ContactInfo:React.FC = () => {
     } = useContext<any>(GlobalContext)
 
   return (
-    <div className=' w-full h-fit bg-[#7568fffd]
+    <div className=' w-full h-fit bg-[#7568fffd] max-sm:pl-10
      flex items-center justify-center rounded-lg max-sm:flex-col
     '>
         <div className=' flex flex-1  items-start p-10 text-white  max-sm:border-b-2 max-sm:border-r-0

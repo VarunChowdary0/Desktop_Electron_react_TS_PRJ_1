@@ -33,3 +33,21 @@ export const save_intership_info_to_local = (InternshipDetails:Array<object>)=>{
 export const save_projects_to_local = (PRJS:Array<object>)=>{
     localStorage.setItem("ProjectDetails",JSON.stringify(PRJS))
 }
+
+export const save_coding_links_to_local = (OBJ:object) =>{
+    localStorage.setItem("SavedCODE_Links",JSON.stringify(OBJ))
+}
+
+export const isLink = (str:string) => {
+    // console.log(str)
+    if(
+    (str.includes("https://")||str.includes("http://"))
+    && (str.includes(".com")) &&
+    (str.length >= 13) && 
+    !(str.includes(" "))){
+        return true
+    }
+    else{
+        return false
+    }
+}

@@ -12,6 +12,7 @@ import Editable_About_me from '../widgets/Editable_About_me';
 import Editable_Eduacation from '../widgets/Editable_Education';
 import Editable_InternShips from '../widgets/Editable_Internships';
 import Editable_MiniProject_Wid from '../widgets/Editable_MiniProject_Wid';
+import { Editabel_Social_Media } from '../widgets/Editable_Social_Media';
 
 
 const Manage:React.FC = () => {
@@ -113,7 +114,7 @@ const Manage:React.FC = () => {
         }
     }
 
-    const {show,setShow} = useContext<any>(GlobalContext);
+    const {show} = useContext<any>(GlobalContext);
   return (
     <div className=' w-full h-fit
      flex items-center pt-[100px] flex-col gap-14 mb-16
@@ -196,6 +197,9 @@ const Manage:React.FC = () => {
         <div className=' __widget__ '>
             <Editable_MiniProject_Wid/>
         </div>
+        <div className=' __widget__ '>
+            <Editabel_Social_Media/>
+        </div>
         {showNamePopup && <ChangeName/>}
         {showAddSkillPopUp&&<Add_Skill/>}
         {showChangeProfilePopUp&&<ChangeProfile_popUp/>}
@@ -246,12 +250,12 @@ const Manage:React.FC = () => {
             </div>
         </div>
        <div>
-       <div className=' fixed bottom-10 left-0 right-0 flex justify-center'>
-        <div className={` min-w-[150px] px-3 h-[80px] bg-black/80 
+       <div className=' fixed bottom-10 left-0 right-0 flex justify-center z-30'>
+        <div className={` w-fit py-5 px-4 h-fit bg-black/80
             border-[1px] transition-all
-            border-[#8b8a8a] rounded-md text-white flex 
-            items-center justify-center gap-2 text-xl delay-150 
-            ${show?"":"translate-y-[150px]"}`}>
+            border-[#8b8a8a]  text-white flex 
+            items-center justify-center gap-2 text-xl duration-200
+            ${show?"rounded-md":" w-10 translate-y-[150px] rounded-full"}`}>
             <div>{toWho}</div>
             <div>{whatHapped}</div>
         </div>

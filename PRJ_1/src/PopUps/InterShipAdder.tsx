@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import CheckIcon from '../icons/CheckIcon';
 import { GlobalContext } from '../Contexts/GlobalContext';
-import { save_intership_info_to_local } from '../Functions/Manage_Functions';
+import { isLink, save_intership_info_to_local } from '../Functions/Manage_Functions';
 
 const InterShipAdder:React.FC = () => {
   const [InternshipName,setIntershipName] = useState<string>("");
@@ -96,10 +96,32 @@ const show_flash = () =>{
             onChange={(e)=>{setAt(e.target.value)}} 
             className='w-[80%] px-4 outline-none' type="text" value={at}/>
            
-            <input  placeholder='Certificate Link'
+           <div className=' relative'>
+           <input  placeholder='Certificate Link'
             onChange={(e)=>{setLink(e.target.value)}} 
             className='w-[80%] px-4 outline-none' type="text" value={link}/>
          
+           
+                <div className=' h-5 w-5 flex items-center justify-center
+                 text-center bg-black/80 rounded-full 
+                  absolute right-5 top-1
+                 '>
+                    {
+                        (isLink(link))?
+                        <div className='fill-green-600 flex 
+                        items-center justify-center scale-90'>
+                             <CheckIcon/>
+                         </div>
+                        :
+                        <abbr title="invalid link">
+                            <p className=' text-red-600 '>!</p>
+                        </abbr>
+                    }
+                 
+                </div>
+            </div>
+
+
             <input  placeholder='Description'
             onChange={(e)=>{setDescription(e.target.value)}} 
             className='w-[80%] px-4 outline-none' type="text" value={description}/>

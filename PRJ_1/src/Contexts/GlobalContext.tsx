@@ -6,7 +6,10 @@ import Code_Chef from "../icons/Code_Chef";
 import Hacker_Rank from "../icons/Hacker_Rank";
 import GeekforGeeks from "../icons/GeekforGeeks";
 import Spoj from "../icons/Spoj";
-
+interface Rout{
+    rout:string;
+    setRout : React.Dispatch<React.SetStateAction<string>>
+}
 interface Profile{
     name : string;
     setName : React.Dispatch<React.SetStateAction<string>>;
@@ -70,7 +73,13 @@ interface ProjectDetails{
     setShowAddProjectPOPup:React.Dispatch<React.SetStateAction<boolean>>;
 }
 interface CodingPlatform{
-    Links : any;
+    icons_Store: Array<React.ReactElement<any, any>>;
+
+    Links : object;
+    SET_LINKS:React.Dispatch<React.SetStateAction<object>>;
+
+    showEdiatPlatForm : boolean,
+    setShowEditPlatform:React.Dispatch<React.SetStateAction<boolean>>;
 }
 interface ContactInfo{
     email:string;
@@ -88,7 +97,7 @@ interface ProfileUI_colors{
 }
 
 
-interface GlobalContextType extends Profile,About,EducationDetails,mini_PopUp,
+interface GlobalContextType extends Profile,About,EducationDetails,mini_PopUp,Rout,
 InternshipDetails,ProjectDetails,CodingPlatform,ContactInfo,ProfileUI_colors{}
 
 const GlobalContext = createContext<GlobalContextType | undefined>(undefined);
@@ -98,7 +107,8 @@ interface GlobalContextProviderProps {
 }
 
 const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}) =>{
-
+    const [rout,setRout] = useState('/')
+    //-----------------------------------------------
     const [whatHapped,setWhatHappended] = useState("");
     const [toWho,setToWho] = useState("")
     const [show,setShow] = useState(false)
@@ -229,36 +239,43 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
     const [showAddProjectPopUp,setShowAddProjectPOPup] = useState(false)
      
     //------------| Coding Platform | ---------------
-        const Links = {
+        const [showEdiatPlatForm,setShowEditPlatform] = useState(false);
+        const icons_Store = [<Linked_in/>,<Git_hub/>,<Leet_Code/>,<Code_Chef/>,<Hacker_Rank/>,<GeekforGeeks/>,<Spoj/>]
+        const defaultLinks = 
+        {
             Linked_in : {
                       link:"https://www.linkedin.com/in/sai-varun-chowdary-poludasu-908051259/",
-                      icon:<Linked_in/>
+                      icon: 0
                         },
             Git_hub : {
                       link:"https://github.com/VarunChowdary0",
-                      icon:<Git_hub/>
+                      icon: 1
                     },
             Leet_Code : {
                       link : "https://leetcode.com/Varun_chowdary99/",
-                      icon:<Leet_Code/>
+                      icon: 2
             },
             Code_Chef : {
                       link : "https://www.codechef.com/users/varun9392",
-                      icon : <Code_Chef/>,
+                      icon : 3,
             },
             Hacker_Rank : {
                       link : "",
-                      icon : <Hacker_Rank/>
+                      icon : 4
             },
             GeekforGeeks : {
                       link : "",
-                      icon : <GeekforGeeks/>
+                      icon : 5
             },
             Spoj : {
                       link : "",
-                      icon : <Spoj/>
+                      icon : 6
             }
         }
+        const SavedLinks = localStorage.getItem("SavedCODE_Links");
+        const [Links,SET_LINKS] = 
+        useState(SavedLinks ? JSON.parse(SavedLinks) : defaultLinks);
+       
     //------------| Contact Info | ---------------
         const email = "saivarunchowdarypoludasu4248@gmail.com"
         const phoneNumber = "9392704248"
@@ -278,6 +295,7 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
     return (
         <GlobalContext.Provider
             value={{
+                rout,setRout,
                 name,
                 showNamePopup,
                 setNamePopupView,
@@ -295,7 +313,9 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
                 showIntershipAdder,setInterAdderShow,
                 ProjectDetails,setProjects,
                 showAddProjectPopUp,setShowAddProjectPOPup,
-                Links,
+                icons_Store,
+                Links,SET_LINKS,
+                showEdiatPlatForm,setShowEditPlatform,
                 email,
                 phoneNumber,
                 SocialMediaLinks,
