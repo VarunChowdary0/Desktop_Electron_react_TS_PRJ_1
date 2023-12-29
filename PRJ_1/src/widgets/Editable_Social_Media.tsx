@@ -23,50 +23,48 @@ export const Editabel_Social_Media:React.FC = () => {
       <div className='flex justify-center flex-1  bg-[#fcfcfc] gap-5 flex-col py-10 '>
         <h1 className=' text-center pr-[20px] font-extrabold 
         text-[#1cceff]  text-2xl'>Technical Platforms</h1>
-        {Object.keys(Links).map((socialMedia) => {
-                const linkData = Links[socialMedia];
-            return (
-              <>
-              <div key={socialMedia} className='scale-125 max-sm:pr-[80px] flex relative
-              items-center justify-center'>
-                <div className=' bg-black/0 py-1 max-h-7 rounded-lg  w-[50%] flex 
-                flex-row items-center gap-5 pl-5' >
-                    <a className=' flex items-center gap-5 max-sm:gap-2'
-                    href={linkData.link} target='_blank'>
-                        <span className=' w-0 mr-10'>
+              {Object.keys(Links).map((socialMedia) => {
+                  const linkData = Links[socialMedia];
+
+                  return (
+                    <div key={socialMedia} className='scale-125 max-sm:pr-[80px] flex relative items-center justify-center'>
+                      <div className='bg-black/0 py-1 max-h-7 rounded-lg w-[50%] flex flex-row items-center gap-5 pl-5'>
+                        <a className='flex items-center gap-5 max-sm:gap-2' href={linkData.link} target='_blank'>
+                          <span className='w-0 mr-10'>
                             {icons_Store[linkData.icon] && React.cloneElement(icons_Store[linkData.icon])}
-                        </span>
-                        <p className=' text-sm text-orange-500 font-mono'>{socialMedia.replace("_","")}</p>
-                    </a>
-                  <div>
-                    
-                        {(linkData.link !=="")?
-                        <abbr title="Add Link?">
-                            <div onClick={()=>{Add_NEW_LINK(socialMedia)}}
-                            className=' absolute h-5 right-[70px] bottom-2 flex max-sm:right-10
-                            items-center justify-center rounded-full hover:bg-black/30 
-                            w-5  transition-all
-                        text-white'>
-                            <div className=' scale-75 max-sm:scale-50'><PenIcon color="#828282" size={0.5}/></div>
-                            </div>
-                        </abbr>
-                        :
-                        <abbr title="Add Link?">
-                                <div onClick={()=>{Add_NEW_LINK(socialMedia)}}
-                                    className=' absolute h-5 right-[70px] bottom-2 flex
-                                    items-center justify-center rounded-sm max-sm:right-10
-                                    w-5 bg-[#393939]/60 hover:bg-[#393939] transition-all
-                                text-white pb-1'>+
+                          </span>
+                          <p className='text-sm text-orange-500 font-mono'>{socialMedia.replace('_', '')}</p>
+                        </a>
+                        <div>
+                          <abbr title='Add Link?'>
+                            <div
+                              onClick={() => {
+                                Add_NEW_LINK(socialMedia);
+                              }}
+                              className={`absolute h-5 right-[70px] bottom-2 flex max-sm:right-10
+                                      items-center justify-center rounded-${linkData.link !== '' ? 'full' : 'sm'} 
+                                      w-5 bg-${linkData.link !== '' ? 'black/30' : '#393939'}/60 
+                                      hover:bg-${linkData.link !== '' ? 'black/30' : '#393939'} transition-all
+                                      text-white pb-1`}
+                            >
+                              {linkData.link !== "" ? (
+                                <div className='scale-75 max-sm:scale-50'>
+                                  <PenIcon color='#828282' size={0.5} />
                                 </div>
-                        </abbr>
-                        }
-                   
-                  </div>
-                </div>
-              </div>
-              </>
-            );
-          })}
+                              ) : (
+                                  <div className= " h-5 w-5 bg-[#393939]/60 hover:bg-[#393939] flex items-center justify-center rounded-md pb-1"
+                                  >
+                                    +
+                                  </div>
+                              )}
+                                </div>
+                              </abbr>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+
       </div>
       <div className={` bg-gradient-to-r from-green-500 to-yellow-500`}></div>
       {showEdiatPlatForm&&<Edit_SocialMedia NAME={Currnent_Edit}/>}

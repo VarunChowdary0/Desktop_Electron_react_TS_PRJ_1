@@ -38,6 +38,10 @@ export const save_coding_links_to_local = (OBJ:object) =>{
     localStorage.setItem("SavedCODE_Links",JSON.stringify(OBJ))
 }
 
+export const save_contact_info_to_local = (CONT:object) => {
+    localStorage.setItem("SM_Links",JSON.stringify(CONT));
+}
+
 export const isLink = (str:string) => {
     // console.log(str)
     if(

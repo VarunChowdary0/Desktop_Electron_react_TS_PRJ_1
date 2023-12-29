@@ -45,7 +45,13 @@ const ChangeProfile_popUp:React.FC = () => {
                 </abbr>  
             </div>
             <div className=' px-4 mt-7'>
-                Save your image to google Photos and open Image in "new tab" and copy URL 
+                Open <a className=' text-blue-400 hover:underline' 
+                  target='_blank'
+                 href="https://postimages.org/"> 
+                 postimages
+                 </a> and
+                upload your Photo, Copy 
+                <b> Direct URL </b> 
             </div>
         </div>
     </>

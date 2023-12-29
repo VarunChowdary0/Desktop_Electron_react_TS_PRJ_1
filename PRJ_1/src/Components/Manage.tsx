@@ -13,6 +13,8 @@ import Editable_Eduacation from '../widgets/Editable_Education';
 import Editable_InternShips from '../widgets/Editable_Internships';
 import Editable_MiniProject_Wid from '../widgets/Editable_MiniProject_Wid';
 import { Editabel_Social_Media } from '../widgets/Editable_Social_Media';
+import ContactInfo from './ContactInfo';
+import Edit_ContactINFO_popUp from '../PopUps/Edit_ContactINFO_popUp';
 
 
 const Manage:React.FC = () => {
@@ -21,8 +23,8 @@ const Manage:React.FC = () => {
         showAddSkillPopUp,setAddSkillPopupView,
         showChangeProfilePopUp,setChangeProfileShow,
         showChangeOccupation,setChangeOccupationShow,
-        whatHapped,
-        toWho,handlePopUp
+        whatHapped,toWho,handlePopUp,
+        showContactPopup,setshowContactPopup
             } = useContext<any>(GlobalContext)
     const {
         Skills,updateSkills,
@@ -117,7 +119,7 @@ const Manage:React.FC = () => {
     const {show} = useContext<any>(GlobalContext);
   return (
     <div className=' w-full h-fit
-     flex items-center pt-[100px] flex-col gap-14 mb-16
+     flex items-center pt-[100px] flex-col gap-14 
     '>
         <div className=' h-fit max-w-[500px] w-fit shadow-xl overflow-hidden
         bg-white 
@@ -127,7 +129,7 @@ const Manage:React.FC = () => {
                 <img className=' select-none' src={profileLink}/>
                 <div onClick={_ChangeProfile_}
                 className=' absolute top-0 bg-black/50 flex items-center opacity-0
-                 justify-center text-white font-thin text-2xl 
+                 justify-center text-white font-thin text-2xl max-sm:opacity-50
                  h-[150px] w-[150px] hover:opacity-100 transition-all'>
                     Change
                 </div>
@@ -200,10 +202,23 @@ const Manage:React.FC = () => {
         <div className=' __widget__ '>
             <Editabel_Social_Media/>
         </div>
+        <div className=' __widget__ '>
+            <div className=' relative'>
+                <ContactInfo/>
+                <div className=' absolute top-3 right-4'>
+                    <div onClick={()=>{setshowContactPopup(!showContactPopup)}}
+                     className=' p-3 bg-black/10 hover:bg-black/30 transition-all
+                     rounded-full scale-75'>
+                        <PenIcon color='#393939' size={1}/>
+                    </div>
+                </div>
+            </div>
+        </div>
         {showNamePopup && <ChangeName/>}
         {showAddSkillPopUp&&<Add_Skill/>}
         {showChangeProfilePopUp&&<ChangeProfile_popUp/>}
         {showChangeOccupation&&<ChangeOccupation/>}
+        {showContactPopup&&<Edit_ContactINFO_popUp/>}
         <div className={` fixed top-0 bottom-0 right-0 flex transition-transform
              duration-300
         ${editMODE ? ' translate-x-0': 'translate-x-[10vw]' } `}>

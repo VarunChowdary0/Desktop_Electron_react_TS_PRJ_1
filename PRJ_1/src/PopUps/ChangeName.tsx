@@ -23,7 +23,7 @@ const ChangeName:React.FC = () => {
         h-screen w-screen bg-black/30 flex items-center justify-center'>
         </div>
         <div className=' fixed h-fit w-fit top-[40%]
-         bg-white px-3 py-10 rounded-md' >
+         bg-white px-3 py-10 rounded-md max-sm:w-[90%]' >
             <div className=' px-4 pb-6 text-sm text-[#6c6c6c]'>Edit name</div>
             <div className=' flex relative'>
                 <input onKeyDown={(e)=>{
@@ -42,7 +42,7 @@ const ChangeName:React.FC = () => {
                     </abbr>  
                 }
             </div>
-         </div>
+        </div>
     </>
   )
 }

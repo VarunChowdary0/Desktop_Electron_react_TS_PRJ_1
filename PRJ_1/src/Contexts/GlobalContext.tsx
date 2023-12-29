@@ -82,9 +82,17 @@ interface CodingPlatform{
     setShowEditPlatform:React.Dispatch<React.SetStateAction<boolean>>;
 }
 interface ContactInfo{
+    showContactPopup:boolean
+    setshowContactPopup:React.Dispatch<React.SetStateAction<boolean>>;
+
     email:string;
+    setEmail:React.Dispatch<React.SetStateAction<string>>
+
     phoneNumber:string;
+    setPhoneNum:React.Dispatch<React.SetStateAction<string>>
+    
     SocialMediaLinks:any;
+    setSocialMediaLinks : React.Dispatch<React.SetStateAction<object>>;
 }
 interface ProfileUI_colors{
     AllColors : any;
@@ -277,14 +285,20 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
         useState(SavedLinks ? JSON.parse(SavedLinks) : defaultLinks);
        
     //------------| Contact Info | ---------------
-        const email = "saivarunchowdarypoludasu4248@gmail.com"
-        const phoneNumber = "9392704248"
-        const SocialMediaLinks = {
+
+        const [showContactPopup,setshowContactPopup] = useState(false)
+        const [email,setEmail] = useState(localStorage.getItem("MyEmail")||"saivarunchowdarypoludasu4248@gmail.com")
+        const [phoneNumber,setPhoneNum] = useState(localStorage.getItem("MyPhone")||"9392704248")
+        const def_SM_links = {
             instagram:"https://www.instagram.com/saivarunchowdarypoludasu",
             facebook:"https://www.facebook.com/saivarunchowdary.poludasu",
             twitter:"https://twitter.com/SaiPoludasu",
             linkedin:"https://www.linkedin.com/in/sai-varun-chowdary-poludasu-908051259/"
         }
+        const saved_SM_Links = localStorage.getItem("SM_Links");
+        const [SocialMediaLinks , setSocialMediaLinks] = useState(
+            saved_SM_Links ? JSON.parse(saved_SM_Links) : def_SM_links
+        ) 
     //------------| ProfileUI_colors | ---------------
         const AllColors = ['green','red','blue','yellow','pink','violet','orange','teal','purple']
         const [coverBG_color,setCoverBG] = useState<string>(localStorage.getItem("coverBG_color")||AllColors[0])
@@ -316,9 +330,10 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
                 icons_Store,
                 Links,SET_LINKS,
                 showEdiatPlatForm,setShowEditPlatform,
-                email,
-                phoneNumber,
-                SocialMediaLinks,
+                email,setEmail,
+                phoneNumber,setPhoneNum,
+                SocialMediaLinks,setSocialMediaLinks,
+                showContactPopup,setshowContactPopup,
                 AllColors,
                 coverBG_color,setCoverBG,
                 SkillBG_col,setSkillBG,

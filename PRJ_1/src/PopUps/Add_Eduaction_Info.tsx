@@ -127,7 +127,8 @@ const Add_Eduaction_Info:React.FC = () => {
             onChange={(e)=>{setAddress(e.target.value)}} 
             className='w-[80%] px-4 outline-none' type="text" value={Adderss}/>
            
-            <div className=' flex w-[80%] flex-row justify-between px-10 gap-4'>
+            <div className=' flex w-[80%] flex-row 
+            justify-between px-10 gap-4 max-sm:flex-col'>
                 <input  
                 placeholder='Start Date'
                 id='startDateInput'

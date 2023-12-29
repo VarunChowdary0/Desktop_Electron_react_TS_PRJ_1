@@ -18,7 +18,7 @@ const Editable_InternShips:React.FC<CurrentProps>= (props) => {
     const Remove_This_Detail = (idx:number) =>{
         setIntenshipInfo([...InternshipINFO.slice(0,idx),...InternshipINFO.slice(idx+1)])
         save_intership_info_to_local
-        ([[...InternshipINFO.slice(0,idx),...InternshipINFO.slice(idx+1)]])
+        ([...InternshipINFO.slice(0,idx),...InternshipINFO.slice(idx+1)])
         handlePopUp("Removed","Internship Detail")
     }
   return (
@@ -30,8 +30,7 @@ const Editable_InternShips:React.FC<CurrentProps>= (props) => {
             {
                 InternshipINFO.map((ele:any,idx:number)=>
                     <>
-                        {/* {console.log(ele)} */}
-                        <div key={"internship_"+idx} className=' __Skill__ relative t'>
+                        <div key={"internship_" + idx} className='__Skill__ relative'>
                             <div onClick={()=>{Remove_This_Detail(idx)}} 
                                     className='__Remove__ scale-125 absolute rounded-full
                                     h-4 w-4 bg-black/40 top-[-17px] right-1  hover:bg-red-500'>
