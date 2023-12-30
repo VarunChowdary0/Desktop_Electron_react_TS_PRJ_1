@@ -66,7 +66,7 @@ const Editable_InternShips:React.FC<CurrentProps>= (props) => {
                 <div onClick={()=>{setInterAdderShow(true)}}
                  className=' h-[50px] rounded-md w-[100px] bg-[#3c3c3c]/60
                  hover:bg-[#3c3c3c] transition-all flex items-center justify-center '>
-                    <p className=' text-5xl font-thin pb-3 text-white '>+</p>
+                    <p className=' text-5xl font-thin pb-3 max-sm:pb-0 text-white '>+</p>
                 </div>
               </div>
         </div>

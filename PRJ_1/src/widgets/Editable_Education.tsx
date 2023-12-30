@@ -38,7 +38,8 @@ const Editable_Eduacation:React.FC<CurrentProps> = () => {
                                     </div>
                                  </div>
                     <a href={ele.institue_site} target='_blank'
-                    className=' font-semibold text-[#3e3e3e]'>{ele.institue_name}</a>  
+                    className=' font-semibold text-[#3e3e3e] hover:underline'>
+                        {ele.institue_name}</a>  
                     <div className=' flex '>
                         <div className=' text-[#515050] mr-3' >{ele.branch}</div>
                         <div className=' flex flex-row gap-2'>
@@ -58,7 +59,7 @@ const Editable_Eduacation:React.FC<CurrentProps> = () => {
                 <div onClick={()=>{setShowEducationPopUp(true)}}
                  className=' h-[50px] rounded-md w-[100px] bg-[#3c3c3c]/60
                  hover:bg-[#3c3c3c] transition-all flex items-center justify-center '>
-                    <p className=' text-5xl font-thin pb-3 text-white '>+</p>
+                    <p className=' text-5xl font-thin pb-3 max-sm:pb-0 text-white '>+</p>
                 </div>
               </div>
         </div>

@@ -25,7 +25,8 @@ const MiniProject_Wid:React.FC = () => {
                 <div key={"project_info_"+idx}>
                      <div id='3432ji'></div>
                     <a href={ele.link} target='_blank' 
-                    className=' text-2xl font-semibold mb-2'>{ele.Title}</a>
+                    className=' text-2xl font-semibold mb-2 hover:underline'>
+                        {ele.Title}</a>
                     <div>
                         {
                             (ele.git_hub_frontEnd.trim() !== "") ?

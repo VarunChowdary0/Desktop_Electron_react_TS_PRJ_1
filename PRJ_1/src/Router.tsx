@@ -4,6 +4,7 @@ import Profile from './Components/Profile';
 import HomePage from './Components/HomePage';
 import TestPage from './Components/TestPage';
 import Manage from './Components/Manage';
+import Register from './Components/Part_2_Components/Register';
 
 const Router = () => {
   const { rout } = useContext<any>(GlobalContext);
@@ -35,6 +36,11 @@ const Router = () => {
         setContent(
             <Manage/>
         )
+    }
+    else if(rout === '/register'){
+      setContent(
+        <Register/>
+      )
     }
     else {
       setContent(

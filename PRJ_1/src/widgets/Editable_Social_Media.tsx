@@ -52,7 +52,7 @@ export const Editabel_Social_Media:React.FC = () => {
                                   <PenIcon color='#828282' size={0.5} />
                                 </div>
                               ) : (
-                                  <div className= " h-5 w-5 bg-[#393939]/60 hover:bg-[#393939] flex items-center justify-center rounded-md pb-1"
+                                  <div className= " h-5 w-5 bg-[#393939]/60 hover:bg-[#393939] flex items-center justify-center rounded-md pb-1 max-sm:pb-0"
                                   >
                                     +
                                   </div>

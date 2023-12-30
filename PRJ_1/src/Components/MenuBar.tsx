@@ -31,6 +31,9 @@ export const MenuBar: React.FC = () => {
                 <div className=' hover:scale-125 transition-all'>
                     <a onClick={()=>{HandleRout("/manage")}}>Manage</a>
                 </div>
+                <div className=' hover:scale-125 transition-all'>
+                    <a onClick={()=>{HandleRout("/register")}}>Register</a>
+                </div>
             </div>
         </div>
             {

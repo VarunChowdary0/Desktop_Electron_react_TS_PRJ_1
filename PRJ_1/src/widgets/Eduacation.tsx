@@ -15,7 +15,8 @@ const Eduacation:React.FC<CurrentProps> = () => {
                 EducationDetails.map((ele:any,idx:number)=>
                 <div key={"education_detail"+idx}>
                     <a href={ele.institue_site} target='_blank'
-                    className=' font-semibold text-[#3e3e3e]'>{ele.institue_name}</a>  
+                    className=' hover:underline font-semibold text-[#3e3e3e]'>
+                        {ele.institue_name}</a>  
                     <div className=' flex '>
                         <div className=' text-[#515050] mr-3' >{ele.branch}</div>
                         <div className=' flex flex-row gap-2'>

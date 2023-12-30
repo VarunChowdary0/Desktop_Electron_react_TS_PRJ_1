@@ -33,7 +33,8 @@ const Editable_MiniProject_Wid:React.FC = () => {
                     </div>
                      <div id='3432ji'></div>
                     <a href={ele.link} target='_blank' 
-                    className=' text-2xl font-semibold mb-2'>{ele.Title}</a>
+                    className='hover:underline text-2xl font-semibold mb-2'>
+                        {ele.Title}</a>
                     <div>
                         {
                             (ele.git_hub_frontEnd.trim() !== "") ?
@@ -73,7 +74,7 @@ const Editable_MiniProject_Wid:React.FC = () => {
                 <div onClick={()=>{setShowAddProjectPOPup(true)}}
                  className=' h-[50px] rounded-md w-[100px] bg-[#3c3c3c]/60
                  hover:bg-[#3c3c3c] transition-all flex items-center justify-center '>
-                    <p className=' text-5xl font-thin pb-3 text-white '>+</p>
+                    <p className=' text-5xl font-thin pb-3 text-white max-sm:pb-0 '>+</p>
                 </div>
             </div>
             {showAddProjectPopUp && <Add_new_Project_popUP/>}
