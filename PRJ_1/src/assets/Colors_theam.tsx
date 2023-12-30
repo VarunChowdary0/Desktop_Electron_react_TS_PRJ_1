@@ -1,6 +1,16 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import { GlobalContext } from '../Contexts/GlobalContext'
 
 const Colors_theam:React.FC = () => {
+  const {isDarkMode} = useContext<any>(GlobalContext)
+  useEffect(()=>{
+      if(isDarkMode){
+          document.body.classList.add('dark');
+      }
+      else{
+          document.body.classList.remove('dark');
+      }
+  },[isDarkMode])
   return (
     <div className=' hidden'>
             <div className=' bg-green-400'></div>

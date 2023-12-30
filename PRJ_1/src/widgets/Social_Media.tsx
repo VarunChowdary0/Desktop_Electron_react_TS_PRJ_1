@@ -8,7 +8,9 @@ export const Social_Media:React.FC = () => {
     bg-gradient-to-r from-indigo-500 to-pink-500
       max-sm:w-[300px] rounded-md p-1
     h-fit shadow-2xl flex items-center justify-center'>
-      <div className='flex justify-center flex-1  bg-[#fcfcfc] gap-5 flex-col '>
+      <div className='flex justify-center flex-1 
+       dark:bg-dark_dark_200 transition-all
+      bg-[#fcfcfc] gap-5 flex-col '>
       <h1 className=' text-center pr-[20px] font-extrabold  py-7
         text-[#1cceff]  text-2xl'>Technical Platforms</h1>
       <div className=' flex flex-col mb-5'>

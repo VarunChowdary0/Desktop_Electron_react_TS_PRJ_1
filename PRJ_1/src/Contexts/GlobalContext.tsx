@@ -102,6 +102,8 @@ interface ProfileUI_colors{
     setSkillBG : React.Dispatch<React.SetStateAction<string>>;
     AboutBG:string;
     setAboutBG : React.Dispatch<React.SetStateAction<string>>;
+    isDarkMode : boolean;
+    setDarkMode : React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 
@@ -304,7 +306,11 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
         const [coverBG_color,setCoverBG] = useState<string>(localStorage.getItem("coverBG_color")||AllColors[0])
         const [SkillBG_col,setSkillBG] = useState<string>(localStorage.getItem("SkillBG_col")||AllColors[5])
         const [AboutBG,setAboutBG] = useState<string>(AllColors[2])
-
+        
+        const localDarkStatus = localStorage.getItem("isDark");
+        const [isDarkMode,setDarkMode] = useState<boolean>(
+            localDarkStatus ? JSON.parse(localDarkStatus) : false
+        )
 
     return (
         <GlobalContext.Provider
@@ -341,7 +347,8 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
                 whatHapped,setWhatHappended,
                 toWho,setToWho,
                 show,setShow,
-                handlePopUp
+                handlePopUp,
+                isDarkMode,setDarkMode
             }}>
                 {children}
             </GlobalContext.Provider>

@@ -23,6 +23,7 @@ const Editable_Eduacation:React.FC<CurrentProps> = () => {
     
   return (
     <div className={` bg-${'white'}-400 w-[500px] max-sm:w-[300px]
+     dark:bg-dark_dark_200 dark:text-white
      h-fit border-2  text-[#3b3b3b] rounded-lg p-4 max-sm:p-2`}>
         <div className=' text-xl mt-3 mb-3 font-bold'> Education Details</div>
         <div className=' flex flex-col gap-8'>
@@ -38,10 +39,12 @@ const Editable_Eduacation:React.FC<CurrentProps> = () => {
                                     </div>
                                  </div>
                     <a href={ele.institue_site} target='_blank'
-                    className=' font-semibold text-[#3e3e3e] hover:underline'>
+                    className=' font-semibold
+                     dark:text-dark_Match_600
+                    text-[#3e3e3e] hover:underline'>
                         {ele.institue_name}</a>  
-                    <div className=' flex '>
-                        <div className=' text-[#515050] mr-3' >{ele.branch}</div>
+                    <div className=' flex mt-2'>
+                        <div className=' text-[#515050] dark:text-white mr-3' >{ele.branch}</div>
                         <div className=' flex flex-row gap-2'>
                             <span>CGPA -</span>
                             <span>{ele.Grade}</span>
@@ -58,8 +61,10 @@ const Editable_Eduacation:React.FC<CurrentProps> = () => {
               '>
                 <div onClick={()=>{setShowEducationPopUp(true)}}
                  className=' h-[50px] rounded-md w-[100px] bg-[#3c3c3c]/60
-                 hover:bg-[#3c3c3c] transition-all flex items-center justify-center '>
-                    <p className=' text-5xl font-thin pb-3 max-sm:pb-0 text-white '>+</p>
+                 dark:bg-dark_dark_400
+                 hover:bg-[#393939] transition-all flex items-center justify-center '>
+                    <p className=' text-5xl font-thin 
+                    pb-3 max-sm:pb-0 text-white '>+</p>
                 </div>
               </div>
         </div>

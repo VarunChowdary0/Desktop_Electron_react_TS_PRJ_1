@@ -6,7 +6,8 @@ interface ThisProps {
 }
 const PenIcon:React.FC<ThisProps> = (props) => {
   return (
-        <svg  style={{fill:props.color , scale : props.size}}
+        <svg className=' dark:fill-white fill-[#4d4d4dad]'
+         style={ { scale : props.size}}
         xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
             <path d="M362.7 19.3L314.3 67.7 444.3 197.7l48.4-48.4c25-25 
             25-65.5 0-90.5L453.3 19.3c-25-25-65.5-25-90.5 

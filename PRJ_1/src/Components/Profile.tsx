@@ -25,22 +25,25 @@ const Profile:React.FC = () => {
     <div className=' w-full h-full flex mt-[100px] items-center gap-16
      max-sm:mt-[100px] flex-col mb-11 max-sm:mb-0'>
         <div className=' h-fit max-w-[500px] w-fit shadow-xl overflow-hidden
-        bg-white  
+        bg-white  dark:bg-[#464646]
+         dark:text-white
         max-sm:w-[250px] rounded-md  relative'>
-            <div className=' absolute h-[150px] w-[150px] top-[20%] max-sm:top-[100px]
+            <div className=' absolute h-[150px] w-[150px] top-[20%] max-sm:top-[100px]     
              bg-[#4c4b4b] left-1 rounded-full  overflow-hidden'>
                 <img className=' select-none' src={profileLink}/>
              </div>
             <div className={` h-[180px] 
+            
             max-sm:h-[230px] mr-[170px]
             text-3xl font-bold text-white
              flex items-center justify-end pr-5 max-sm:items-start max-sm:pt-[50px]
-             w-full bg-gradient-to-r from_custom_${coverBG_color} to_custom_${SkillBG_col} max-md:text-2xl `}>
+             w-full bg-gradient-to-r from_custom_${coverBG_color}
+            to_custom_${SkillBG_col} max-md:text-2xl `}>
             {occupation}
             </div>
             <div className=' h-[40%] w-full '>
                 <div className=' ml-[150px] pl-1 text-lg 
-                max-sm:ml-0 max-sm:mt-14
+                max-sm:ml-0 max-sm:mt-14 
                 font-light mt-2  '>
                     {name}
                 </div>
@@ -49,7 +52,7 @@ const Profile:React.FC = () => {
                 '>
                     {
                         Skills.map((ele:any,idx:number)=>
-                        <a key={"Skill-"+idx} className={` bg-${SkillBG_col}-400 w-fit px-3 h-fit
+                        <a key={"Skill-"+idx} className={` bg-${SkillBG_col}-400  w-fit px-3 h-fit
                             py-1 rounded-md text-white shadow-md 
                             hover:shadow-3xl hover:cursor-pointer transition-shadow
                             `}

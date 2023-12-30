@@ -17,8 +17,10 @@ export const MenuBar: React.FC = () => {
     <div className={` flex translate-x-[-20vw] fixed top-0 bottom-0 left-0 
     ${!toggleMenuBar && "translate-x-[0vw] w-screen"} transition-all `}>
         <div className={` w-[20vw] shadow-xl rounded-md h-screen py-7 px-5 
-        bg-[#fff]/30 backdrop-blur-sm mt-10`}>
-            <div className=' flex flex-col items-center gap-10 text-2xl max-sm:text-[17px]'>
+         dark:bg-dark_Surface_400 dark:bg-dark_dark_300/30 pt-14
+          dark:text-dark_Match_600
+        bg-[#fff]/30 backdrop-blur-sm `}>
+            <div className=' flex flex-col items-center gap-14 mt-4 text-2xl max-sm:text-[17px]'>
                 <div className=' hover:scale-125 transition-all '>
                     <a onClick={()=>{HandleRout("/home")}}>Home</a>
                 </div>
@@ -40,7 +42,7 @@ export const MenuBar: React.FC = () => {
                 toggleMenuBar ? 
                 <div onClick={handleToggle} 
                 className=' bg-red-400 h-fit w-fit px-4 mt-4 ml-4
-                 max-sm:mt-2 max-sm:ml-2
+                 max-sm:mt-2 max-sm:ml-2 dark:bg-dark_Match_400
                 py-2 rounded-md font-semibold text-white '>
                     Menu
                 </div>

@@ -89,6 +89,7 @@ img {
 }
 
 /* button */
+/* Default styles */
 button {
   width: 9em;
   height: 3em;
@@ -99,11 +100,13 @@ button {
   position: relative;
   overflow: hidden;
   z-index: 1;
-  box-shadow: 6px 6px 12px #c5c5c5,
-              -6px -6px 12px #ffffff;
- }
- 
- button::before {
+}
+
+input{
+  background-color: #ffffff00;
+}
+
+button::before {
   content: '';
   width: 0;
   height: 3em;
@@ -115,11 +118,13 @@ button {
   transition: .5s ease;
   display: block;
   z-index: -1;
- }
- 
- button:hover::before {
+}
+
+button:hover::before {
   width: 9em;
- }
+}
+
+
 
  /* @keyframes wave {
   0%, 100% {

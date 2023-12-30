@@ -15,6 +15,7 @@ import Editable_MiniProject_Wid from '../widgets/Editable_MiniProject_Wid';
 import { Editabel_Social_Media } from '../widgets/Editable_Social_Media';
 import ContactInfo from './ContactInfo';
 import Edit_ContactINFO_popUp from '../PopUps/Edit_ContactINFO_popUp';
+import DarkMode from '../Functions/DarkMode';
 
 
 const Manage:React.FC = () => {
@@ -123,9 +124,10 @@ const Manage:React.FC = () => {
      flex items-center pt-[100px] flex-col gap-14 
     '>
         <div className=' h-fit max-w-[500px] w-fit shadow-xl overflow-hidden
-        bg-white 
+     dark:bg-[#464646] text-white  bg-white 
         max-sm:w-[280px] rounded-md  relative'>
             <div className=' absolute h-[150px] w-[150px] top-[20%]
+            
              bg-[#4c4b4b] left-1 rounded-full  max-sm:top-[100px] overflow-hidden'>
                 <img className=' select-none' src={profileLink}/>
                 <div onClick={_ChangeProfile_}
@@ -166,14 +168,18 @@ const Manage:React.FC = () => {
                             hover:shadow-3xl hover:cursor-pointer transition-shadow
                             `}
                             >
-                                <div onClick={()=>{Remove_This_Skill(idx)}} 
+                               <abbr title={`remove ${ele}`}>
+                               <div onClick={()=>{Remove_This_Skill(idx)}} 
                                 className='__Remove__ scale-110 absolute top-[-3px] right-[-3px] rounded-full
-                                 h-4 w-4 bg-black/20  hover:bg-red-500'>
+                                 h-4 w-4 bg-black/20 
+                                  dark:bg-dark_dark_600/60 dark:border-[1px]
+                                 hover:bg-red-500'>
                                     <div className=' scale-50 flex items-center 
                                     justify-center'>
                                         <CloseIcon color='white' size={1}/>
                                     </div>
                                  </div>
+                               </abbr>
                                 {ele}
                         </a>
                         )
@@ -181,6 +187,7 @@ const Manage:React.FC = () => {
                     <a onClick={_Add_Skill_} className={` w-fit px-3 h-8 bg-[#3c3c3c]/60 hover:bg-[#3c3c3c]
                             py-1 rounded-md text-white shadow-md flex items-center justify-center
                             hover:shadow-3xl hover:cursor-pointer transition-all hover:scale-110 
+                             dark:bg-dark_dark_500
                             `}
                             >
                                 <p className=' pb-1 max-sm:pb-0 scale-150'>+</p>
@@ -226,6 +233,7 @@ const Manage:React.FC = () => {
         ${editMODE ? ' translate-x-0': 'translate-x-[10vw]' } `}>
             <div  onClick={handleEditor} className=' max-sm:h-[70px]'>
                 <div className=' w-10 mt-3 mr-3 h-10 bg-black/20 
+                 dark:bg-dark_dark_300
                 rounded-full flex items-center justify-center'>
                     {
                         editMODE ? 
@@ -235,7 +243,7 @@ const Manage:React.FC = () => {
                     }
                 </div>
             </div>
-            <div className='w-[10vw] shadow-xl'>
+            <div className='w-[10vw] shadow-xl dark:bg-dark_dark_200/80 relative'>
                 <div className=' flex mt-[170px] flex-col items-center gap-4'>
                     <div onClick={left_to_CoverBG} 
                     className=' h-10 w-10 flex items-center justify-center
@@ -262,6 +270,9 @@ const Manage:React.FC = () => {
                     bg-black/20 rounded-full active:bg-black/10 transition-colors'> 
                            <ArrowIcon color='white' size={100} angle='180deg'/>
                     </div>
+                </div>
+                <div className=' absolute bottom-20 w-[40%] max-sm:w-[20px]'>
+                    <DarkMode/>
                 </div>
             </div>
         </div>

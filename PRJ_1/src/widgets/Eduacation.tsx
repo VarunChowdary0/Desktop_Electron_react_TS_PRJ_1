@@ -8,6 +8,9 @@ const Eduacation:React.FC<CurrentProps> = () => {
     const {EducationDetails} = useContext<any>(GlobalContext)
   return (
     <div className={` bg-${'white'}-400 w-[500px] max-sm:w-[300px]
+    dark:bg-dark_dark_200 dark:text-white 
+    dark:shadow-xl shadow-lg
+     transition-all
      h-fit border-2  text-[#3b3b3b] rounded-lg p-4 max-sm:p-2`}>
         <div className=' text-xl mt-3 mb-3 font-bold'> Education Details</div>
         <div className=' flex flex-col gap-8'>
@@ -15,10 +18,14 @@ const Eduacation:React.FC<CurrentProps> = () => {
                 EducationDetails.map((ele:any,idx:number)=>
                 <div key={"education_detail"+idx}>
                     <a href={ele.institue_site} target='_blank'
-                    className=' hover:underline font-semibold text-[#3e3e3e]'>
+                    className=' hover:underline 
+                     dark:text-dark_Match_600
+                    font-semibold text-[#3e3e3e]'>
                         {ele.institue_name}</a>  
                     <div className=' flex '>
-                        <div className=' text-[#515050] mr-3' >{ele.branch}</div>
+                        <div className=' text-[#515050]
+                         dark:text-white mt-2
+                        mr-3' >{ele.branch}</div>
                         <div className=' flex flex-row gap-2'>
                             <span>CGPA -</span>
                             <span>{ele.Grade}</span>

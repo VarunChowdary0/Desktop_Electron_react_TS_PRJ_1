@@ -17,15 +17,20 @@ const MiniProject_Wid:React.FC = () => {
     }
   return (
     <div className={` bg-${'white'}-400 w-[500px] max-sm:w-[300px] active:translate-y-1
+     dark:bg-dark_dark_200 dark:border-none shadow-lg dark:text-white
      border-2  text-[#3b3b3b] rounded-lg p-4 max-sm:p-2 transition-all`}>
-        <div className=' text-center text-2xl font-bold mb-4'>My Projects</div>
+        <div className=' text-center text-2xl
+         dark:text-dark_Match_300 transition-all
+        font-bold mb-4'>My Projects</div>
         <div className=' flex flex-col gap-5 mb-4'>
             {
                 ProjectDetails.slice(0,project_limit).map((ele:any,idx:number)=>
                 <div key={"project_info_"+idx}>
                      <div id='3432ji'></div>
                     <a href={ele.link} target='_blank' 
-                    className=' text-2xl font-semibold mb-2 hover:underline'>
+                    className=' text-2xl font-semibold 
+                     dark:text-dark_Match_500 transition-all
+                    mb-2 hover:underline'>
                         {ele.Title}</a>
                     <div>
                         {
@@ -67,6 +72,7 @@ const MiniProject_Wid:React.FC = () => {
             <div className=' mt-4'>+{ProjectDetails.length-project_limit}</div>
             <div className=' flex justify-center mt-8 mb-5'>
                 <button className=' scale-125 bg-white text-[#303030]
+                shadow-light dark:shadow-dark
                 hover:text-white active:scale-90 transition-all '
                 onClick={addtwoMoreProjects}
                 >More Projects</button>

@@ -17,23 +17,32 @@ const Editable_MiniProject_Wid:React.FC = () => {
     }
   return (
     <div className={` bg-${'white'}-400 w-[500px] max-sm:w-[300px] 
+     dark:bg-dark_dark_200 dark:text-white
      border-2  text-[#3b3b3b] rounded-lg p-4 max-sm:p-2 transition-all  z-0`}>
-        <div className=' text-center text-2xl font-bold mb-4'>My Projects</div>
+        <div className=' text-center 
+         dark:text-dark_Match_400
+        text-2xl font-bold mb-4'>My Projects</div>
         <div className=' flex flex-col gap-5 mb-4'>
             {
                 ProjectDetails.map((ele:any,idx:number)=>
                 <div className=' __Skill__ relative' key={"project_info_"+idx}>
-                    <div onClick={()=>{Remove_This_Detail(idx)}} 
+                   <abbr title={`remove ${ele.Title}`}>
+                   <div onClick={()=>{Remove_This_Detail(idx)}} 
                                 className='__Remove__ scale-125 absolute rounded-full
-                                 h-4 w-4 bg-black/40 top-[0px] right-1 hover:bg-red-500'>
+                                 h-4 w-4 bg-black/40
+                                  dark:bg-dark_dark_600 dark:border-[1px]
+                                 top-[0px] right-1 hover:bg-red-500'>
                                 <div className=' scale-50 flex items-center 
                                 justify-center'>
                                     <CloseIcon color='white' size={1}/>
                                 </div>
                     </div>
+                   </abbr>
                      <div id='3432ji'></div>
                     <a href={ele.link} target='_blank' 
-                    className='hover:underline text-2xl font-semibold mb-2'>
+                    className='hover:underline
+                     dark:text-dark_Match_600
+                    text-2xl font-semibold mb-2'>
                         {ele.Title}</a>
                     <div>
                         {
@@ -73,6 +82,7 @@ const Editable_MiniProject_Wid:React.FC = () => {
               '>
                 <div onClick={()=>{setShowAddProjectPOPup(true)}}
                  className=' h-[50px] rounded-md w-[100px] bg-[#3c3c3c]/60
+                  dark:bg-dark_dark_500
                  hover:bg-[#3c3c3c] transition-all flex items-center justify-center '>
                     <p className=' text-5xl font-thin pb-3 text-white max-sm:pb-0 '>+</p>
                 </div>

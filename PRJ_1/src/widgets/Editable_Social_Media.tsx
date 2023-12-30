@@ -20,7 +20,9 @@ export const Editabel_Social_Media:React.FC = () => {
     bg-gradient-to-r from-indigo-500 to-pink-500
       max-sm:w-[300px] rounded-md p-1 z-0
     h-fit shadow-2xl flex items-center justify-center'>
-      <div className='flex justify-center flex-1  bg-[#fcfcfc] gap-5 flex-col py-10 '>
+      <div className='flex justify-center flex-1
+       dark:bg-dark_dark_200
+      bg-[#fcfcfc] gap-5 flex-col py-10 '>
         <h1 className=' text-center pr-[20px] font-extrabold 
         text-[#1cceff]  text-2xl'>Technical Platforms</h1>
               {Object.keys(Links).map((socialMedia) => {
@@ -52,7 +54,7 @@ export const Editabel_Social_Media:React.FC = () => {
                                   <PenIcon color='#828282' size={0.5} />
                                 </div>
                               ) : (
-                                  <div className= " h-5 w-5 bg-[#393939]/60 hover:bg-[#393939] flex items-center justify-center rounded-md pb-1 max-sm:pb-0"
+                                  <div className= " h-5 w-5 bg-[#393939]/60 dark:bg-dark_dark_400 hover:bg-[#393939] flex items-center justify-center rounded-md pb-1 max-sm:pb-0"
                                   >
                                     +
                                   </div>
