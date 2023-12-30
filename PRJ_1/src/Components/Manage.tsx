@@ -206,9 +206,10 @@ const Manage:React.FC = () => {
         <div className=' __widget__ '>
             <div className=' relative'>
                 <ContactInfo/>
-                <div className=' absolute top-3 right-4'>
+                <div className=' absolute top-3 right-4 max-sm:right-10 max-sm:top-2'>
                     <div onClick={()=>{setshowContactPopup(!showContactPopup)}}
-                     className=' p-3 bg-black/10 hover:bg-black/30 transition-all
+                     className='
+                      p-3 bg-black/10 hover:bg-black/30 transition-all
                      rounded-full scale-75'>
                         <PenIcon color='#393939' size={1}/>
                     </div>

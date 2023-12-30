@@ -11,9 +11,11 @@ const ContactInfo:React.FC = () => {
 
   return (
     <div className=' w-full h-fit bg-[#7568fffd] max-sm:pl-10
+     max-sm:w-screen max-sm:text-sm  max-sm:pr-5
      flex items-center justify-center rounded-lg max-sm:flex-col
     '>
-        <div className=' flex flex-1  items-start p-10 text-white  max-sm:border-b-2 max-sm:border-r-0
+        <div className=' flex flex-1  items-start p-10 py-10 text-white  
+        max-sm:border-b-2 max-sm:border-r-0 max-sm:p-2 max-sm:py-10
          flex-col justify-center border-r-2 border-[#afadad] gap-3'>
             <div className='hover:underline'>{name}</div>
             <div className='hover:underline'>{email}</div>
