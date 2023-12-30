@@ -262,7 +262,6 @@ const Manage:React.FC = () => {
                     bg-black/20 rounded-full active:bg-black/10 transition-colors'> 
                            <ArrowIcon color='white' size={100} angle='180deg'/>
                     </div>
-                
                 </div>
             </div>
         </div>
