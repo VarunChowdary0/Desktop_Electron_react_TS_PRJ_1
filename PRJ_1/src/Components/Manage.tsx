@@ -183,7 +183,7 @@ const Manage:React.FC = () => {
                             hover:shadow-3xl hover:cursor-pointer transition-all hover:scale-110 
                             `}
                             >
-                                <p className=' pb-1 scale-150'>+</p>
+                                <p className=' pb-1 max-sm:pb-0 scale-150'>+</p>
                         </a>
                     </div>
             </div>
