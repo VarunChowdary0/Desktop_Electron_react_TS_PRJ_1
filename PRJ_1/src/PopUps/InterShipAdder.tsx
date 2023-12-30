@@ -82,10 +82,10 @@ const show_flash = () =>{
   return (
     <>
     <div onClick={closePopup} className='fixed top-0 bottom-0 left-0 right-0 backdrop-blur-sm
-    h-screen w-screen bg-black/30 flex items-center justify-center z-10'>
+     bg-black/30 flex items-center justify-center z-10'>
     </div>
     <div className=' fixed h-fit w-fit top-[20%] text-[#6c6c6c]  z-10
-    bg-white px-3 py-10 rounded-md max-w-[550px] max-sm:w-[300px]'>
+    bg-white px-3 py-10 rounded-md max-w-[550px] '>
         <div className=' px-4 pb-6 text-lg text-[#6c6c6c]'>Add Eduaction Info</div>
         <div className=' flex relative flex-col gap-7'>
             <input  placeholder='Internship Name'

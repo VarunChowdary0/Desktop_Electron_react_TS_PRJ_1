@@ -23,10 +23,10 @@ const ChangeProfile_popUp:React.FC = () => {
   return (
     <>
         <div onClick={closePopup} className='fixed top-0 bottom-0 left-0 right-0 backdrop-blur-sm
-        h-screen w-screen bg-black/30 flex items-center justify-center'>
+         bg-black/30 flex items-center justify-center'>
         </div>
         <div className=' fixed h-fit w-fit top-[40%]
-        bg-white px-3 py-10 rounded-md' >
+        bg-white px-3 py-10 rounded-md max-sm:w-[93%] ' >
             <div className=' px-4 pb-6 text-sm text-[#6c6c6c]'>Change Profile</div>
             <div className=' flex relative'>
                 <input onKeyDown={(e)=>{

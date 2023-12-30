@@ -53,10 +53,10 @@ const Add_new_Project_popUP:React.FC = () => {
   return (
     <>
     <div onClick={closePopup} className='fixed top-0 bottom-0 left-0 right-0 backdrop-blur-sm
-        h-screen w-screen bg-black/30 flex items-center justify-center z-10 '>
+         bg-black/30 flex items-center justify-center z-10 '>
     </div>
-    <div className=' fixed h-fit w-fit min-w-[500px] top-[20%]
-         max-sm:min-w-min max-sm:ml-5 z-10
+    <div className=' fixed h-fit w-fit min-w-[500px] top-[20%]  z-10
+         max-sm:min-w-0 max-sm:ml-[6vw]
         bg-white px-3 py-10 rounded-md'>
         <div className=' px-4 pb-6 text-lg text-[#6c6c6c]'>Add Project</div>
         <div className=' flex relative flex-col gap-7'>

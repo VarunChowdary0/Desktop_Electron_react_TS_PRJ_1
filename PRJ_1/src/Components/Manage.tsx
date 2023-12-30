@@ -119,6 +119,7 @@ const Manage:React.FC = () => {
     const {show} = useContext<any>(GlobalContext);
   return (
     <div className=' w-full h-fit
+     overflow-y-auto
      flex items-center pt-[100px] flex-col gap-14 
     '>
         <div className=' h-fit max-w-[500px] w-fit shadow-xl overflow-hidden
@@ -222,7 +223,7 @@ const Manage:React.FC = () => {
         <div className={` fixed top-0 bottom-0 right-0 flex transition-transform
              duration-300
         ${editMODE ? ' translate-x-0': 'translate-x-[10vw]' } `}>
-            <div  onClick={handleEditor}>
+            <div  onClick={handleEditor} className=' max-sm:h-[70px]'>
                 <div className=' w-10 mt-3 mr-3 h-10 bg-black/20 
                 rounded-full flex items-center justify-center'>
                     {

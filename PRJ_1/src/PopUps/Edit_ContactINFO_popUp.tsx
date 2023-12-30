@@ -55,7 +55,7 @@ const Edit_ContactINFO_popUp:React.FC = () => {
      <div onClick={closePopup} className='fixed top-0 bottom-0 left-0 right-0 backdrop-blur-sm
         h-screen w-screen bg-black/30 flex items-center justify-center'>
         </div>
-        <div className=' fixed h-fit w-fit top-[20%]
+        <div className=' fixed h-fit w-fit top-[20%] overflow-hidden
          bg-white px-3 py-10 rounded-md max-sm:w-[90%]' >
             <div className=' px-4 pb-6 text-sm text-[#6c6c6c]'>Edit {name}'s Contact info </div>
             <div className=' flex relative flex-col gap-3'>
@@ -67,7 +67,7 @@ const Edit_ContactINFO_popUp:React.FC = () => {
                     </div>
                     <input placeholder='Email address'
                     onChange={(e)=>{setEmail(e.target.value)}} 
-                    className='w-[400px] px-4 outline-none' type="text" value={email}/>
+                    className='max-sm:text-sm w-[400px] px-4 outline-none' type="text" value={email}/>
                 </div>
                 <div className=' flex'>
                     <div className=' w-[100px]'>
@@ -76,9 +76,9 @@ const Edit_ContactINFO_popUp:React.FC = () => {
                         </div>
                     </div>
                     <input onChange={(e)=>{setPhoneNum(e.target.value)}} 
-                    className='w-[400px]  outline-none ' type="text" value={phoneNumber}/>
+                    className='max-sm:text-sm w-[400px]  outline-none ' type="text" value={phoneNumber}/>
                 </div>
-                <div className=' flex gap-2'>
+                 <div className=' flex gap-2'>
                     <div className=' w-[80px]'>
                         <div className=' rounded-sm scale-125 px-3 py-2 ml-3 w-fit'> 
                         <Linked_in/>
@@ -87,16 +87,16 @@ const Edit_ContactINFO_popUp:React.FC = () => {
                     <input onChange={(e)=>{setCur_linkdin(e.target.value)}} 
                     className='w-[400px] px-4 outline-none text-blue-400' type="text" value={curr_linkdin}/>
                 </div>
-                <div className=' flex gap-2'>
+                 <div className=' flex gap-2'>
                     <div className=' w-[80px]'>
                         <div className=' rounded-sm scale-125 px-3 py-2 ml-3 w-fit'> 
                         <InstagramIcon color='#bc3f79'/>
                         </div>
                     </div>
                     <input onChange={(e)=>{setCur_insta(e.target.value)}} 
-                    className='w-[400px] px-4 outline-none text-blue-400' type="text" value={curr_insta}/>
+                    className='max-sm:text-sm w-[400px] px-4 outline-none text-blue-400' type="text" value={curr_insta}/>
                 </div>
-                
+                 
                 <div className=' flex gap-2'>
                     <div className=' w-[80px]'>
                         <div className=' rounded-sm scale-125 px-3 py-2 ml-3 w-fit'> 
@@ -104,18 +104,18 @@ const Edit_ContactINFO_popUp:React.FC = () => {
                         </div>
                     </div>
                     <input onChange={(e)=>{setCur_FB(e.target.value)}} 
-                    className='w-[400px] px-4 outline-none text-blue-400' type="text" value={curr_FB}/>
+                    className='max-sm:text-sm w-[400px] px-4 outline-none text-blue-400' type="text" value={curr_FB}/>
                 </div>
-                <div className=' flex gap-2'>
+                 <div className=' flex gap-2'>
                     <div className=' w-[80px]'>
                         <div className=' rounded-sm scale-125 px-3 py-2 ml-3 w-fit'> 
                         <TwitterIcon/>
                         </div>
                     </div>
                     <input onChange={(e)=>{setCur_twitt(e.target.value)}} 
-                    className='w-[400px] px-4 outline-none text-blue-400' type="text" value={curr_twitt}/>
+                    className='max-sm:text-sm w-[400px] px-4 outline-none text-blue-400' type="text" value={curr_twitt}/>
                 </div>
-                {
+                 {
                     <abbr title="click to save">
                         <div onClick={handleSave} className={` ${isChanged ? " bg-[#393939]" : "bg-[#69696938]"}  p-2 rounded-full absolute right-0`}>
                             <CheckIcon/>
