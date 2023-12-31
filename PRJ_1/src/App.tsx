@@ -17,7 +17,7 @@ const App:React.FC =() => {
           <div className=" z-50"><MenuBar/></div>
           <div className=" flex items-center justify-center
                w-screen h-fit bg-white  dark:bg-dark_dark_100 transition-all
-             overscroll-auto ">
+             overscroll-auto max-sm:pb-10">
             <Router/>
           </div>
         </div>

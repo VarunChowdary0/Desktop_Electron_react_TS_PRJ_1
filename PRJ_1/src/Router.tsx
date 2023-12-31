@@ -11,7 +11,7 @@ const Router = () => {
   const { rout } = useContext<any>(GlobalContext);
   const [content, setContent] = useState<React.ReactNode | null>(null);
   useEffect(()=>{
-    window.scroll(0,0);
+    //window.scroll(0,0);
   },[content])
   useEffect(() => {
     if (rout === '/') {
