@@ -14,14 +14,15 @@ const Register:React.FC = () => {
   return (
     <div className=' flex items-center justify-center
      fixed top-0 bottom-0 right-0 left-0
-     dark:bg-dark_dark_100 transition-all
+     dark:bg-dark_dark_100 transition-all max-sm:pb-12
+       max-sm:text-sm
      ' 
     >
       <div 
       onClick={
         ()=>setRegisterMode((RegisterMode==="login")?"":'login')
       }
-         className=' fixed top-[100px] dark:text-white text-lg'>
+         className=' fixed top-[100px] max-sm:top-[85vh]  max-sm:bottom-[100px]  dark:text-white text-lg'>
           {
             RegisterMode === 'login' ?
             "New Here ?"
