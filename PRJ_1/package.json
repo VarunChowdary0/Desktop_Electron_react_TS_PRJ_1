@@ -1,6 +1,8 @@
 {
   "name": "prj-1",
-  "productName":"REzZUMY",
+  "productName": "REzZUMY",
+  "PRODUCT_NAME": "REzZUMY",
+  "PRODUCT_FILENAME": "REzZUMY Files",
   "private": true,
   "author": "Varun Chowdary",
   "version": "1.0.0",
@@ -43,7 +45,7 @@
     "vite-plugin-electron-renderer": "^0.14.5"
   },
   "main": "dist-electron/main.js",
-  "icon": "dist-electron/logo.jpeg",
-  "description":"-- add --",
+  "icon": "https://blog-it-backend-sandy.vercel.app/images/896313-27130190-3-post.png",
+  "description": "-- add --",
   "displayName": "REzZUMY"
 }
