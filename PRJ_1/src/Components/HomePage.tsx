@@ -10,12 +10,12 @@ const HomePage = () => {
       setTimeout(()=>{
         console.log(isLoggedIn)
         setRout('/register')
-      },15000)
+      },1500)
     }
     else{
       setTimeout(()=>{
         setRout('/explore')
-      },15000)
+      },1500)
     }
   },[])
   return (

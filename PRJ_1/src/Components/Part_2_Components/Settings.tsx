@@ -12,7 +12,8 @@ const Settings:React.FC = () => {
         )
     }
   return (
-    <div className=' h-screen w-screen flex items-center 
+    <div className=' fixed top-0 bottom-0 left-0 right-0
+    flex items-center overflow-y-auto 
      bg-[#ebebeb] dark:bg-dark_dark_100
     dark:text-white px-5 py-[80px] flex-col gap-10' >
         <div onClick={Open_Profile_Settings}
