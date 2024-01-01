@@ -51,10 +51,10 @@ const Router = () => {
     }
     else {
       setContent(
-      <div className=' h-screen w-screen  flex-col
+      <div className='  fixed top-0 bottom-0 left-0 right-0  flex-col
        max-sm:text-sm text-center max-sm:m:px-5 gap-10
         dark: text-dark_Match_300 dark:bg-dark_dark_100
-         max-sm:flex-col-reverse
+         max-sm:flex-col-reverse 
       flex items-center justify-center text-2xl bg-white'>
         <p className=' max-sm:px-5'>
           404 : The Page you are looking for is either Don't exist or " Under Development "

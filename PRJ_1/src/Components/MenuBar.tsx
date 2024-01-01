@@ -5,10 +5,11 @@ import NotificationIcon from '../icons/MenuIcons/NotificationIcon';
 import ExploreIcon from '../icons/MenuIcons/ExploreIcon';
 import ManageIcon from '../icons/MenuIcons/ManageIcon';
 import ProfileIcon from '../icons/MenuIcons/ProfileIcon';
+import { UserInfoContext } from '../Contexts/UserInfoContext';
 
 export const MenuBar: React.FC = () => {
-  const [toggleMenuBar, setToggleMenuBar] = useState<Boolean>(true);
-  const handleToggle =  () =>{
+    const [toggleMenuBar, setToggleMenuBar] = useState<Boolean>(true);
+    const handleToggle =  () =>{
     setToggleMenuBar(!toggleMenuBar)
   }
   const {rout,setRout} = useContext<any>(GlobalContext);
@@ -20,7 +21,9 @@ export const MenuBar: React.FC = () => {
 
   return (
     <>
-        	<div className={` flex translate-x-[-20vw] fixed top-0 bottom-0 left-0
+        	{ (rout !== '/' && (rout !== '/home') && (rout !== '/register')   ) &&
+                <>
+                <div className={` flex translate-x-[-20vw] fixed top-0 bottom-0 left-0
 			 max-sm:hidden
  		   ${!toggleMenuBar && "translate-x-[0vw] w-screen"} transition-all `}>
         <div className={` w-[20vw] shadow-xl rounded-md h-screen py-7 px-5 
@@ -117,6 +120,8 @@ export const MenuBar: React.FC = () => {
 					</div>
 				</div>
 			</div>
+                 </>
+            }
     </>
   );
 };

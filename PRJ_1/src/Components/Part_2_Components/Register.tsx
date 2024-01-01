@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import PasswordIcon from '../../icons/PasswordIcon';
 import EyeIcon from '../../icons/EyeIcon';
+import { DarkFounderLogo, LightFounderLogo } from '../../assets/Resources';
+import DarkMode from '../../Functions/DarkMode';
 
 const Register:React.FC = () => {
     const [RegisterMode,setRegisterMode] = useState<string>("login");
@@ -18,11 +20,31 @@ const Register:React.FC = () => {
        max-sm:text-sm
      ' 
     >
+      <div className=' fixed top-[-100px] 
+      gap-4 scale-125 flex items-center'>
+        <div className=" flex  scale-125">
+          <div className=' even:text-indigo-500 odd:text-purple-700 hover:scale-125 py-[200px] transition-all'>R</div>
+          <div className=' even:text-indigo-500 odd:text-purple-700 hover:scale-125 py-[200px] transition-all'>E</div>
+          <div className=' even:text-indigo-500 odd:text-purple-700 hover:scale-125 py-[200px] transition-all'>z</div>
+          <div className=' even:text-indigo-500 odd:text-purple-700 hover:scale-125 py-[200px] transition-all'>Z</div>
+          <div className=' even:text-indigo-500 odd:text-purple-700 hover:scale-125 py-[200px] transition-all'>U</div>
+          <div className=' even:text-indigo-500 odd:text-purple-700 hover:scale-125 py-[200px] transition-all'>M</div>
+          <div className=' even:text-indigo-500 odd:text-purple-700 hover:scale-125 py-[200px] transition-all'>Y</div>
+        </div>
+        <div className="">
+          <div className=" w-[60px]">
+            <img className=" rounded-full invisible h-0 dark:visible dark:h-fit" src={DarkFounderLogo} alt="" />
+            <img className=" rounded-full dark:hidden" src={LightFounderLogo} alt="" />
+          </div>
+        </div>
+      </div>
+
+
       <div 
       onClick={
         ()=>setRegisterMode((RegisterMode==="login")?"":'login')
       }
-         className=' fixed top-[100px] max-sm:top-[85vh]  max-sm:bottom-[100px]  dark:text-white text-lg'>
+         className=' fixed top-[85vh]  bottom-[100px]  dark:text-white text-lg'>
           {
             RegisterMode === 'login' ?
             "New Here ?"
@@ -30,10 +52,12 @@ const Register:React.FC = () => {
             "Already have an account ?"
           }
       </div>
-      <div className={`  __login__ fixed 
-      ${(RegisterMode==="login"?"translate-x-0 scale-100":"translate-x-[-100vw] scale-150 opacity-0") }
+      <div className={`  __login__ fixed  w-full flex 
+      items-center justify-center
+      ${(RegisterMode==="login"?"translate-x-0 scale-100"
+      :"translate-x-[-100vw] scale-150 opacity-0") }
        transition-all duration-500  `}>
-          <div className={` h-fit py-8 w-[500px] max-sm:w-[90%] 
+          <div className={` h-fit py-8 w-[500px] max-sm:w-[75%] 
            dark:bg-dark_dark_200  dark:border-0 border-[1px] transition-all
          bg-white rounded-md shadow-xl`}>
             <div className=' p-4 flex flex-col items-center gap-[50px]'>
@@ -74,9 +98,11 @@ const Register:React.FC = () => {
             </abbr>
          </div>
       </div>
-      <div className={`  __signup__ fixed 
-      ${(RegisterMode!=="login"?"translate-x-0 scale-100":"translate-x-[100vw] scale-150 opacity-0") } transition-all duration-500`}>
-          <div className={` h-fit py-8 w-[500px] max-sm:w-[90%] border-[1px]
+      <div className={`  __signup__ fixed  flex
+       items-center justify-center w-full
+      ${(RegisterMode!=="login"?"translate-x-0 scale-100"
+      :"translate-x-[100vw] scale-150 opacity-0") } transition-all duration-500`}>
+          <div className={` h-fit py-8 w-[500px] max-sm:w-[75%] border-[1px]
          bg-white 
          dark:bg-dark_dark_200  dark:border-0 transition-all
           rounded-md shadow-xl`}>
@@ -113,6 +139,9 @@ const Register:React.FC = () => {
                  active:scale-90 transition-all font-thin'>Submit</button>
             </div>
          </div>
+      </div>
+      <div className=' fixed bottom-5 right-12'>
+        <DarkMode/>
       </div>
     </div>
   )

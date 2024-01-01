@@ -220,3 +220,17 @@ button:hover::before {
   border-radius: 6px; /* roundness of the thumb */
   border: 3px solid #292929; /* border around the thumb */
 }
+
+
+.logo_paper {
+ animation: fadeAwy 500ms ease 1000ms 1 normal forwards;
+}
+
+@keyframes fadeAwy{
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0.3;
+  }
+}

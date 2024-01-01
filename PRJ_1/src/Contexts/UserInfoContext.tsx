@@ -17,7 +17,7 @@ const UserInfoContext = createContext<UserInfoContextType | undefined>(undefined
 
 const UserInfoContextProvider:React.FC<UserInfoContextProviderProps> = ({children}) =>{
     
-    const [isLoggedIn,setLoggedin] = useState(true);
+    const [isLoggedIn,setLoggedin] = useState(false);
 
     return (
         <UserInfoContext.Provider

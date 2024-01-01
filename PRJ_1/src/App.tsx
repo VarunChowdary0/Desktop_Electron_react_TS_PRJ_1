@@ -15,10 +15,11 @@ const App:React.FC =() => {
    <GlobalContextProvider>
         <div className=" flex flex-row select-none dark:bg-dark_dark_100 ">
           <Colors_theam/>
-          <div className=" z-50"><MenuBar/></div>
           <UserInfoContextProvider>
+            <div className=" z-50"><MenuBar/></div>
             <div className=" flex items-center justify-center
-                w-screen h-fit bg-white  dark:bg-dark_dark_100 transition-all
+                 fixed top-0 bottom-0 left-0 right-0 overflow-y-auto
+               bg-white   dark:bg-dark_dark_100 transition-all
               overscroll-auto max-sm:pb-10">
               <Router/>
             </div>
