@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import CheckIcon from '../icons/CheckIcon';
 import { GlobalContext } from '../Contexts/GlobalContext';
 import { isLink, save_coding_links_to_local } from '../Functions/Manage_Functions';
@@ -12,9 +12,9 @@ const Edit_SocialMedia:React.FC<currentEdit> = (prop) => {
         setShowEditPlatform} = useContext<any>(GlobalContext)
 
     const [CurrentLink,setLink] = useState<string>(Links[prop.NAME].link)
-    useEffect(()=>{
-        console.log(CurrentLink)
-    },[CurrentLink])
+    // useEffect(()=>{
+    //    // console.log(CurrentLink)
+    // },[CurrentLink])
     const closePopup= () =>{
         setShowEditPlatform(false)
     }

@@ -8,7 +8,7 @@ import { GlobalContext } from '../../Contexts/GlobalContext';
 const Register:React.FC = () => {
     const [RegisterMode,setRegisterMode] = useState<string>("login");
     const [isShowPassword,setShowPassword] = useState<boolean>(false);
-    const {setRout} = useContext<any>(GlobalContext);
+    const {setRout,handlePopUp} = useContext<any>(GlobalContext);
     const TogglePassword = () => {
       setShowPassword(true)
       setTimeout(()=>{
@@ -143,7 +143,10 @@ const Register:React.FC = () => {
          </div>
       </div>
       <div onClick={()=>{
-        setRout('/profile')
+        setRout('/manage/edit_profile')
+        setTimeout(()=>{
+          handlePopUp("Make Your Profile");
+        },500)
       }}
        className=' dark:text-dark_Match_500 fixed top-5 right-12'>
         / skip sign in /

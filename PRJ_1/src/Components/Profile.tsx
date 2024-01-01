@@ -22,7 +22,7 @@ const Profile:React.FC = () => {
 
 
   return (
-    <div className=' w-full h-full flex mt-[100px] items-center gap-16
+    <div className=' flex mt-[100px] items-center gap-16
      max-sm:mt-[100px] flex-col mb-11 max-sm:mb-0'>
         <div className=' h-fit max-w-[500px] w-fit shadow-xl overflow-hidden
         bg-white  dark:bg-[#464646]

@@ -13,7 +13,7 @@ export const Editabel_Social_Media:React.FC = () => {
   const Add_NEW_LINK = (x:string) =>{
     setShowEditPlatform(true);
     setCurrnetEdit(x);
-    console.log(Links[x])
+    // console.log(Links[x])
   } 
   return (
     <div className=' w-[500px] 

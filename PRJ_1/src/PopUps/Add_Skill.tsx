@@ -8,13 +8,14 @@ const Add_Skill:React.FC = () => {
     const {setAddSkillPopupView,Skills,updateSkills,handlePopUp} = useContext<any>(GlobalContext);
     const handleSave = () =>{
         if(Skills.includes(newSkill)){
-            console.log("Exists")
+            handlePopUp("Exists","Skill")
         }
         else{            
-            console.log("new skill : "+newSkill);
+           // console.log("new skill : "+newSkill);
             if(newSkill.trim()!==""){
                 updateSkills([...Skills,newSkill])
                 handlePopUp("Added","Skill")
+                closePopup();
             }
         }
     }
@@ -38,7 +39,6 @@ const Add_Skill:React.FC = () => {
                 <input onKeyDown={(e)=>{
                     if(e.key=="Enter"){
                         handleSave();
-                        closePopup();
                     }
                 }} placeholder='My Skill'
                 onChange={(e)=>{setNewSkill(e.target.value)}} 

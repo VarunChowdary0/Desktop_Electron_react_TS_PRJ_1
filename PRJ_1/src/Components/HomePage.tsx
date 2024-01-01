@@ -9,7 +9,7 @@ const HomePage = () => {
   useEffect(()=>{
     if(!isLoggedIn){
       setTimeout(()=>{
-        console.log(isLoggedIn)
+        // console.log(isLoggedIn)
         setRout('/register')
       },1500)
     }
@@ -20,7 +20,10 @@ const HomePage = () => {
     }
   },[])
   return (
-    <div className=' logo_paper fixed top-0 bottom-0 right-0 left-0 flex dark:bg-dark_dark_100 transition-all
+    <div className=" fixed top-0 bottom-0 right-0 left-0
+     bg-white dark:bg-dark_dark_100">
+      <div className=' logo_paper fixed top-0 bottom-0 
+      right-0 left-0 flex dark:bg-dark_dark_100 transition-all
      items-center justify-center text-8xl font-light max-sm:text-5xl'>
         <div className=" flex">
           <div className=' even:text-indigo-500 odd:text-purple-700 hover:scale-125 py-[200px] transition-all'>R</div>
@@ -40,6 +43,7 @@ const HomePage = () => {
             <img className=" dark:hidden" src={LightFounderLogo} alt="" />
           </div>
         </div>
+    </div>
     </div>
   )
 }

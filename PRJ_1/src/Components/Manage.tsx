@@ -274,7 +274,9 @@ const Manage:React.FC = () => {
             </div>
         </div>
        <div>
-       <div className=' fixed bottom-10 left-0 right-0 flex justify-center z-30'>
+       <div className=' fixed bottom-10 left-0 
+        max-sm:bottom-20
+       right-0 flex justify-center z-30'>
         <div className={` w-fit py-5 px-4 h-fit bg-black/80
             border-[1px] transition-all
             border-[#8b8a8a]  text-white flex 
