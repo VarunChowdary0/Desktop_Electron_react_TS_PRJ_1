@@ -19,7 +19,7 @@ const HomePage = () => {
     }
   },[])
   return (
-    <div className=' w-screen h-screen flex dark:bg-dark_dark_100 transition-all
+    <div className=' fixed top-0 bottom-0 right-0 left-0 flex dark:bg-dark_dark_100 transition-all
      items-center justify-center text-8xl font-light max-sm:text-5xl'>
         <div className=" flex">
           <div className=' even:text-indigo-500 odd:text-purple-700 hover:scale-125 py-[200px] transition-all'>R</div>
