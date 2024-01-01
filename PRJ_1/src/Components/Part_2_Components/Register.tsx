@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import PasswordIcon from '../../icons/PasswordIcon';
 import EyeIcon from '../../icons/EyeIcon';
 import { DarkFounderLogo, LightFounderLogo } from '../../assets/Resources';
 import DarkMode from '../../Functions/DarkMode';
+import { GlobalContext } from '../../Contexts/GlobalContext';
 
 const Register:React.FC = () => {
     const [RegisterMode,setRegisterMode] = useState<string>("login");
     const [isShowPassword,setShowPassword] = useState<boolean>(false);
+    const {setRout} = useContext<any>(GlobalContext);
     const TogglePassword = () => {
       setShowPassword(true)
       setTimeout(()=>{
@@ -139,6 +141,12 @@ const Register:React.FC = () => {
                  active:scale-90 transition-all font-thin'>Submit</button>
             </div>
          </div>
+      </div>
+      <div onClick={()=>{
+        setRout('/profile')
+      }}
+       className=' dark:text-dark_Match_500 fixed top-5 right-12'>
+        / skip sign in /
       </div>
       <div className=' fixed bottom-5 right-12'>
         <DarkMode/>
