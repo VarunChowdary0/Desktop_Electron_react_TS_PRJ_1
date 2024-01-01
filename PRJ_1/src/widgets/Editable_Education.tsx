@@ -23,7 +23,7 @@ const Editable_Eduacation:React.FC<CurrentProps> = () => {
     
   return (
     <div className={` bg-${'white'}-400 w-[500px] max-sm:w-[300px]
-     dark:bg-dark_dark_200 dark:text-white
+     dark:bg-dark_dark_200 dark:text-white dark:border-0
      h-fit border-2  text-[#3b3b3b] rounded-lg p-4 max-sm:p-2`}>
         <div className=' text-xl mt-3 mb-3 font-bold'> Education Details</div>
         <div className=' flex flex-col gap-8'>

@@ -18,14 +18,16 @@ const Editable_About_me:React.FC<CurrentProps>= (props) => {
   },[Current_about])
   return (
     <div className={` bg-${props.bg_Color}-400 w-[500px] max-sm:w-[300px]
-    h-fit rounded-lg text-white p-4
+    h-fit rounded-lg text-white p-4 
     `}>
         <div className=' text-xl mt-3 mb-3 font-bold flex justify-between pr-5'>
             <div>About</div>
             <div className=' scale-75'><PenIcon color='#4b4b4b' size={1}/></div>
         </div>
         <textarea id="autoresizing" rows={Current_about.length/43}
-         className=' bg-black/0 w-full border-none outline-none py-2 ' 
+         className=' bg-black/0 w-full 
+         max-sm:min-h-[25vh]
+         border-none outline-none py-2 ' 
          value={Current_about} onChange={(e)=>{setCurrent(e.target.value)}}
          ></textarea>
     </div>

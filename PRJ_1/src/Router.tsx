@@ -6,6 +6,7 @@ import TestPage from './Components/TestPage';
 import Manage from './Components/Manage';
 import Register from './Components/Part_2_Components/Register';
 import { errorImage } from './assets/Resources';
+import Settings from './Components/Part_2_Components/Settings';
 
 const Router = () => {
   const { rout } = useContext<any>(GlobalContext);
@@ -35,8 +36,13 @@ const Router = () => {
     }
     else if(rout === '/manage'){
         setContent(
-            <Manage/>
+            <Settings/>
         )
+    }
+    else if(rout === '/manage/edit_profile'){
+      setContent(
+        <Manage/>
+      )
     }
     else if(rout === '/register'){
       setContent(
@@ -50,7 +56,9 @@ const Router = () => {
         dark: text-dark_Match_300 dark:bg-dark_dark_100
          max-sm:flex-col-reverse
       flex items-center justify-center text-2xl bg-white'>
-        <p className=' max-sm:px-5'>404 : The Page you are looking for is either Don't exist or " Under Development "</p>
+        <p className=' max-sm:px-5'>
+          404 : The Page you are looking for is either Don't exist or " Under Development "
+        </p>
         <div>
           <video className=' ml-10 max-sm:ml-0 dark:hidden max-sm:w-[300px] ' 
           src="https://cdnl.iconscout.com/lottie/premium/thumb/404-page-5565540-4650907.mp4"

@@ -25,24 +25,45 @@ export const MenuBar: React.FC = () => {
  		   ${!toggleMenuBar && "translate-x-[0vw] w-screen"} transition-all `}>
         <div className={` w-[20vw] shadow-xl rounded-md h-screen py-7 px-5 
          dark:bg-dark_Surface_400 dark:bg-dark_dark_300/30 pt-14
-          dark:text-dark_Match_600
+          dark:text-dark_Match_600 
         bg-[#fff]/30 backdrop-blur-sm `}>
             <div className='
             flex flex-col items-center gap-14 mt-4 text-2xl max-sm:text-[17px]'>
                 <div className=' hover:scale-125 transition-all '>
-                    <a onClick={()=>{HandleRout("/home")}}>Home</a>
+                    <a className=' flex items-center gap-3' onClick={()=>{HandleRout("/home")}}>
+                        <div><HomeIcon current={rout ==="/home" || rout === "/" ? true : false}/></div>
+                        <p>Home</p>
+                    </a>
                 </div>
                 <div className=' hover:scale-125 transition-all'>
-                    <a onClick={()=>{HandleRout("/profile")}}>Profile</a>
+                    <a className=' flex items-center gap-3' onClick={()=>{HandleRout("/profile")}}>
+                        <div><ProfileIcon current={rout ==="/profile" ? true : false}/></div>
+                        <p>Profile</p>
+                    </a>
                 </div>
                 <div className=' hover:scale-125 transition-all'>
-                    <a onClick={()=>{HandleRout("/test")}}>Test</a>
+                    <a className=' flex items-center gap-3' onClick={()=>{HandleRout("/explore")}}>
+                        <div><ExploreIcon current={rout ==="/explore" ? true : false}/></div>
+                        <p>Explore</p>
+                    </a>
                 </div>
                 <div className=' hover:scale-125 transition-all'>
-                    <a onClick={()=>{HandleRout("/manage")}}>Manage</a>
+                    <a className=' flex items-center gap-3' onClick={()=>{HandleRout("/manage")}}>
+                        <div><ManageIcon current={rout.includes("/manage") ? true : false}/></div>
+                        <p>Manage</p>
+                    </a>
                 </div>
                 <div className=' hover:scale-125 transition-all'>
-                    <a onClick={()=>{HandleRout("/register")}}>Register</a>
+                    <a className=' flex items-center gap-3' onClick={()=>{HandleRout("/notify")}}>
+                        <div><NotificationIcon current={rout ==="/notify" ? true : false}/></div>
+                        <p>Notify</p>
+                    </a>
+                </div>
+                <div className=' hover:scale-125 transition-all'>
+                    <a className=' flex items-center gap-3' onClick={()=>{HandleRout("/register")}}>
+                        <div></div>
+                        <p>Register</p>
+                    </a>  
                 </div>
             </div>
         </div>
@@ -86,7 +107,7 @@ export const MenuBar: React.FC = () => {
                      onClick={()=>{HandleRout("/manage")}}
                     className=' h-5 w-5 
 					flex items-center justify-center'>
-						<ManageIcon current={rout === '/manage' ? true : false}/>
+						<ManageIcon current={rout.includes("/manage") ? true : false}/>
 					</div>
 					<div 
                       onClick={()=>{HandleRout("/profile")}}

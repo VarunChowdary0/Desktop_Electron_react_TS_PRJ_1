@@ -15,7 +15,7 @@ import Editable_MiniProject_Wid from '../widgets/Editable_MiniProject_Wid';
 import { Editabel_Social_Media } from '../widgets/Editable_Social_Media';
 import ContactInfo from './ContactInfo';
 import Edit_ContactINFO_popUp from '../PopUps/Edit_ContactINFO_popUp';
-import DarkMode from '../Functions/DarkMode';
+import BackToSettings from '../MiniCopms/BackToSettings';
 
 
 const Manage:React.FC = () => {
@@ -271,9 +271,6 @@ const Manage:React.FC = () => {
                            <ArrowIcon color='white' size={100} angle='180deg'/>
                     </div>
                 </div>
-                <div className=' absolute bottom-20 w-[40%] max-sm:w-[20px]'>
-                    <DarkMode/>
-                </div>
             </div>
         </div>
        <div>
@@ -288,6 +285,7 @@ const Manage:React.FC = () => {
         </div>
     </div>
        </div>
+       <BackToSettings/>
     </div>
   )
 }

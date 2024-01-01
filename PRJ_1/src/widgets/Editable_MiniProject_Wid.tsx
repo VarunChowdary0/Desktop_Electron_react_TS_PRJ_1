@@ -17,7 +17,7 @@ const Editable_MiniProject_Wid:React.FC = () => {
     }
   return (
     <div className={` bg-${'white'}-400 w-[500px] max-sm:w-[300px] 
-     dark:bg-dark_dark_200 dark:text-white
+     dark:bg-dark_dark_200 dark:text-white dark:border-0
      border-2  text-[#3b3b3b] rounded-lg p-4 max-sm:p-2 transition-all  z-0`}>
         <div className=' text-center 
          dark:text-dark_Match_400

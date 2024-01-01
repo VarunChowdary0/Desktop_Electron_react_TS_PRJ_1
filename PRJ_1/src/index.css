@@ -205,3 +205,18 @@ button:hover::before {
   border-radius: 6px; /* roundness of the thumb */
   border: 3px solid #f1f1f1; /* border around the thumb */
 }
+
+
+:is(:where(.dark) .dark\::-webkit-scrollbar){
+  width: 12px; /* width of the entire scrollbar */
+}
+
+:is(:where(.dark) .dark\::-webkit-scrollbar-track) {
+  background: #2c2c2c; /* color of the track */
+}
+
+:is(:where(.dark) .dark\::-webkit-scrollbar-thumb) {
+  background-color: #000000; /* color of the thumb */
+  border-radius: 6px; /* roundness of the thumb */
+  border: 3px solid #292929; /* border around the thumb */
+}
