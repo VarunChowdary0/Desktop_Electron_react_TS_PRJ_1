@@ -11,7 +11,7 @@ const Editable_Eduacation:React.FC<CurrentProps> = () => {
     const {
         EducationDetails,setEducationDetails,
         showAddEduactionDetailPopup,setShowEducationPopUp,
-        handlePopUp
+        handlePopUp,setSync
     } = useContext<any>(GlobalContext)
     const Remove_This_Detail = (idx:number) =>{
         const updated_Education_Details = [...EducationDetails.slice(0,idx),...EducationDetails.slice(idx+1)]
@@ -19,6 +19,7 @@ const Editable_Eduacation:React.FC<CurrentProps> = () => {
         setEducationDetails(updated_Education_Details)
         save_Education_details_to_local(updated_Education_Details)
         handlePopUp("Removed","Eduaction Detail")
+        setSync(true)
     }
     
   return (

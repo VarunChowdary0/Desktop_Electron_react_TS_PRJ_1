@@ -5,7 +5,7 @@ import { save_occupation_to_locat } from '../Functions/Manage_Functions';
 
 const ChangeOccupation:React.FC = () => {
     const {occupation,setOccupation
-        ,setChangeOccupationShow,handlePopUp} = useContext<any>(GlobalContext);
+        ,setChangeOccupationShow,handlePopUp,setSync} = useContext<any>(GlobalContext);
     const [currnetOccupation,setCurrentOccupation] = useState("");
     const default_occupation = occupation;
     const closePopup = () =>{
@@ -17,6 +17,7 @@ const ChangeOccupation:React.FC = () => {
             setOccupation(currnetOccupation);
             save_occupation_to_locat(currnetOccupation);
             handlePopUp("Changed","Occupation")
+            setSync(true)
         }
         closePopup();
     }

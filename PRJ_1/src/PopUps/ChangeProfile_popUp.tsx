@@ -7,7 +7,8 @@ const ChangeProfile_popUp:React.FC = () => {
     const [currnetURL,setUrl] = useState<string>("");
     const {profileLink,setProfile,
             setChangeProfileShow,
-            handlePopUp} = useContext<any>(GlobalContext);
+            handlePopUp,setSync
+        } = useContext<any>(GlobalContext);
     const default_url = profileLink;
     const closePopup = () =>{
         setChangeProfileShow(false)
@@ -18,6 +19,7 @@ const ChangeProfile_popUp:React.FC = () => {
             save_profile_url_to_local(currnetURL);
             setProfile(currnetURL);
             handlePopUp("Updated","Profile")
+            setSync(true);
         }
     }
   return (

@@ -4,16 +4,105 @@ import EyeIcon from '../../icons/EyeIcon';
 import { DarkFounderLogo, LightFounderLogo } from '../../assets/Resources';
 import DarkMode from '../../Functions/DarkMode';
 import { GlobalContext } from '../../Contexts/GlobalContext';
+import { CreateNewUserAccount, LoginToUser } from '../../Controllers/RegisterController';
+import { UserInfoContext } from '../../Contexts/UserInfoContext';
+import  { lineWobble } from "ldrs"
+import { save_email_in_local } from '../../Functions/Manage_Functions';
+
+lineWobble.register();
 
 const Register:React.FC = () => {
     const [RegisterMode,setRegisterMode] = useState<string>("login");
     const [isShowPassword,setShowPassword] = useState<boolean>(false);
-    const {setRout,handlePopUp} = useContext<any>(GlobalContext);
+    const {setRout,handlePopUp,setEmail} = useContext<any>(GlobalContext);
+    const {setLoggedin} = useContext<any>(UserInfoContext);
+    const [flasher,setFlasher] = useState<string>("");
+
+    const [username,setUsername] = useState<string>("");
+    const [password,setPassword] = useState<string>("");
+    const [mailAdd,setMailAdd] = useState<string>("");
+
+
     const TogglePassword = () => {
       setShowPassword(true)
       setTimeout(()=>{
         setShowPassword(false)
       },1200)
+    }
+    const handle_signUP_action = async () =>{
+		if(username.trim() !== ""){
+			if(mailAdd.trim()!==""){
+				if(mailAdd.includes(".") && mailAdd.length>=7){
+					if(password.trim().length > 5 ){
+                        setFlasher("Loading...")
+						const RESPONSE:any = await CreateNewUserAccount(username,password,mailAdd)
+							if(RESPONSE.status){
+							console.log("SENT and OK")
+              setEmail(mailAdd);
+              save_email_in_local(mailAdd)
+							handleFlasher("ACCOUNT CREATION SUCESSFUL")
+                            setTimeout(() => {
+                                setRegisterMode('login')
+                            }, 1000);
+							}
+							else{
+							console.log("FAILED -> "+RESPONSE.error)
+							handleFlasher("FAILED TO CREATE ACCOUNT"+RESPONSE.error)
+							}
+					}
+					else{
+						handleFlasher("Password is short")
+					}
+				}
+				else{
+					handleFlasher(" Please enter valid mail address ")
+				}
+			}
+			else{
+				handleFlasher(" Mail address not filled ")
+			}
+		}
+		else{
+			handleFlasher(" Username not filled")
+		}
+    }
+    const handle_signin_action = async () =>{
+      if(username.trim()!==""){
+        if(password.trim().length > 5){
+            setFlasher("Loading...")
+            const RESPONSE = await LoginToUser(username,password)
+            if(RESPONSE.status){
+                console.log("SENT and OK")
+                handleFlasher("LOGIN SUCESSFUL")
+                localStorage.setItem("USER_UID",RESPONSE.error)
+                localStorage.setItem("isLoggedIN",JSON.stringify(true));
+                setLoggedin(true)
+                setTimeout(()=>{
+                    setRout('/manage/edit_profile')
+                },1000)
+                setTimeout(()=>{
+                    handlePopUp("EDIT YOUR PROFILE")
+                },1500)
+            }
+            else{
+                console.log("FAILED -> "+RESPONSE.error)
+                handleFlasher(RESPONSE.error)
+                setPassword("")
+            }
+        }
+        else{
+          handleFlasher(" Password cannot be this short ")
+        }
+      }
+      else{
+        handleFlasher(" username is not filled ")
+      }
+    }
+    const handleFlasher = (x:string)=>{
+      setFlasher(x);
+      setTimeout(()=>{
+        setFlasher("");
+      },1500)
     }
   return (
     <div className=' flex items-center justify-center
@@ -22,7 +111,7 @@ const Register:React.FC = () => {
        max-sm:text-sm
      ' 
     >
-      <div className=' fixed top-[-100px] 
+      <div className=' fixed top-[-100px] max-sm:ml-3 
       gap-4 scale-125 flex items-center'>
         <div className=" flex  scale-125">
           <div className=' even:text-indigo-500 odd:text-purple-700 hover:scale-125 py-[200px] transition-all'>R</div>
@@ -40,8 +129,6 @@ const Register:React.FC = () => {
           </div>
         </div>
       </div>
-
-
       <div 
       onClick={
         ()=>setRegisterMode((RegisterMode==="login")?"":'login')
@@ -60,22 +147,36 @@ const Register:React.FC = () => {
       :"translate-x-[-100vw] scale-150 opacity-0") }
        transition-all duration-500  `}>
           <div className={` h-fit py-8 w-[500px] max-sm:w-[75%] 
-           dark:bg-dark_dark_200  dark:border-0 border-[1px] transition-all
+           dark:bg-dark_dark_200  dark:border-0 border-[1px]
+            transition-all
          bg-white rounded-md shadow-xl`}>
-            <div className=' p-4 flex flex-col items-center gap-[50px]'>
+            <div className=' p-2 flex flex-col
+             max-sm:p-0 max-sm:gap-5
+            items-center gap-[40px]'>
                 <div className=' text-3xl 
                  dark:text-dark_Match_500 transition-all
                 text-center'>Login</div>
                 <div className=' flex flex-col gap-10 w-full items-center 
                  dark:text-white transition-all'>
-                    <input className=' w-[80%] outline-none
+                    <input  onChange={(e)=>{
+                      setUsername(e.target.value);
+                    }}
+                    className=' w-[80%] outline-none
                      border-b-2 px-4 py-2 font-thin tracking-wider
-                    ' type="text" placeholder='Username' />
+                    ' type="text" placeholder='Username' value={username} />
 
                     <div className='w-[80%] relative'>
-                      <input className=' w-[100%] outline-none
+                      <input onKeyDown={(e)=>{
+                        if(e.key == 'Enter'){
+                          handle_signin_action();
+                        }
+                      }}
+                      onChange={(e)=>{
+                        setPassword(e.target.value)
+                      }}
+                      className=' w-[100%] outline-none
                       border-b-2 px-4 py-2 font-thin tracking-widest
-                      ' type={isShowPassword?"text":"password"} 
+                      ' type={isShowPassword?"text":"password"} value={password} 
                       placeholder='Password' />
                       <div onClick={TogglePassword}
                       className=' hover:cursor-pointer absolute right-3 top-3 w-5 h-5'>
@@ -88,8 +189,22 @@ const Register:React.FC = () => {
                       </div>
                     </div>
                 </div>
-                <button className='  hover:text-white dark:bg-dark_Match_500
-                 shadow-light dark:shadow-dark
+                <div className=' dark:text-orange-200 h-0'>
+                {flasher==='Loading...'?
+                <l-line-wobble
+                        size={"80"}
+                        stroke={"5"}
+                        bg-opacity={"0.1"}
+                        speed={"1.75"}
+                        color={"white"}
+                ></l-line-wobble>
+                  :
+                  <p>{flasher}</p>
+                  }
+                </div>
+                <button onClick={handle_signin_action}
+                className='  hover:text-white dark:bg-dark_Match_500
+                 shadow-light dark:shadow-dark max-sm:mt-3
                  active:scale-90 transition-all font-thin'>Submit</button>
             </div>
             <abbr title="Get help">
@@ -108,23 +223,40 @@ const Register:React.FC = () => {
          bg-white 
          dark:bg-dark_dark_200  dark:border-0 transition-all
           rounded-md shadow-xl`}>
-            <div className=' p-4 flex flex-col items-center gap-[50px]'>
+            <div className=' p-2 flex flex-col
+           max-sm:p-0 max-sm:gap-5
+            items-center gap-[40px]'>
                 <div className=' text-3xl text-center
                  dark:text-dark_Match_500 transition-all'>Sign up</div>
                 <div className=' flex flex-col gap-10 w-full items-center dark:text-white'>
-                    <input className=' w-[80%] outline-none bg-black/0
+                    <input onChange={(e)=>{
+                      setUsername(e.target.value);
+                    }}
+                    className=' w-[80%] outline-none bg-black/0
                      border-b-2 px-4 py-2 font-thin tracking-wider
-                    ' type="text" placeholder='Username' />
+                    ' type="text" placeholder='Username' value={username} />
                  
-                    <input className=' w-[80%] outline-none bg-black/0
+                    <input onChange={(e)=>{
+                      setMailAdd(e.target.value);
+                    }} 
+                    className=' w-[80%] outline-none bg-black/0
                      border-b-2 px-4 py-2 font-thin tracking-wider
-                    ' type="text" placeholder='Email' />
+                    ' type="text" placeholder='Email' value={mailAdd} />
 
-                    <div className='w-[80%] relative'>
-                      <input className=' w-[100%] outline-none bg-black/0
+                    <div 
+                    className='w-[80%] relative'>
+                      <input onKeyDown={(e)=>{
+                        if(e.key === 'Enter'){
+                          handle_signUP_action();
+                        } 
+                      }}
+                       onChange={(e)=>{
+                      setPassword(e.target.value)
+                      }}  
+                      className=' w-[100%] outline-none bg-black/0
                       border-b-2 px-4 py-2 font-thin tracking-widest
                       ' type={isShowPassword?"text":"password"} 
-                      placeholder='Password' />
+                      placeholder='Password' value={password} />
                       <div onClick={TogglePassword}
                       className=' hover:cursor-pointer absolute right-3 top-3 w-5 h-5'>
                         {
@@ -136,8 +268,16 @@ const Register:React.FC = () => {
                       </div>
                     </div>
                 </div>
-                <button className=' hover:text-white dark:bg-dark_Match_500
-                 shadow-light dark:shadow-dark 
+                <div className=' dark:text-orange-200 h-0'>
+                  {flasher==='Loading...'?
+                    <></>
+                  :
+                  <p>{flasher}</p>
+                  }
+                </div>
+                <button onClick={handle_signUP_action}
+                className=' hover:text-white dark:bg-dark_Match_500
+                 shadow-light dark:shadow-dark max-sm:mt-3
                  active:scale-90 transition-all font-thin'>Submit</button>
             </div>
          </div>
@@ -159,3 +299,5 @@ const Register:React.FC = () => {
 }
 
 export default Register
+
+// async await 

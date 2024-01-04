@@ -12,7 +12,7 @@ const Editable_InternShips:React.FC<CurrentProps>= (props) => {
     const {
         InternshipINFO,setIntenshipInfo,
         showIntershipAdder,setInterAdderShow,
-        
+        setSync,
         handlePopUp
     } = useContext<any>(GlobalContext)
     const Remove_This_Detail = (idx:number) =>{
@@ -20,6 +20,7 @@ const Editable_InternShips:React.FC<CurrentProps>= (props) => {
         save_intership_info_to_local
         ([...InternshipINFO.slice(0,idx),...InternshipINFO.slice(idx+1)])
         handlePopUp("Removed","Internship Detail")
+        setSync(true);
     }
   return (
     <div className={` bg-${props.bgCol}-400 w-[500px] max-sm:w-[300px] h-fit

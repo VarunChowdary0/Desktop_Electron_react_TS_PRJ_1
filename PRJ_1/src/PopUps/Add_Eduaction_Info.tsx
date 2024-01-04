@@ -14,7 +14,7 @@ const Add_Eduaction_Info:React.FC = () => {
 
     const {setShowEducationPopUp,
         EducationDetails,setEducationDetails,
-        handlePopUp} = useContext<any>(GlobalContext)
+        handlePopUp,setSync } = useContext<any>(GlobalContext)
     const closePopup =() =>{
         setShowEducationPopUp(false)
     }
@@ -38,6 +38,7 @@ const Add_Eduaction_Info:React.FC = () => {
                             save_Education_details_to_local([...EducationDetails,thisDetail])
                             closePopup();
                             handlePopUp("Added","Eduaction info");
+                            setSync(true)
                         }
                         else{
                             handleFlash()
@@ -90,12 +91,12 @@ const Add_Eduaction_Info:React.FC = () => {
         <div className=' flex relative flex-col gap-7'>
             <input  placeholder='Institute Name'
             onChange={(e)=>{setInstituteName(e.target.value)}} 
-            className='w-[80%] px-4 outline-none' type="text" value={institute_name}/>
+            className='w-[80%] px-4 outline-none text-black' type="text" value={institute_name}/>
            
            <div className=' relative'>
            <input  placeholder='Institute link'
             onChange={(e)=>{setLink(e.target.value)}} 
-            className='w-[80%] px-4 outline-none' type="text" value={link}/>
+            className='w-[80%] px-4 outline-none text-black' type="text" value={link}/>
            
                 <div className=' h-5 w-5 flex items-center justify-center
                  text-center bg-black/80 rounded-full 
@@ -118,15 +119,15 @@ const Add_Eduaction_Info:React.FC = () => {
 
             <input  placeholder='Branch'
             onChange={(e)=>{setBranch(e.target.value)}} 
-            className='w-[80%] px-4 outline-none' type="text" value={branch}/>
+            className='w-[80%] px-4 outline-none text-black' type="text" value={branch}/>
            
             <input  placeholder='Grade'
             onChange={(e)=>{setGrade(e.target.value)}} 
-            className='w-[80%] px-4 outline-none' type="text" value={Grade}/>
+            className='w-[80%] px-4 outline-none text-black' type="text" value={Grade}/>
          
             <input  placeholder='Address'
             onChange={(e)=>{setAddress(e.target.value)}} 
-            className='w-[80%] px-4 outline-none' type="text" value={Adderss}/>
+            className='w-[80%] px-4 outline-none text-black' type="text" value={Adderss}/>
            
             <div className=' flex w-[80%] flex-row 
             justify-between px-10 gap-4 max-sm:flex-col'>
@@ -135,7 +136,7 @@ const Add_Eduaction_Info:React.FC = () => {
                 id='startDateInput'
                 onFocus={handleFocus_2}
                 onChange={(e)=>{setFromDate(e.target.value)}} 
-                className=' w-[150px] px-4 outline-none' 
+                className=' w-[150px] px-4 outline-none text-black' 
                 type="text" value={fromDate}/>
 
                 <input  
@@ -150,7 +151,7 @@ const Add_Eduaction_Info:React.FC = () => {
                     id='endDateInput'
                     onBlur={handleBlur}
                     onChange={(e)=>{settoDate(e.target.value)}} 
-                    className='px-4 w-[150px] outline-none' 
+                    className='px-4 w-[150px] outline-none text-black'  
                     value={toDate}/>
             </div>
             <div className=' h-5 text-center text-red-500'>

@@ -42,6 +42,14 @@ export const save_contact_info_to_local = (CONT:object) => {
     localStorage.setItem("SM_Links",JSON.stringify(CONT));
 }
 
+export const save_email_in_local = (mail:string) =>{
+    localStorage.setItem("MyEmail",mail)
+}
+
+export const save_phonenumber_in_local = (ph:string)=>{
+    localStorage.setItem("MyPhone",ph);
+}
+
 export const isLink = (str:string) => {
     // console.log(str)
     if(

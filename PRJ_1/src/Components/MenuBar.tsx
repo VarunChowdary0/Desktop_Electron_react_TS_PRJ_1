@@ -13,7 +13,7 @@ export const MenuBar: React.FC = () => {
     setToggleMenuBar(!toggleMenuBar)
   }
   const {rout,setRout} = useContext<any>(GlobalContext);
-
+  const {isLoggedIn} = useContext<any>(UserInfoContext);
   const HandleRout = (rt:string) =>{
     setRout(rt);
     setToggleMenuBar(!toggleMenuBar)
@@ -25,7 +25,7 @@ export const MenuBar: React.FC = () => {
                 <>
                 <div className={` flex translate-x-[-20vw] fixed top-0 bottom-0 left-0
 			 max-sm:hidden
- 		   ${!toggleMenuBar && "translate-x-[0vw] w-screen"} transition-all `}>
+ 		   ${!toggleMenuBar && "translate-x-[0vw] w-screen"}  transition-all `}>
         <div className={` w-[20vw] shadow-xl rounded-md h-screen py-7 px-5 
          dark:bg-dark_Surface_400 dark:bg-dark_dark_300/30 pt-14
           dark:text-dark_Match_600 
@@ -62,12 +62,15 @@ export const MenuBar: React.FC = () => {
                         <p>Notify</p>
                     </a>
                 </div>
+                {!isLoggedIn
+                &&
                 <div className=' hover:scale-125 transition-all'>
                     <a className=' flex items-center gap-3' onClick={()=>{HandleRout("/register")}}>
                         <div></div>
                         <p>Register</p>
                     </a>  
                 </div>
+                }
             </div>
         </div>
             {

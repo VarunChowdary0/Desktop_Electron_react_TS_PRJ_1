@@ -11,6 +11,10 @@ const Settings:React.FC = () => {
             '/manage/edit_profile'
         )
     }
+    const LogOut = () =>{
+        localStorage.clear()
+        window.location.href='/';
+    }
   return (
     <div className=' fixed top-0 bottom-0 left-0 right-0
     flex items-center overflow-y-auto 
@@ -39,7 +43,7 @@ const Settings:React.FC = () => {
             </div>
         </div>
         <div className=' fixed bottom-10 max-sm:bottom-20 right-10'>
-            <button>Log Out</button>
+            <button onClick={LogOut}>Log Out</button>
         </div>
     </div>
   )

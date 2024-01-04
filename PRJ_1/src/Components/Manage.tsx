@@ -25,7 +25,7 @@ const Manage:React.FC = () => {
         showChangeProfilePopUp,setChangeProfileShow,
         showChangeOccupation,setChangeOccupationShow,
         whatHapped,toWho,handlePopUp,
-        showContactPopup,setshowContactPopup
+        showContactPopup,setshowContactPopup,setSync
             } = useContext<any>(GlobalContext)
     const {
         Skills,updateSkills,
@@ -38,6 +38,7 @@ const Manage:React.FC = () => {
         const updatedSkills = [...Skills.slice(0, idx), ...Skills.slice(idx + 1)];
         updateSkills(updatedSkills);
         handlePopUp("Removed","Skill")
+        setSync(true);
     };
       
     useEffect(()=>{
@@ -151,7 +152,7 @@ const Manage:React.FC = () => {
             </div>
             <div className=' h-[40%] w-full '>
                 <div className=' ml-[150px] pl-1 text-lg 
-                max-sm:ml-0 max-sm:mt-[70px]
+                max-sm:ml-0 max-sm:mt-[70px] text-black dark:text-white
                 font-light mt-2 flex items-center gap-3 justify-between '>
                     {name}
                     <div onClick={_ChangeName_}

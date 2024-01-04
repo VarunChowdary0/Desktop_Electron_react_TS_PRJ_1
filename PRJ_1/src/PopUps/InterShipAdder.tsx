@@ -15,7 +15,7 @@ const InterShipAdder:React.FC = () => {
   const {
     setInterAdderShow,
     InternshipINFO,setIntenshipInfo,
-    handlePopUp
+    handlePopUp,setSync
   } = useContext<any>(GlobalContext);
 
   const handleFocus = () => {
@@ -46,6 +46,7 @@ const InterShipAdder:React.FC = () => {
                 save_intership_info_to_local([...InternshipINFO,finalObj])
                 closePopup();
                 handlePopUp("Added","Internship Info")
+                setSync(true)
               }
               else{
                 handleFlash();

@@ -4,7 +4,7 @@ import CheckIcon from '../icons/CheckIcon';
 
 const ChangeName:React.FC = () => {
     const {setNamePopupView,
-        handlePopUp}=useContext<any>(GlobalContext);
+        handlePopUp,setSync}=useContext<any>(GlobalContext);
     const {name,setName} = useContext<any>(GlobalContext);
     const def_name = name;
     const [current_name,change_name] = useState(name);
@@ -16,6 +16,7 @@ const ChangeName:React.FC = () => {
         handlePopUp("Changed","Name");
         closePopup();
         localStorage.setItem("myName",current_name);
+        setSync(true)
     }
   return (
     <>

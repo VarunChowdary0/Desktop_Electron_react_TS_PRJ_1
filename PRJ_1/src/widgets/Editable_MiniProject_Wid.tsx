@@ -6,7 +6,7 @@ import Add_new_Project_popUP from '../PopUps/Add_new_Project_popUP';
 import { save_projects_to_local } from '../Functions/Manage_Functions';
 
 const Editable_MiniProject_Wid:React.FC = () => {
-    const {ProjectDetails,setProjects,
+    const {ProjectDetails,setProjects,setSync,
         showAddProjectPopUp,setShowAddProjectPOPup
         ,handlePopUp} = useContext<any>(GlobalContext);
     
@@ -14,6 +14,7 @@ const Editable_MiniProject_Wid:React.FC = () => {
         setProjects([...ProjectDetails.slice(0,idx),...ProjectDetails.slice(idx+1)])
         save_projects_to_local([...ProjectDetails.slice(0,idx),...ProjectDetails.slice(idx+1)])
         handlePopUp("Removed","Project")
+        setSync(true);
     }
   return (
     <div className={` bg-${'white'}-400 w-[500px] max-sm:w-[300px] 

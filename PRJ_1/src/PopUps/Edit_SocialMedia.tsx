@@ -9,7 +9,7 @@ interface currentEdit {
 const Edit_SocialMedia:React.FC<currentEdit> = (prop) => {
     const {
         Links,SET_LINKS,handlePopUp,icons_Store,
-        setShowEditPlatform} = useContext<any>(GlobalContext)
+        setShowEditPlatform,setSync} = useContext<any>(GlobalContext)
 
     const [CurrentLink,setLink] = useState<string>(Links[prop.NAME].link)
     // useEffect(()=>{
@@ -25,6 +25,7 @@ const Edit_SocialMedia:React.FC<currentEdit> = (prop) => {
         console.log("Modified: ",ads)
         SET_LINKS(ads);
         save_coding_links_to_local(ads);
+        setSync(true)
         if(CurrentLink.trim()===""){
             handlePopUp("Removed",prop.NAME)
             closePopup();
@@ -38,6 +39,7 @@ const Edit_SocialMedia:React.FC<currentEdit> = (prop) => {
             handlePopUp(prop.NAME,"Invalid Link ")
         }
     }
+    console.log(Links)
   return (
     <>
         <div onClick={closePopup} className='fixed top-0 bottom-0 left-0 right-0 backdrop-blur-sm z-10

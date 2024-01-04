@@ -15,18 +15,22 @@
     "host": "vite --host"
   },
   "dependencies": {
+    "axios": "^1.6.3",
     "electron-is-dev": "^2.0.0",
+    "ldrs": "^1.0.1",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.0",
     "sort-by": "^1.2.0",
+    "uuid": "^9.0.1",
     "vite-tsconfig-paths": "^4.2.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
+    "@types/uuid": "^9.0.7",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
     "@typescript-eslint/parser": "^6.6.0",
     "@vitejs/plugin-react": "^4.0.4",

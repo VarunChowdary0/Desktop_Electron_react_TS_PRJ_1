@@ -7,9 +7,11 @@ import Manage from './Components/Manage';
 import Register from './Components/Part_2_Components/Register';
 import { errorImage } from './assets/Resources';
 import Settings from './Components/Part_2_Components/Settings';
+import WholeLoader_11 from './Components/WholeLoader_11';
+
 
 const Router = () => {
-  const { rout } = useContext<any>(GlobalContext);
+  const { rout , WholeLoader } = useContext<any>(GlobalContext);
   const [content, setContent] = useState<React.ReactNode | null>(null);
   useEffect(()=>{
     //window.scroll(0,0);
@@ -71,7 +73,10 @@ const Router = () => {
     }
   }, [rout]);
 
-  return <>{content}</>;
+  return <>
+  {WholeLoader&&(rout!=='/')&&<WholeLoader_11/>}
+  {content}
+  </>;
 };
 
 export default Router;

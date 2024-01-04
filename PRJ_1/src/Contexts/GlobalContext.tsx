@@ -104,6 +104,13 @@ interface ProfileUI_colors{
     setAboutBG : React.Dispatch<React.SetStateAction<string>>;
     isDarkMode : boolean;
     setDarkMode : React.Dispatch<React.SetStateAction<boolean>>;
+    
+    WholeLoader : boolean;
+    setWholeLoader : React.Dispatch<React.SetStateAction<boolean>>;
+
+    doISync:boolean
+    setSync:React.Dispatch<React.SetStateAction<boolean>>;
+
 }
 
 
@@ -131,18 +138,16 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
             setShow(false);
             setWhatHappended("")
             setToWho("")
-        },1300)
+        },2000)
     }
 
 
     //------------| Profile | ---------------
-    const [name,setName] = useState(localStorage.getItem('myName')||"Sai Varun Chowdary Poludasu");
-    const [occupation,setOccupation] = useState(localStorage.getItem('myOccupation')||"Software Engineer");
+    const [name,setName] = useState(localStorage.getItem('myName')||"MY NAME");
+    const [occupation,setOccupation] = useState(localStorage.getItem('myOccupation')||"MY OCCUPATION");
     const storedSkills = localStorage.getItem("mySkills");
     const defaultSkills = [
-    'Web', 'React', 'Node', 'MongoDB', 'MERN', 'Python', 'Linux',
-    'Java', 'Electron Js', 'Javascript', 'html', 'css',
-    'Tailwind css', 'Machine Learning'
+    'Skill-1','Skill-2','Skill-3','Skill-4','Skill-5','Skill-6','Skill-7'
     ];
     const [showNamePopup,setNamePopupView] = useState<boolean>(false)
     const [showAddSkillPopUp,setAddSkillPopupView] = useState<boolean>(false)
@@ -161,27 +166,27 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
     const default_education =
     [
         {
-            institue_name : "INSTITUTE OF AREONAUTICAL ENGINEERING",
-            institue_site : "https://www.iare.ac.in/",
-            branch : "COMPUTER SCIENCE ENGINNERING",
-            Grade : "8.6",
-            address : "HYDERBAD , DHUNDIGAL",
+            institue_name : "INSTITUTE OF ABC ENGINEERING",
+            institue_site : "https://www.Institite_ABC.com/",
+            branch : "ABC ENGINNERING",
+            Grade : "x.x",
+            address : "MY INSTITUTE ADDRE",
             time_of_study : "2022-11 to 2026-05"
         },
         {
-            institue_name : "KRISHNAVENI JUNIOR COLLAGE",
-            institue_site : "https://www.justdial.com/Khammam/Krishnaveni-Jr-College-Kothagudem/9999P8742-8742-190823153217-L2L3_BZDET",
-            branch : "M P C",
+            institue_name : "XYZ COLLAGE",
+            institue_site : "https://www.XYZ_COLLAGE.com",
+            branch : "X Y X",
             Grade : "96% [ 960 / 1000 ]",
-            address : "KOTHAGUDEM LAXSMIDEVI PALLY",
+            address : "MY COLLAGE ADDRESS",
             time_of_study : "2020-03 to 2022-05"
         },
         {
-            institue_name : "TRIVENI TALENT SCHOOL",
-            institue_site : "https://trivenitalentschools.com/",
+            institue_name : "HAPPY LEARN SCHOOL",
+            institue_site : "https://HAPPY_SCHOOLS.com/",
             branch : "SSC 10TH BOARD",
-            Grade : "10",
-            address : "KOTHAGUDEM LAXSMIDEVI PALLY",
+            Grade : "A++",
+            address : "MY SCHOOL ADDRESS",
             time_of_study : "2011 to  2020"
         }
     ]
@@ -312,14 +317,16 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
             localDarkStatus ? JSON.parse(localDarkStatus) : false
         )
 
+        const [WholeLoader,setWholeLoader] = useState(false);
+
+        const [doISync,setSync] = useState(false);
     return (
         <GlobalContext.Provider
             value={{
                 rout,setRout,
-                name,
+                name,setName,
                 showNamePopup,
                 setNamePopupView,
-                setName,
                 Skills,updateSkills,
                 showAddSkillPopUp,setAddSkillPopupView,
                 occupation,setOccupation,
@@ -348,7 +355,9 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
                 toWho,setToWho,
                 show,setShow,
                 handlePopUp,
-                isDarkMode,setDarkMode
+                isDarkMode,setDarkMode,
+                WholeLoader,setWholeLoader,
+                doISync,setSync
             }}>
                 {children}
             </GlobalContext.Provider>

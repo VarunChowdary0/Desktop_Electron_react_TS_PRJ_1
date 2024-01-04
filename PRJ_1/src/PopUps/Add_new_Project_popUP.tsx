@@ -12,7 +12,7 @@ const Add_new_Project_popUP:React.FC = () => {
     const [Prj_des,setPrjDEs] = useState<string>("");
 
     const {ProjectDetails , setProjects,handlePopUp,
-        setShowAddProjectPOPup} = useContext<any>(GlobalContext)
+        setShowAddProjectPOPup,setSync} = useContext<any>(GlobalContext)
     const closePopup = () => {
         setShowAddProjectPOPup(false)
     }
@@ -31,6 +31,7 @@ const Add_new_Project_popUP:React.FC = () => {
                 save_projects_to_local([...ProjectDetails,FinalObj])
                 closePopup();
                 handlePopUp("Added","Project")
+                setSync(true)
             }
             else{
                 handleFlash()

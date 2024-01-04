@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../Contexts/GlobalContext';
 import CheckIcon from '../icons/CheckIcon';
-import { save_contact_info_to_local } from '../Functions/Manage_Functions';
+import { save_contact_info_to_local, save_email_in_local, save_phonenumber_in_local } from '../Functions/Manage_Functions';
 import Linked_in from '../icons/Linked_in';
 import InstagramIcon from '../icons/InstagramIcon';
 import FacebookIcon from '../icons/FacebookIcon';
@@ -16,7 +16,7 @@ const Edit_ContactINFO_popUp:React.FC = () => {
         email,setEmail,
         phoneNumber,setPhoneNum,
         setshowContactPopup,
-        handlePopUp
+        handlePopUp,setSync
     } = useContext<any>(GlobalContext)
     const [isChanged,setChange] = useState(false)
     const [curr_insta,setCur_insta] = useState<string>(SocialMediaLinks.instagram)
@@ -44,8 +44,11 @@ const Edit_ContactINFO_popUp:React.FC = () => {
         }
         closePopup();
         save_contact_info_to_local(final_OBJ);
+        save_email_in_local(email)
+        save_phonenumber_in_local(phoneNumber)
         handlePopUp("Contact info","Changed")
         setSocialMediaLinks(final_OBJ);
+        setSync(true);
     }
     const closePopup = () =>{
         setshowContactPopup(false)
@@ -67,7 +70,7 @@ const Edit_ContactINFO_popUp:React.FC = () => {
                     </div>
                     <input placeholder='Email address'
                     onChange={(e)=>{setEmail(e.target.value)}} 
-                    className='max-sm:text-sm w-[400px] px-4 outline-none' type="text" value={email}/>
+                    className='max-sm:text-sm w-[400px] px-4 outline-none text-black' type="text" value={email}/>
                 </div>
                 <div className=' flex'>
                     <div className=' w-[100px]'>
@@ -76,7 +79,7 @@ const Edit_ContactINFO_popUp:React.FC = () => {
                         </div>
                     </div>
                     <input onChange={(e)=>{setPhoneNum(e.target.value)}} 
-                    className='max-sm:text-sm w-[400px]  outline-none ' type="text" value={phoneNumber}/>
+                    className='max-sm:text-sm w-[400px]  text-black  outline-none ' type="text" value={phoneNumber}/>
                 </div>
                  <div className=' flex gap-2'>
                     <div className=' w-[80px]'>
@@ -85,7 +88,8 @@ const Edit_ContactINFO_popUp:React.FC = () => {
                         </div>
                     </div>
                     <input onChange={(e)=>{setCur_linkdin(e.target.value)}} 
-                    className='w-[400px] px-4 outline-none text-blue-400' type="text" value={curr_linkdin}/>
+                    placeholder='Linked in '
+                    className='w-[400px] px-2 outline-none text-blue-400' type="text" value={curr_linkdin}/>
                 </div>
                  <div className=' flex gap-2'>
                     <div className=' w-[80px]'>
@@ -94,7 +98,9 @@ const Edit_ContactINFO_popUp:React.FC = () => {
                         </div>
                     </div>
                     <input onChange={(e)=>{setCur_insta(e.target.value)}} 
-                    className='max-sm:text-sm w-[400px] px-4 outline-none text-blue-400' type="text" value={curr_insta}/>
+                    placeholder='Instagram'
+                    className='max-sm:text-sm w-[400px] px-2
+                     outline-none text-blue-400' type="text" value={curr_insta}/>
                 </div>
                  
                 <div className=' flex gap-2'>
@@ -104,7 +110,9 @@ const Edit_ContactINFO_popUp:React.FC = () => {
                         </div>
                     </div>
                     <input onChange={(e)=>{setCur_FB(e.target.value)}} 
-                    className='max-sm:text-sm w-[400px] px-4 outline-none text-blue-400' type="text" value={curr_FB}/>
+                    placeholder='Facebook'
+                    className='max-sm:text-sm w-[400px]
+                     px-2 outline-none text-blue-400' type="text" value={curr_FB}/>
                 </div>
                  <div className=' flex gap-2'>
                     <div className=' w-[80px]'>
@@ -113,7 +121,9 @@ const Edit_ContactINFO_popUp:React.FC = () => {
                         </div>
                     </div>
                     <input onChange={(e)=>{setCur_twitt(e.target.value)}} 
-                    className='max-sm:text-sm w-[400px] px-4 outline-none text-blue-400' type="text" value={curr_twitt}/>
+                    placeholder='twitter'
+                    className='max-sm:text-sm w-[400px] px-2
+                     outline-none text-blue-400' type="text" value={curr_twitt}/>
                 </div>
                  {
                     <abbr title="click to save">

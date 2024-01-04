@@ -22,11 +22,11 @@ const Eduacation:React.FC<CurrentProps> = () => {
                      dark:text-dark_Match_600
                     font-semibold text-[#3e3e3e]'>
                         {ele.institue_name}</a>  
-                    <div className=' flex '>
+                    <div className=' flex items-center '>
                         <div className=' text-[#515050]
                          dark:text-white mt-2
                         mr-3' >{ele.branch}</div>
-                        <div className=' flex flex-row gap-2'>
+                        <div className=' flex flex-row gap-2 mt-2'>
                             <span>CGPA -</span>
                             <span>{ele.Grade}</span>
                         </div>

@@ -6,7 +6,7 @@ import PenIcon from '../icons/PenIcon'
 export const Editabel_Social_Media:React.FC = () => {
   const {
     Links,
-    icons_Store,
+    icons_Store,setSync,
     showEdiatPlatForm,setShowEditPlatform
     } = useContext<any>(GlobalContext)
     const [Currnent_Edit,setCurrnetEdit] = useState<string>("Git_hub")
@@ -14,6 +14,7 @@ export const Editabel_Social_Media:React.FC = () => {
     setShowEditPlatform(true);
     setCurrnetEdit(x);
     // console.log(Links[x])
+    setSync(true)
   } 
   return (
     <div className=' w-[500px] 
@@ -27,7 +28,7 @@ export const Editabel_Social_Media:React.FC = () => {
         text-[#1cceff]  text-2xl'>Technical Platforms</h1>
               {Object.keys(Links).map((socialMedia) => {
                   const linkData = Links[socialMedia];
-
+                  if (socialMedia!=="_id"){
                   return (
                     <div key={socialMedia} className='scale-125 max-sm:pr-[80px] flex relative items-center justify-center'>
                       <div className='bg-black/0 py-1 max-h-7 rounded-lg w-[50%] flex flex-row items-center gap-5 pl-5'>
@@ -65,7 +66,8 @@ export const Editabel_Social_Media:React.FC = () => {
                           </div>
                         </div>
                       );
-                    })}
+                  }
+                })}
 
       </div>
       <div className={` bg-gradient-to-r from-green-500 to-yellow-500`}></div>
