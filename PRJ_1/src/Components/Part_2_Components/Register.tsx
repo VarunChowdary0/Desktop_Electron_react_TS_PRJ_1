@@ -15,7 +15,7 @@ const Register:React.FC = () => {
     const [RegisterMode,setRegisterMode] = useState<string>("login");
     const [isShowPassword,setShowPassword] = useState<boolean>(false);
     const {setRout,handlePopUp,setEmail,isDarkMode} = useContext<any>(GlobalContext);
-    const {setLoggedin} = useContext<any>(UserInfoContext);
+    const {setLoggedin,setUserName} = useContext<any>(UserInfoContext);
     const [flasher,setFlasher] = useState<string>("");
 
     const [username,setUsername] = useState<string>("");
@@ -77,6 +77,7 @@ const Register:React.FC = () => {
                 localStorage.setItem("USER_UID",RESPONSE.error)
                 localStorage.setItem("isLoggedIN",JSON.stringify(true));
                 setLoggedin(true)
+                setUserName(username)
                 setTimeout(()=>{
                     setRout('/manage/edit_profile')
                 },1000)

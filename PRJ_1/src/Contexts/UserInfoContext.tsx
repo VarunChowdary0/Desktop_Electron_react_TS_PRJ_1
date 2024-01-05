@@ -7,10 +7,15 @@ interface logStatus{
 interface USER_UID{
     USER_UID : string;
 }
+interface username{
+    username:string
+    setUserName:React.Dispatch<React.SetStateAction<string>>;
+}
 
 interface UserInfoContextType extends 
 logStatus,
-USER_UID
+USER_UID,
+username
 {}
 
 
@@ -30,12 +35,14 @@ const UserInfoContextProvider:React.FC<UserInfoContextProviderProps> = ({childre
     );
 
     const USER_UID = localStorage.getItem('USER_UID') || "N-A";
-
+    const [username,setUserName] = useState(localStorage.getItem('username') || "username") ; 
 
     return (
         <UserInfoContext.Provider
             value = {{
                 isLoggedIn,
+                username,
+                setUserName,
                 setLoggedin,
                 USER_UID
             }}

@@ -39,6 +39,7 @@ export const LoginToUser = (username:string,password:string ) => {
         .then((res)=>{
             console.log(res.data) 
             if(res.data.message === "OK"){
+                localStorage.setItem('username',username);
                 return { status : true , error : res.data.USER_UID }
             }
             else{

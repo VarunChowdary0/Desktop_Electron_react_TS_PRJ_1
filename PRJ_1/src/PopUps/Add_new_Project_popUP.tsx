@@ -63,12 +63,12 @@ const Add_new_Project_popUP:React.FC = () => {
         <div className=' flex relative flex-col gap-7'>
             <input  placeholder='Project Title'
             onChange={(e)=>{setTitle(e.target.value)}} 
-            className='w-[80%] px-4 outline-none' type="text" value={TitleOfPRJ}/>
+            className='w-[80%] px-4 outline-none text-black' type="text" value={TitleOfPRJ}/>
            
            <div className=' relative'>
             <input  placeholder='Deployed link of Project'
                 onChange={(e)=>{setLink(e.target.value)}} 
-                className='w-[80%] px-4 outline-none' type="text" value={link}/>
+                className='w-[80%] px-4 outline-none  text-black' type="text" value={link}/>
            
                 <div className=' h-5 w-5 flex items-center justify-center
                  text-center bg-black/80 rounded-full 
@@ -92,10 +92,10 @@ const Add_new_Project_popUP:React.FC = () => {
             <div className=' relative'>
                 <input  placeholder='Github / Source code [ frontend ]'
                 onChange={(e)=>{setFrontEndLink(e.target.value)}} 
-                className='w-[80%] px-4 outline-none' type="text" value={FrontEndLink}/>
+                className='w-[80%] text-black px-4 outline-none' type="text" value={FrontEndLink}/>
                 <div className=' h-5 w-5 flex items-center justify-center
                  text-center bg-black/80 rounded-full 
-                  absolute right-5 top-1
+                  absolute right-5 top-1 
                  '>
                     {
                         (isLink(FrontEndLink))?
@@ -115,7 +115,7 @@ const Add_new_Project_popUP:React.FC = () => {
             <div className=' relative'>
             <input  placeholder='Github / Source code [ backend ]'
             onChange={(e)=>{setbackEndLink(e.target.value)}} 
-            className='w-[80%] px-4 outline-none' type="text" value={backEndLink}/>
+            className='w-[80%] px-4 outline-none text-black' type="text" value={backEndLink}/>
 
                 <div className=' h-5 w-5 flex items-center justify-center
                  text-center bg-black/80 rounded-full 
@@ -139,7 +139,7 @@ const Add_new_Project_popUP:React.FC = () => {
          
             <input  placeholder='Project Description'
             onChange={(e)=>{setPrjDEs(e.target.value)}} 
-            className='w-[80%] px-4 outline-none' type="text" value={Prj_des}/>
+            className='w-[80%] px-4 outline-none text-black' type="text" value={Prj_des}/>
            
             <div className=' h-5 text-center text-red-500'>
                 <p>{flash}</p>

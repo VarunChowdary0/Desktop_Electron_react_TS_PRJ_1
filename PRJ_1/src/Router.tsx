@@ -6,6 +6,7 @@ import Manage from './Components/Manage';
 import Register from './Components/Part_2_Components/Register';
 import Settings from './Components/Part_2_Components/Settings';
 import WholeLoader_11 from './Components/WholeLoader_11';
+import ViewStats from './Components/Part_3_Components/ViewStats';
 
 
 const Router = () => {
@@ -42,6 +43,11 @@ const Router = () => {
     else if(rout === '/register'){
       setContent(
         <Register/>
+      )
+    }
+    else if(rout === '/stats'){
+      setContent(
+        <ViewStats/>
       )
     }
     else {

@@ -11,6 +11,11 @@ const Settings:React.FC = () => {
             '/manage/edit_profile'
         )
     }
+    const Open_Stats = () => {
+        setRout(
+            '/stats'
+        )
+    }
     const LogOut = () =>{
         localStorage.clear()
         window.location.href='/';
@@ -38,6 +43,16 @@ const Settings:React.FC = () => {
           max-sm:h-[50px] gap-10 justify-around transition-all
         dark:bg-dark_dark_200/50 active:scale-95'>
             <p>Theam</p>
+            <div className=' hover:cursor-pointer'>
+                <DarkMode/>
+            </div>
+        </div>
+        <div onClick={Open_Stats}
+        className=' w-[80%]  h-[60px] shadow-md bg-white
+         rounded-lg flex items-center px-5 max-sm:w-[90%]
+          max-sm:h-[50px] gap-10 justify-around transition-all
+        dark:bg-dark_dark_200/50 active:scale-95'>
+            <p>Statistics</p>
             <div className=' hover:cursor-pointer'>
                 <DarkMode/>
             </div>
