@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { GlobalContext } from './Contexts/GlobalContext';
 import Profile from './Components/Profile';
 import HomePage from './Components/HomePage';
-import TestPage from './Components/TestPage';
 import Manage from './Components/Manage';
 import Register from './Components/Part_2_Components/Register';
 import Settings from './Components/Part_2_Components/Settings';
@@ -28,11 +27,6 @@ const Router = () => {
     else if(rout === '/home'){
         setContent(
             <HomePage/>
-        )
-    }
-    else if(rout === '/test'){
-        setContent(
-            <TestPage/>
         )
     }
     else if(rout === '/manage'){

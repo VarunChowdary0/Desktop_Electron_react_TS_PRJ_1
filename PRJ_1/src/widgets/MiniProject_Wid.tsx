@@ -67,7 +67,7 @@ const MiniProject_Wid:React.FC = () => {
                 </div>
             )}
         </div>
-       { (project_limit !== ProjectDetails.length) &&
+       { (project_limit !== ProjectDetails.length && (ProjectDetails.length-project_limit > 0)) &&
        <>
             <div className=' mt-4'>+{ProjectDetails.length-project_limit}</div>
             <div className=' flex justify-center mt-8 mb-5'>
