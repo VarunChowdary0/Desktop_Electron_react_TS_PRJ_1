@@ -5,7 +5,6 @@ import HomePage from './Components/HomePage';
 import TestPage from './Components/TestPage';
 import Manage from './Components/Manage';
 import Register from './Components/Part_2_Components/Register';
-import { errorImage } from './assets/Resources';
 import Settings from './Components/Part_2_Components/Settings';
 import WholeLoader_11 from './Components/WholeLoader_11';
 
@@ -66,7 +65,7 @@ const Router = () => {
           src="https://cdnl.iconscout.com/lottie/premium/thumb/404-page-5565540-4650907.mp4"
           loop autoPlay></video>
           <img className=' invisible h-0 dark:visible dark:h-fit' 
-          src={errorImage} alt="NOT FOUND" />
+          src="https://i.postimg.cc/4yK7wfPY/error-404-1-dark.png" alt="NOT FOUND" />
         </div>
       </div>
       );

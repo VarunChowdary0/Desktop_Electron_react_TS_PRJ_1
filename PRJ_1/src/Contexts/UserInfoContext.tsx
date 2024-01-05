@@ -31,6 +31,7 @@ const UserInfoContextProvider:React.FC<UserInfoContextProviderProps> = ({childre
 
     const USER_UID = localStorage.getItem('USER_UID') || "N-A";
 
+
     return (
         <UserInfoContext.Provider
             value = {{

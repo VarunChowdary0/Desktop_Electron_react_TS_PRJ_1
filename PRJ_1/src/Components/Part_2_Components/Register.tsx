@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import PasswordIcon from '../../icons/PasswordIcon';
 import EyeIcon from '../../icons/EyeIcon';
-import { DarkFounderLogo, LightFounderLogo } from '../../assets/Resources';
+// import { DarkFounderLogo, LightFounderLogo } from '../../assets/Resources';
 import DarkMode from '../../Functions/DarkMode';
 import { GlobalContext } from '../../Contexts/GlobalContext';
 import { CreateNewUserAccount, LoginToUser } from '../../Controllers/RegisterController';
@@ -124,8 +124,8 @@ const Register:React.FC = () => {
         </div>
         <div className="">
           <div className=" w-[60px]">
-            <img className=" rounded-full invisible h-0 dark:visible dark:h-fit" src={DarkFounderLogo} alt="" />
-            <img className=" rounded-full dark:hidden" src={LightFounderLogo} alt="" />
+            <img className=" rounded-full invisible h-0 dark:visible dark:h-fit" src={"https://i.postimg.cc/rszwWXm5/Founder-Logo-Dark.png"} alt="" />
+            <img className=" rounded-full dark:hidden" src="https://i.postimg.cc/Nj6P6KZk/Founder-LOGO-light.png" alt="" />
           </div>
         </div>
       </div>

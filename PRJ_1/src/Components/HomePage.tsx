@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react"
 import { UserInfoContext } from "../Contexts/UserInfoContext"
 import { GlobalContext } from "../Contexts/GlobalContext";
-import { DarkFounderLogo, LightFounderLogo } from "../assets/Resources";
+// import { DarkFounderLogo, LightFounderLogo } from "../assets/Resources";
 
 const HomePage = () => {
   const {isLoggedIn} = useContext<any>(UserInfoContext);
@@ -38,10 +38,10 @@ const HomePage = () => {
          flex items-center
         bottom-20 dark:text-dark_Match_500">
           from 
-          <div className=" w-[100px]">
-            <img className=" invisible h-0 dark:visible dark:h-fit" src={DarkFounderLogo} alt="" />
-            <img className=" dark:hidden" src={LightFounderLogo} alt="" />
-          </div>
+         { <div className=" w-[100px]">
+            <img className=" invisible h-0 dark:visible dark:h-fit" src={"https://i.postimg.cc/rszwWXm5/Founder-Logo-Dark.png"} alt="" />
+            <img className=" dark:hidden" src="https://i.postimg.cc/Nj6P6KZk/Founder-LOGO-light.png" alt="" />
+          </div>}
         </div>
     </div>
     </div>

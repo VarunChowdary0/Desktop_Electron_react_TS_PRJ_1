@@ -20,6 +20,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
+  // "exclude" :[
+  //   "node_modules/vite-plugin-vue2",
+  //   // ... other excluded paths
+  // ],
   "include": ["src", "electron"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
