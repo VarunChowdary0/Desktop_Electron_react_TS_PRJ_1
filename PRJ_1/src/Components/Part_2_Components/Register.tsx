@@ -14,7 +14,7 @@ lineWobble.register();
 const Register:React.FC = () => {
     const [RegisterMode,setRegisterMode] = useState<string>("login");
     const [isShowPassword,setShowPassword] = useState<boolean>(false);
-    const {setRout,handlePopUp,setEmail} = useContext<any>(GlobalContext);
+    const {setRout,handlePopUp,setEmail,isDarkMode} = useContext<any>(GlobalContext);
     const {setLoggedin} = useContext<any>(UserInfoContext);
     const [flasher,setFlasher] = useState<string>("");
 
@@ -196,7 +196,7 @@ const Register:React.FC = () => {
                         stroke={"5"}
                         bg-opacity={"0.1"}
                         speed={"1.75"}
-                        color={"white"}
+                        color={isDarkMode?"white":"#bd8dfd"}
                 ></l-line-wobble>
                   :
                   <p>{flasher}</p>
@@ -270,7 +270,18 @@ const Register:React.FC = () => {
                 </div>
                 <div className=' dark:text-orange-200 h-0'>
                   {flasher==='Loading...'?
-                    <></>
+                    <>
+                    {flasher==='Loading...'?
+                  <l-line-wobble
+                          size={"80"}
+                          stroke={"5"}
+                          bg-opacity={"0.1"}
+                          speed={"1.75"}
+                          color={isDarkMode?"white":"#bd8dfd"}
+                  ></l-line-wobble>
+                  :
+                  <p>{flasher}</p>
+                  }</>
                   :
                   <p>{flasher}</p>
                   }
