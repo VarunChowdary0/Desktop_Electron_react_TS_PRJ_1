@@ -8,7 +8,8 @@ const FetchUserData:React.FC = () => {
     // const URL = "http://localhost:9898/"; // local
     // const URL = "http://20.20.18.189:9898/" // collage
     // const URL = "http://192.168.58.7:9898/" // hostel
-    const URL = "https://rezzumy-server-897988-assbjksa-23.vercel.app/" // hostel
+    const URL = "https://rezzumy-server-897988-assbjksa-23.vercel.app/" // dep
+    // const URL = "https://rezzumy-server-2422bkbj-4ewfe.onrender.com/" // dep-2
 
     // WHEN LOGGED_IN FETCH USER's PERVIOUS- 
     // -DATA AND SET IT IN RESPECTIVE LOCAL STORAGES
