@@ -54,7 +54,7 @@ const Settings:React.FC = () => {
         dark:bg-dark_dark_200/50 active:scale-95'>
             <p>Statistics</p>
             <div className=' hover:cursor-pointer'>
-                <DarkMode/>
+                {/* <DarkMode/> */}
             </div>
         </div>
         <div className=' fixed bottom-10 max-sm:bottom-20 right-10'>
