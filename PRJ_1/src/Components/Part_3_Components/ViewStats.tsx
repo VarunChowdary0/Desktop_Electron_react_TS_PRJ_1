@@ -16,21 +16,22 @@ const ViewStats:React.FC = () => {
         <div className=' w-[80%] h-[300px] 
          max-md:flex-col max-md:h-fit
          border-[1px] flex bg-white dark:bg-dark_dark_200/90
-          rounded-r-[20px] max-sm:gap-14
+          rounded-r-[20px] max-sm:gap-14 right_bottom_shadow
            rounded-[50vh] items-center gap-10
         shadow-xl dark:border-none transition-all'>
             <div className=' h-[320px] w-[320px] dark:bg-dark_dark_100
              bg-[#eae8ed]
             rounded-full flex items-center justify-center'>
-                <div className=' w-[300px] h-[300px] bg-[#3c3c3c]
+                <div className=' max-md:w-[300px] max-md:h-[300px] 
+                h-[100%] w-[100%] bg-[#3c3c3c]
                 overflow-hidden rounded-full  '>
                     <img className=' select-none hover:scale-110 transition-all' src={profileLink}/>
                 </div>
             </div>
             <div className=' flex items-center flex-1 
-             justify-around max-md:flex-col gap-10'>
+             justify-around  max-md:flex-col gap-10'>
                 <div className='
-                 max-sm:pl-5
+                 max-sm:pl-5 max-sm:items-end max-sm:px-3
                 bg-black/0 flex flex-col gap-3'>
                     <p className=' text-2xl
                     max-sm:text-xl

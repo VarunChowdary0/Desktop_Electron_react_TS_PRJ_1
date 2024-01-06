@@ -57,8 +57,9 @@ const Settings:React.FC = () => {
                 {/* <DarkMode/> */}
             </div>
         </div>
-        <div className=' fixed bottom-10 max-sm:bottom-20 right-10'>
-            <button onClick={LogOut}>Log Out</button>
+        <div className=' rounded-full fixed bottom-10 max-sm:bottom-20 right-10 
+        border-[2px] dark:border-[1px] hover:border-none'>
+            <button  onClick={LogOut}>Log Out</button>
         </div>
     </div>
   )
