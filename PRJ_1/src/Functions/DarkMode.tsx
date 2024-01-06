@@ -24,9 +24,9 @@ const DarkMode:React.FC = () => {
               </div>
             </div>
             :
-            <div className=' relative'>
+            <div className='__Skill__ relative'>
               <MoonIcon/>
-              <div className=' absolute bottom-[-37px] rounded-lg px-2 py-1 
+              <div className='__Remove__ absolute bottom-[-37px] rounded-lg px-2 py-1 
               bg-black/30 text-white'>
                 Nox!
               </div>
