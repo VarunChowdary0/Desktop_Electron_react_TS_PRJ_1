@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import ProfileIcon from '../../icons/MenuIcons/ProfileIcon'
 import { GlobalContext } from '../../Contexts/GlobalContext'
 import DarkMode from '../../Functions/DarkMode';
+import Stat_Pie_Icon from '../../icons/MenuIcons/Stat_Pie_Icon';
 
 const Settings:React.FC = () => {
     const {setRout} = useContext<any>(GlobalContext);
@@ -22,7 +23,7 @@ const Settings:React.FC = () => {
     }
   return (
     <div className=' fixed top-0 bottom-0 left-0 right-0
-    flex items-center overflow-y-auto 
+    flex items-center overflow-y-auto max-sm:text-sm
      bg-[#ebebeb] dark:bg-dark_dark_100
     dark:text-white px-5 py-[80px] flex-col gap-10' >
         <div onClick={Open_Profile_Settings}
@@ -30,10 +31,8 @@ const Settings:React.FC = () => {
          rounded-lg flex items-center px-5 max-sm:w-[90%]
           max-sm:h-[50px] gap-10 justify-around active:scale-95
         dark:bg-dark_dark_200/50 transition-all'>
-            <p>Edit Frofile</p>
-            <div className=' p-2  rounded-lg 
-            border-[#dcdcdc]
-            border-[1px] dark:border-[#272727]'>
+            <p className=' w-fit'>Edit Frofile</p>
+            <div className=' hover:cursor-pointer'>
                 <ProfileIcon current={true}/>
             </div>
         </div>
@@ -42,7 +41,7 @@ const Settings:React.FC = () => {
          rounded-lg flex items-center px-5 max-sm:w-[90%]
           max-sm:h-[50px] gap-10 justify-around transition-all
         dark:bg-dark_dark_200/50 active:scale-95'>
-            <p>Theam</p>
+            <p className=' w-fit'>Theam</p>
             <div className=' hover:cursor-pointer'>
                 <DarkMode/>
             </div>
@@ -52,9 +51,9 @@ const Settings:React.FC = () => {
          rounded-lg flex items-center px-5 max-sm:w-[90%]
           max-sm:h-[50px] gap-10 justify-around transition-all
         dark:bg-dark_dark_200/50 active:scale-95'>
-            <p>Statistics</p>
+            <p className=' w-fit'>Statistics</p>
             <div className=' hover:cursor-pointer'>
-                {/* <DarkMode/> */}
+                <Stat_Pie_Icon/>
             </div>
         </div>
         <div className=' rounded-full fixed bottom-10 max-sm:bottom-20 right-10 

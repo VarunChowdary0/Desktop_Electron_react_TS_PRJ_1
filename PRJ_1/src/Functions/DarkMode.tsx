@@ -14,11 +14,23 @@ const DarkMode:React.FC = () => {
         <div onClick={ToggleDarkMode}
         className='z-50 h-8 w-8
          flex items-center justify-center
-        bg-[#8364f2] rounded-md '>
+        bg-[] rounded-md '>
             {(isDarkMode)?
-            <SunIcon/>
+            <div className='__Skill__ relative'>
+              <SunIcon/>
+              <div className='__Remove__ absolute bottom-[-37px] rounded-lg px-2 py-1 
+              dark:bg-white/30'>
+                Lumos!
+              </div>
+            </div>
             :
-            <MoonIcon/>
+            <div className=' relative'>
+              <MoonIcon/>
+              <div className=' absolute bottom-[-37px] rounded-lg px-2 py-1 
+              bg-black/30 text-white'>
+                Nox!
+              </div>
+            </div>
             }
         </div>
         <p className=' text-black'>{isDarkMode}</p>
