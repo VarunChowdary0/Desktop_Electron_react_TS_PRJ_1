@@ -25,7 +25,8 @@ const ViewStats:React.FC = () => {
                 <div className=' max-md:w-[300px] max-md:h-[300px] 
                 h-[100%] w-[100%] bg-[#3c3c3c]
                 overflow-hidden rounded-full  '>
-                    <img className=' select-none hover:scale-110 transition-all' src={profileLink}/>
+                    <img className=' select-none hover:scale-110 transition-all'
+                    alt='RETRY' src={profileLink}/>
                 </div>
             </div>
             <div className=' flex items-center flex-1 

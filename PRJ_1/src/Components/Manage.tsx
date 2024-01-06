@@ -130,7 +130,7 @@ const Manage:React.FC = () => {
             <div className=' absolute h-[150px] w-[150px] top-[20%]
             
              bg-[#4c4b4b] left-1 rounded-full  max-sm:top-[100px] overflow-hidden'>
-                <img className=' select-none' src={profileLink}/>
+                <img className=' select-none' src={profileLink} alt='RETRY'/>
                 <div onClick={_ChangeProfile_}
                 className=' absolute top-0 bg-black/50 flex items-center opacity-0
                  justify-center text-white font-thin text-2xl max-sm:opacity-50

@@ -30,7 +30,7 @@ const Profile:React.FC = () => {
         max-sm:w-[250px] rounded-md  relative'>
             <div className=' absolute h-[150px] w-[150px] top-[20%] max-sm:top-[100px]     
              bg-[#4c4b4b] left-1 rounded-full  overflow-hidden'>
-                <img className=' select-none' src={profileLink}/>
+                <img className=' select-none' src={profileLink} alt='RETRY'/>
              </div>
             <div className={` h-[180px] 
             
