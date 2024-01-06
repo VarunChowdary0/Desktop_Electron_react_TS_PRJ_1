@@ -58,7 +58,7 @@ const Settings:React.FC = () => {
             </div>
         </div>
         <div className=' rounded-full fixed bottom-10 max-sm:bottom-20 right-10 
-        border-[2px] dark:border-[1px] hover:border-none'>
+        border-[2px] dark:border-[1px] hover:border-[#fff0] hover:text-white transition-all'>
             <button  onClick={LogOut}>Log Out</button>
         </div>
     </div>
