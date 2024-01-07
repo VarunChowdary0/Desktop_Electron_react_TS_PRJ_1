@@ -19,21 +19,21 @@ const ExplorePage:React.FC = () => {
             }}
             className={` 
             ${(ExploreSubPage === "posts")&&"border-b-[4px] border-dark_Match_100"}
-             p-3 max-sm:py-1 `}
+             p-3 max-sm:py-2 `}
             >Posts</div>
             <div onClick={()=>{
                 setExploreSubPage("contributions")
             }}
             className={` 
             ${(ExploreSubPage === "contributions")&&"border-b-[4px] border-dark_Match_100"}
-             p-3 max-sm:py-1 `}
+             p-3 max-sm:py-2 `}
             >Contributions</div>
             <div onClick={()=>{
                 setExploreSubPage("trending")
             }}
             className={` 
             ${(ExploreSubPage === "trending")&&"border-b-[4px] border-dark_Match_100"}
-             p-3 max-sm:py-1 `}
+             p-3 max-sm:py-2 `}
             >Trending</div>
         </div>
 

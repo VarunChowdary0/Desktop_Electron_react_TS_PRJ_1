@@ -7,7 +7,7 @@ interface CurrrentProps{
 }
 const PostHeader:React.FC<CurrrentProps> = (props) => {
   return (
-    <div className=' h-[70px] flex max-sm:h-[50px]
+    <div className=' h-[70px] flex max-sm:h-[50px] max-sm:mb-2
 			w-full  items-center max-sm:gap-3 gap-5 relative hover:cursor-pointer'>
         <div className='h-[100%] w-[70px] bg-black/50 max-sm:w-[50px]
         rounded-2xl overflow-hidden'>
