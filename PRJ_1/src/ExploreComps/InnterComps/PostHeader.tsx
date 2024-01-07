@@ -14,10 +14,10 @@ const PostHeader:React.FC<CurrrentProps> = (props) => {
         <img src={props.profileUrl} alt="prf" />
         </div>
         <div>
-            <p className=' max-sm:text-sm font-light'>{props.name}</p>
-            <p className=' text-dark_Match_300 dark:text-dark_Match_600'>{props.occupation}</p>
+            <p className=' max-sm:text-sm truncate font-light'>{props.name}</p>
+            <p className=' text-dark_Match_300 truncate dark:text-dark_Match_600'>{props.occupation}</p>
             </div>
-        <div className=' absolute right-5 text-blue-400'>Connect</div>
+        <div className=' absolute right-5 text-blue-400 max-sm:text-sm'>Connect</div>
     </div>
   )
 }
