@@ -135,6 +135,33 @@ const PostsComponent:React.FC = () => {
         <DivideLine/>
         <PostFooter  isLiked={true} noOfStars={58} noOfComms={9}  noOfShares={5}/>
          </div>
+      
+         <div className=" w-[500px] h-fit  bg-white
+         dark:bg-dark_dark_200 dark:text-white shadow-sm
+         max-sm:w-[100%] flex flex-col p-2 rounded-md gap-3">
+        <PostHeader name={name} profileUrl={profileLink} occupation={occupation}/>
+        <BlogPost Paras={BlogPostParas}/>
+        <DivideLine/>
+			  <PostFooter isLiked={true} noOfStars={1403} noOfComms={21}  noOfShares={15}  />
+         </div>
+
+		 <div className=" w-[500px] h-fit  bg-white 
+         dark:bg-dark_dark_200 dark:text-white shadow-sm
+         max-sm:w-[100%] flex flex-col p-2 rounded-md gap-3">
+        <PostHeader name={name} profileUrl={profileLink} occupation={occupation}/>
+        <BolgImagePost Paras={BlogImagePostParas} imagesLinks={BlogImagePostImages}/>
+        <DivideLine/>
+        <PostFooter  isLiked={false} noOfStars={156} noOfComms={11}  noOfShares={2}/>
+         </div>
+
+		 <div className=" w-[500px] h-fit  bg-white
+         dark:bg-dark_dark_200 dark:text-white shadow-sm
+         max-sm:w-[100%] flex flex-col p-2 rounded-md gap-3">
+        <PostHeader name={name} profileUrl={profileLink} occupation={occupation}/>
+        <CustomPost MyPost={MyPost} Paras={CustomPostParas}/>
+        <DivideLine/>
+        <PostFooter  isLiked={true} noOfStars={58} noOfComms={9}  noOfShares={5}/>
+         </div>
 
     </div>
   )

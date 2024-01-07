@@ -17,7 +17,9 @@ const PostHeader:React.FC<CurrrentProps> = (props) => {
             <p className=' max-sm:text-sm truncate font-light'>{props.name}</p>
             <p className=' text-dark_Match_300 truncate dark:text-dark_Match_600'>{props.occupation}</p>
             </div>
-        <div className=' absolute right-5 text-blue-400 max-sm:text-sm max-sm:mt-1'>Connect</div>
+        <abbr title={`Connect with ${props.name}`}>
+          <div className=' absolute right-5 text-blue-400 max-sm:text-sm max-sm:mt-1'>Connect</div>
+        </abbr>
     </div>
   )
 }
