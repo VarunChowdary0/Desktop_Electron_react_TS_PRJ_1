@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import CertificateIcon from '../icons/CertificateIcon'
 import { GlobalContext } from '../Contexts/GlobalContext'
 import CloseIcon from '../icons/CloseIcon'
-import InterShipAdder from '../PopUps/InterShipAdder'
+import InterShipAdder from '../PopUps/POPUPS_1/InterShipAdder'
 import { save_intership_info_to_local } from '../Functions/Manage_Functions'
 
 interface CurrentProps{

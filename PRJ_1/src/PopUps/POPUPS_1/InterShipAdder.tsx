@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
-import CheckIcon from '../icons/CheckIcon';
-import { GlobalContext } from '../Contexts/GlobalContext';
-import { isLink, save_intership_info_to_local } from '../Functions/Manage_Functions';
+import CheckIcon from '../../icons/CheckIcon';
+import { GlobalContext } from '../../Contexts/GlobalContext';
+import { isLink, save_intership_info_to_local } from '../../Functions/Manage_Functions';
 
 const InterShipAdder:React.FC = () => {
   const [InternshipName,setIntershipName] = useState<string>("");

@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { GlobalContext } from '../Contexts/GlobalContext';
-import CheckIcon from '../icons/CheckIcon';
-import { save_contact_info_to_local, save_email_in_local, save_phonenumber_in_local } from '../Functions/Manage_Functions';
-import Linked_in from '../icons/Linked_in';
-import InstagramIcon from '../icons/InstagramIcon';
-import FacebookIcon from '../icons/FacebookIcon';
-import TwitterIcon from '../icons/TwitterIcon';
-import Emilicon from '../icons/Emilicon';
-import PhoneIcon from '../icons/PhoneIcon';
+import { GlobalContext } from '../../Contexts/GlobalContext';
+import CheckIcon from '../../icons/CheckIcon';
+import { save_contact_info_to_local, save_email_in_local, save_phonenumber_in_local } from '../../Functions/Manage_Functions';
+import Linked_in from '../../icons/Linked_in';
+import InstagramIcon from '../../icons/InstagramIcon';
+import FacebookIcon from '../../icons/FacebookIcon';
+import TwitterIcon from '../../icons/TwitterIcon';
+import Emilicon from '../../icons/Emilicon';
+import PhoneIcon from '../../icons/PhoneIcon';
 
 const Edit_ContactINFO_popUp:React.FC = () => {
     const {

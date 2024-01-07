@@ -3,18 +3,18 @@ import { save_cover_BG_to_local, save_mySkills_to_local, save_skill_bg_to_local 
 import { GlobalContext } from '../Contexts/GlobalContext';
 import CloseIcon from '../icons/CloseIcon';
 import PenIcon from '../icons/PenIcon';
-import ChangeName from '../PopUps/ChangeName';
-import Add_Skill from '../PopUps/Add_Skill';
+import ChangeName from '../PopUps/POPUPS_1/ChangeName';
+import Add_Skill from '../PopUps/POPUPS_1/Add_Skill';
 import ArrowIcon from '../icons/ArrowIcon';
-import ChangeProfile_popUp from '../PopUps/ChangeProfile_popUp';
-import ChangeOccupation from '../PopUps/ChangeOccupation';
+import ChangeProfile_popUp from '../PopUps/POPUPS_1/ChangeProfile_popUp';
+import ChangeOccupation from '../PopUps/POPUPS_1/ChangeOccupation';
 import Editable_About_me from '../widgets/Editable_About_me';
 import Editable_Eduacation from '../widgets/Editable_Education';
 import Editable_InternShips from '../widgets/Editable_Internships';
 import Editable_MiniProject_Wid from '../widgets/Editable_MiniProject_Wid';
 import { Editabel_Social_Media } from '../widgets/Editable_Social_Media';
 import ContactInfo from './ContactInfo';
-import Edit_ContactINFO_popUp from '../PopUps/Edit_ContactINFO_popUp';
+import Edit_ContactINFO_popUp from '../PopUps/POPUPS_1/Edit_ContactINFO_popUp';
 import BackToSettings from '../MiniCopms/BackToSettings';
 
 

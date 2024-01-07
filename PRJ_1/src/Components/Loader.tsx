@@ -3,7 +3,8 @@ import { UserInfoContext } from "../Contexts/UserInfoContext"
 import { GlobalContext } from "../Contexts/GlobalContext";
 // import { DarkFounderLogo, LightFounderLogo } from "../assets/Resources";
 
-const HomePage = () => {
+const HomeLoader
+ = () => {
   const {isLoggedIn} = useContext<any>(UserInfoContext);
   const {setRout} = useContext<any>(GlobalContext);
   useEffect(()=>{
@@ -15,7 +16,7 @@ const HomePage = () => {
     }
     else{
       setTimeout(()=>{
-        setRout('/explore')
+        setRout('/home')
       },1500)
     }
   },[])
@@ -48,4 +49,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage
+export default HomeLoader

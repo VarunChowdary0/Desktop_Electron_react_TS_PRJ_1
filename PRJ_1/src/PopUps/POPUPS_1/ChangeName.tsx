@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
-import { GlobalContext } from '../Contexts/GlobalContext'
-import CheckIcon from '../icons/CheckIcon';
+import { GlobalContext } from '../../Contexts/GlobalContext'
+import CheckIcon from '../../icons/CheckIcon';
 
 const ChangeName:React.FC = () => {
     const {setNamePopupView,

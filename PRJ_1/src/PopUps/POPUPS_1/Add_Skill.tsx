@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
-import CheckIcon from '../icons/CheckIcon';
-import { GlobalContext } from '../Contexts/GlobalContext';
-import {  save_mySkills_to_local } from '../Functions/Manage_Functions';
+import CheckIcon from '../../icons/CheckIcon';
+import { GlobalContext } from '../../Contexts/GlobalContext';
+import {  save_mySkills_to_local } from '../../Functions/Manage_Functions';
 
 const Add_Skill:React.FC = () => {
     const [newSkill,setNewSkill] = useState<string>(""); 

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { GlobalContext } from '../Contexts/GlobalContext'
-import Edit_SocialMedia from '../PopUps/Edit_SocialMedia'
+import Edit_SocialMedia from '../PopUps/POPUPS_1/Edit_SocialMedia'
 import PenIcon from '../icons/PenIcon'
 
 export const Editabel_Social_Media:React.FC = () => {

@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { GlobalContext } from './Contexts/GlobalContext';
 import Profile from './Components/Profile';
-import HomePage from './Components/HomePage';
 import Manage from './Components/Manage';
 import Register from './Components/Part_2_Components/Register';
 import Settings from './Components/Part_2_Components/Settings';
 import WholeLoader_11 from './Components/WholeLoader_11';
 import ViewStats from './Components/Part_3_Components/ViewStats';
+import HomeLoader from './Components/Loader';
+import ExplorePage from './Components/Part_3_Components/ExplorePage';
 
 
 const Router = () => {
@@ -18,18 +19,13 @@ const Router = () => {
   useEffect(() => {
     if (rout === '/') {
       setContent(
-        <HomePage/>
+        <HomeLoader/>
       );
     } else if (rout === '/profile') {
       setContent(
       <Profile />
       );
     } 
-    else if(rout === '/home'){
-        setContent(
-            <HomePage/>
-        )
-    }
     else if(rout === '/manage'){
         setContent(
             <Settings/>
@@ -50,6 +46,11 @@ const Router = () => {
         <ViewStats/>
       )
     }
+    else if(rout=== '/explore'){
+      setContent(
+        <ExplorePage/>
+      )
+    }
     else {
       setContent(
       <div className='  fixed top-0 bottom-0 left-0 right-0  flex-col
@@ -67,6 +68,10 @@ const Router = () => {
           <img className=' invisible h-0 dark:visible dark:h-fit' 
           src="https://i.postimg.cc/4yK7wfPY/error-404-1-dark.png" alt="NOT FOUND" />
         </div>
+        <div className=' items-center flex gap-2 justify-center'>
+          <p>ROUTE : </p>
+          <span className=' text-orange-600'>{rout.replace('/',"")}</span>
+          </div>
       </div>
       );
     }

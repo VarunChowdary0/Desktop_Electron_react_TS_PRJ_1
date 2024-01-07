@@ -21,7 +21,7 @@ export const MenuBar: React.FC = () => {
 
   return (
     <>
-        	{ (rout !== '/' && (rout !== '/home') && (rout !== '/register')   ) &&
+        	{ (rout !== '/' && (rout !== '/register')   ) &&
                 <>
                 <div className={` flex translate-x-[-20vw] fixed top-0 bottom-0 left-0
 			 max-sm:hidden

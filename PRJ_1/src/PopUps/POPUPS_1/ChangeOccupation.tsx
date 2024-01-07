@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
-import CheckIcon from '../icons/CheckIcon';
-import { GlobalContext } from '../Contexts/GlobalContext';
-import { save_occupation_to_locat } from '../Functions/Manage_Functions';
+import CheckIcon from '../../icons/CheckIcon';
+import { GlobalContext } from '../../Contexts/GlobalContext';
+import { save_occupation_to_locat } from '../../Functions/Manage_Functions';
 
 const ChangeOccupation:React.FC = () => {
     const {occupation,setOccupation

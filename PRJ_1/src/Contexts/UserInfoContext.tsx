@@ -11,11 +11,21 @@ interface username{
     username:string
     setUserName:React.Dispatch<React.SetStateAction<string>>;
 }
+interface popUps {
+    showConnectionsPopUp:boolean;
+    setshowConnectionPopUp: React.Dispatch<React.SetStateAction<boolean>>;
+}
+interface ExplorePage_Content{
+    ExploreSubPage:string;
+    setExploreSubPage:React.Dispatch<React.SetStateAction<string>>;
+}
 
 interface UserInfoContextType extends 
 logStatus,
 USER_UID,
-username
+username,
+popUps,
+ExplorePage_Content
 {}
 
 
@@ -37,6 +47,9 @@ const UserInfoContextProvider:React.FC<UserInfoContextProviderProps> = ({childre
     const USER_UID = localStorage.getItem('USER_UID') || "N-A";
     const [username,setUserName] = useState(localStorage.getItem('username') || "username") ; 
 
+    const [showConnectionsPopUp,setshowConnectionPopUp] = useState(false);
+
+    const [ExploreSubPage,setExploreSubPage] = useState("posts")
     return (
         <UserInfoContext.Provider
             value = {{
@@ -44,7 +57,9 @@ const UserInfoContextProvider:React.FC<UserInfoContextProviderProps> = ({childre
                 username,
                 setUserName,
                 setLoggedin,
-                USER_UID
+                USER_UID,
+                showConnectionsPopUp,setshowConnectionPopUp,
+                ExploreSubPage,setExploreSubPage,
             }}
          >
             {children}

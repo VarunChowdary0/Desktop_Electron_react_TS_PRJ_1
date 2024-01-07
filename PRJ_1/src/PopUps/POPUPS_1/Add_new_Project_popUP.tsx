@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
-import CheckIcon from '../icons/CheckIcon'
-import { GlobalContext } from '../Contexts/GlobalContext';
-import {  isLink, save_projects_to_local } from '../Functions/Manage_Functions';
+import CheckIcon from '../../icons/CheckIcon'
+import { GlobalContext } from '../../Contexts/GlobalContext';
+import {  isLink, save_projects_to_local } from '../../Functions/Manage_Functions';
 
 const Add_new_Project_popUP:React.FC = () => {
     const [flash,setFlash] = useState<string>("");

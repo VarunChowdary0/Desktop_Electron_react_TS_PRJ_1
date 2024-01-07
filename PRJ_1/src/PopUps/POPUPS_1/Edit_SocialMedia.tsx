@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
-import CheckIcon from '../icons/CheckIcon';
-import { GlobalContext } from '../Contexts/GlobalContext';
-import { isLink, save_coding_links_to_local } from '../Functions/Manage_Functions';
+import CheckIcon from '../../icons/CheckIcon';
+import { GlobalContext } from '../../Contexts/GlobalContext';
+import { isLink, save_coding_links_to_local } from '../../Functions/Manage_Functions';
 
 interface currentEdit {
     NAME : string

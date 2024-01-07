@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
-import { GlobalContext } from '../Contexts/GlobalContext';
-import CheckIcon from '../icons/CheckIcon';
-import { save_profile_url_to_local } from '../Functions/Manage_Functions';
+import { GlobalContext } from '../../Contexts/GlobalContext';
+import CheckIcon from '../../icons/CheckIcon';
+import { save_profile_url_to_local } from '../../Functions/Manage_Functions';
 
 const ChangeProfile_popUp:React.FC = () => {
     const [currnetURL,setUrl] = useState<string>("");

@@ -1,6 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { GlobalContext } from '../../Contexts/GlobalContext'
 import { UserInfoContext } from '../../Contexts/UserInfoContext'
+import UsersConnections from '../../PopUps/POPUPS_2/UsersConnections'
 
 const ViewStats:React.FC = () => {
     const {
@@ -8,6 +9,11 @@ const ViewStats:React.FC = () => {
         name
     } = useContext<any>(GlobalContext)
     const {username} = useContext<any>(UserInfoContext);
+    const {showConnectionsPopUp,setshowConnectionPopUp} = useContext<any>(UserInfoContext);
+
+    useEffect(()=>{
+        console.log(showConnectionsPopUp)
+    })
   return (
     <div className=' w-full h-fit min-h-screen pb-10
     flex items-center flex-col pt-[200px] max-sm:pt-[100px]
@@ -57,18 +63,24 @@ const ViewStats:React.FC = () => {
                 </div>
             </div>
         </div>
-        <div className=' bg-black/0  w-[80%] flex gap-5'>
-            <div className=' text-white flex items-center gap-3
+        <div className=' bg-black/0  w-[80%] flex gap-10  max-sm:gap-5'>
+            <div onClick={()=>{setshowConnectionPopUp(true)}}
+            className=' hover:scale-105 transition-all
+             text-white flex items-center gap-3 hover:cursor-pointer
+              active:scale-100
              px-5 py-2 bg-purple-500 rounded-md w-fit'>
                 <p className=' text-xl'>133</p>
                 <span className=' text-xs pt-1 font-thin'>Connections.</span>
             </div>
-            <div className=' text-white flex items-center gap-3 
+            <div className='hover:scale-105 transition-all
+             text-white flex items-center gap-3 hover:cursor-pointer
+              active:scale-100
              px-5 py-2 bg-purple-500 rounded-md w-fit'>
                 <p className=' text-xl'>6</p>
                 <span className=' text-xs pt-1 font-thin'>Contributions.</span>
             </div>
         </div>
+        {showConnectionsPopUp&&<UsersConnections/>}
     </div>
   )
 }

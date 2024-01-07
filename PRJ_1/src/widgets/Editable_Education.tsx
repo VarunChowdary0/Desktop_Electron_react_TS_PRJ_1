@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { GlobalContext } from '../Contexts/GlobalContext'
 import CloseIcon from '../icons/CloseIcon'
 import { save_Education_details_to_local } from '../Functions/Manage_Functions'
-import Add_Eduaction_Info from '../PopUps/Add_Eduaction_Info'
+import Add_Eduaction_Info from '../PopUps/POPUPS_1/Add_Eduaction_Info'
 
 interface CurrentProps{
     bg_color : string

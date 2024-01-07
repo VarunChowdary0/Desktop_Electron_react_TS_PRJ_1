@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import Git_hub from '../icons/Git_hub'
 import { GlobalContext } from '../Contexts/GlobalContext'
 import CloseIcon from '../icons/CloseIcon';
-import Add_new_Project_popUP from '../PopUps/Add_new_Project_popUP';
+import Add_new_Project_popUP from '../PopUps/POPUPS_1/Add_new_Project_popUP';
 import { save_projects_to_local } from '../Functions/Manage_Functions';
 
 const Editable_MiniProject_Wid:React.FC = () => {
