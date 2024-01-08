@@ -8,8 +8,15 @@ interface CurrrentProps{
     noOfStars : number;
     noOfComms : number;
     noOfShares : number;
+    postID : string;
+    showComments:boolean;
+    setShowComments:React.Dispatch<React.SetStateAction<boolean>>;
 }
 const PostFooter:React.FC<CurrrentProps> = (props) => {
+    const handle_comms = () =>{
+        props.setShowComments(!props.showComments)
+        window.location.href = `#${props.postID}`
+    }
   return (
     <div className=' w-full h-[40px]
     px-5 justify-around  flex items-center'>
@@ -24,7 +31,7 @@ const PostFooter:React.FC<CurrrentProps> = (props) => {
            <p className=' text-[8px]'>{props.noOfStars}</p>
            </div>
        </div>
-       <div className=' scale-125 hover:cursor-pointer '>
+       <div onClick={handle_comms}  className=' scale-125 hover:cursor-pointer '>
            <div className=' flex items-center gap-2 
            '>
                <div className=' active:scale-125 transition-all'>

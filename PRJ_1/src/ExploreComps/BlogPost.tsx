@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import LinkIcon from '../icons/Type3_icons/LinkIcon'
 import TagComponent from './InnterComps/TagComponent'
+import ParaFormater from './InnterComps/ParaFormater';
 
 interface CurrentProps{
 	Paras : Array<string>;
@@ -11,19 +12,9 @@ interface CurrentProps{
 	} | any;
   }
 const BlogPost:React.FC<CurrentProps> = (props) => {
-	const [readFull,setReadFull] = useState<boolean>(false)
   return (
     <div className='h-fit  w-full bg-red-700/0 max-sm:text-sm'>
-        <div className={` flex flex-col gap-3 ${!readFull?"h-[110px] overflow-hidden ":"h-fit"} `}>
-						{props.Paras.map((para,id)=>
-							<p id={`BP-${id}`}>{para}</p>
-						)}
-				</div>
-				<div onClick={()=>(setReadFull(!readFull))}
-				className=' px-2 flex gap-2 hover:cursor-pointer justify-end'>
-				<span className=' tracking-wider'>...</span>
-				<p className=' font-semibold'>see {!readFull?"more":"less"}</p>
-				</div>
+        <ParaFormater Paras={props.Paras}/>
 				<TagComponent tags={props.tags}/>
 				<div className=' w-full h-fit px-10 mt-4 flex justify-end'>
 					<a href={props.prjInfo.prjLink}

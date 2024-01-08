@@ -1,11 +1,7 @@
 import React, { useContext } from 'react'
 import { GlobalContext } from '../Contexts/GlobalContext'
-import BlogPost from '../ExploreComps/BlogPost';
-import CustomPost from '../ExploreComps/CustomPost';
-import BolgImagePost from '../ExploreComps/BolgImagePost';
-import PostHeader from '../ExploreComps/InnterComps/PostHeader';
-import PostFooter from '../ExploreComps/InnterComps/PostFooter';
-import DivideLine from '../MiniCopms/DivideLine';
+import { UserInfoContext } from '../Contexts/UserInfoContext';
+import MainPostComp from '../ExploreComps/MainPostComp';
 
 const PostsComponent:React.FC = () => {
   const {
@@ -13,6 +9,8 @@ const PostsComponent:React.FC = () => {
     name,
     occupation
   } = useContext<any>(GlobalContext);
+
+  const {username} = useContext<any>(UserInfoContext);
 
   const BlogImagePostParas = [
     "Average new programmer following long tutorial on youtube!",
@@ -105,25 +103,53 @@ const PostsComponent:React.FC = () => {
 </html>
 `;
 
+      const DidIlikeIt = (likedBy:Array<string>) =>{
+          if(likedBy.includes(username)){
+              return true;
+          }
+          return false;
+      } 
 
   const PostsObjectArr = [
     {
+      postID:"PostID_here",
+      identifiers : ["id_1","id_2","id_3"],
       type : 'BlogPost',
-      name : "varun",
+      name : "Rocket Launcher",
       occupation : occupation,
-      profileLink : profileLink,
-      Paras : BlogPostParas,
+      profileLink : profileLink, 
+      Paras : BlogPostParas, // Array of String
       tags:["mern","webdevelopment","fullstack","node","react","mongodb"],
       prjInfo : {
         imgLink : "https://blog-it-ten.vercel.app/static/media/home_pc.c323c8481dd5355b7845.png",
         prjLink : "https://blog-it-ten.vercel.app/"
       },
-      isLiked : true,
+      likedBy : [], // _ usernames _
+      isLiked : DidIlikeIt(["Sai Varun Chowdary Poludasu","1","varun_chowdary"]), // boolean -> check if
       noOfStars : 1403,
       noofCommas : 21 ,
       noOfShares : 15
     },
     {
+      postID : "PostID_here",
+      identifiers : ['id1','id2'],
+      type : 'BlogImagePost',
+      name : name,
+      occupation : occupation,
+      profileLink : profileLink ,
+      Paras : [`By wrapping the arrow function in an additional set of parentheses and immediately
+       calling it with (), TypeScript should recognize it as an expression and allow the return type to be React.ReactNode.`],
+      tags : [],
+      images : ["https://i.postimg.cc/8kHst0Hh/Screenshot-2024-01-08-185051.png"],
+      likedBy : [],
+      isLiked : false,
+      noOfStars : 32334,
+      noofCommas : 21 ,
+      noOfShares : 259
+    },  
+    {
+      postID:"PostID_here",
+      identifiers : ["id_1","id_2","id_3"],
       type : 'BlogImagePost',
       name : name,
       occupation : occupation,
@@ -131,11 +157,15 @@ const PostsComponent:React.FC = () => {
       Paras : BlogImagePostParas,
       tags : ["placements","internship","collage","competitiveprogramming"],
       images : BlogImagePostImages,
-      isLiked : false,
+      likedBy : [], // _ usernames _
+      isLiked : DidIlikeIt(["Sai Varun Chowdary Poludasu","1","varun_chowdary_90"]), // boolean -> check if
       noOfStars : 156,
       noofCommas : 11 ,
       noOfShares : 2,
-    },{
+    },
+    {
+      postID:"PostID_here",
+      identifiers : ["id_1","id_2","id_3"],
       type : 'CustomPost',
       name : name,
       occupation : occupation,
@@ -143,43 +173,22 @@ const PostsComponent:React.FC = () => {
       Post_code : MyPost,
       Paras : CustomPostParas,
       tags : ["ai",'ml','deeplearning'],
-      isLiked : true,
+      likedBy : ["Sai Varun Chowdary Poludasu","1","varun_chowdary"], // _ usernames _
+      isLiked : DidIlikeIt(["Sai Varun Chowdary Poludasu","1","varun_chowdary"]), // boolean -> check if
       noOfStars : 58,
       noofCommas : 9 ,
       noOfShares : 5,
     }
   ] 
-
   return (
     <div className='__posts__ h-fit w-full flex gap-10 flex-col
     items-center px-10 py-5 max-sm:px-5'>
-
       {
         PostsObjectArr.map((post,idx)=>
-        <div key={`_posts_`+idx} className=" w-[500px] h-fit  bg-white
-        dark:bg-dark_dark_200 dark:text-white shadow-sm
-          max-sm:w-[100%] flex flex-col p-2 rounded-md gap-3">
-        <PostHeader name={post.name} profileUrl={post.profileLink} occupation={post.occupation}/>
-         {
-          post.type === 'BlogPost' && 
-          <BlogPost prjInfo={post.prjInfo} Paras={post.Paras} tags={post.tags}/>
-         }
-         {
-          post.type === 'BlogImagePost' &&
-          <BolgImagePost Paras={post.Paras} imagesLinks={post.images||[]} tags={post.tags}/>
-         }
-         {
-          post.type === 'CustomPost' &&
-          <CustomPost Paras={post.Paras} 
-          MyPost={post.Post_code || ""}
-          tags={post.tags}
-          />
-         }
-        <DivideLine/>
-        <PostFooter isLiked={post.isLiked} noOfStars={post.noOfStars} noOfComms={post.noofCommas}  noOfShares={post.noOfShares}  />
-          </div>
+        <MainPostComp key={`_posts_`+idx} DataObj={post}/>
         )
       }
+      
     </div>
   )
 }

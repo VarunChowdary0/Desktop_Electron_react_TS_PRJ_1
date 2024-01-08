@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import TagComponent from './InnterComps/TagComponent';
+import ParaFormater from './InnterComps/ParaFormater';
 interface CurrrentProps{
     MyPost : string;
 	Paras : Array<string>;
 	tags : Array<string>;
 }
 const CustomPost:React.FC<CurrrentProps> = (props) => {
-	const [readFull,setReadFull] = useState<boolean>(false)
   return (
     <div className=' h-fit w-full  max-sm:text-sm'>
 			<TagComponent tags={props.tags}/>
@@ -16,17 +16,7 @@ const CustomPost:React.FC<CurrrentProps> = (props) => {
 					srcDoc={props.MyPost}
 					></iframe>
 				</div>
-			<div className={` ${!readFull ? " overflow-hidden h-[115px] text-ellipsis " : "h-fit" }
-			  transition-all  flex flex-col gap-3`}>
-						{props.Paras.map((para,id)=>
-							<p id={`BP-${id}`}>{para}</p>
-						)}
-			</div>
-			<div onClick={()=>(setReadFull(!readFull))}
-        className=' px-2 flex gap-2 hover:cursor-pointer justify-end'>
-		<span className=' tracking-wider'>...</span>
-				<p className=' font-semibold'>see {!readFull?"more":"less"}</p>
-			</div>
+			<ParaFormater Paras={props.Paras}/>
 	</div>
   )
 }
