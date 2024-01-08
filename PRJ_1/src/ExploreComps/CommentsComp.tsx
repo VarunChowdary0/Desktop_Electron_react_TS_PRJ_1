@@ -1,12 +1,17 @@
 import React from 'react'
 import DivideLine from '../MiniCopms/DivideLine'
 
-const CommentsComp:React.FC = () => {
+interface CurrentProps{
+    postID : string;
+}
+const CommentsComp:React.FC<CurrentProps> = (props) => {
   return (
     <div className=' text-black dark:text-white 
-     snap-start flex-col
+     snap-start flex-col relative
     flex items-center  px-7'>
-        <div className=' sticky top-0 py-3 bg-white
+        <div className=' absolute h-5 w-5 bg-black/0 opacity-0 max-sm:top-[-400px]
+         top-[-130px] right-0' id={props.postID}></div>
+        <div  className=' sticky top-0 py-3 bg-white
             border-b border-[#555]
          dark:bg-dark_dark_200 w-full'>
             Comments

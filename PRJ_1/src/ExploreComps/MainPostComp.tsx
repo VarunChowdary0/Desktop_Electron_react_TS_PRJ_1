@@ -61,7 +61,7 @@ const MainPostComp:React.FC<CurrentProps> = (props) => {
             noOfComms={props.DataObj.noofCommas}  noOfShares={props.DataObj.noOfShares}  
             showComments={showComments} setShowComments={setShowComments} postID={props.DataObj.postID} />
         </div>
-        <div className=' flex flex-col gap-3'  id={showComments && props.DataObj.postID}>
+        <div className=' flex flex-col gap-3' >
             <div className={` ${showComments?"w-[400px] h-[300px] max-sm:h-[260px] "
             :"w-0 h-0 opacity-0" }
                 __comments__  snap-y 
@@ -73,7 +73,7 @@ const MainPostComp:React.FC<CurrentProps> = (props) => {
                 onClick={()=>setShowComments(!showComments)}>
                     <CloseIcon color='black' size={1}/>
                 </div>
-                {showComments&&<CommentsComp/>}
+                {showComments&&<CommentsComp postID={props.DataObj.postID}/>}
             </div>
             <div className={` ${showComments?"w-[400px] h-[90px] max-sm:h-[80px] "
             :"w-0 h-0 opacity-0" }

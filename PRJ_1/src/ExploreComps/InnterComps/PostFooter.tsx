@@ -15,7 +15,9 @@ interface CurrrentProps{
 const PostFooter:React.FC<CurrrentProps> = (props) => {
     const handle_comms = () =>{
         props.setShowComments(!props.showComments)
-        window.location.href = `#${props.postID}`
+        setTimeout(()=>{
+            window.location.href = `#${props.postID}`
+        },200)
     }
   return (
     <div className=' w-full h-[40px]
