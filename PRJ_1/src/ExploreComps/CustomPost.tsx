@@ -3,19 +3,21 @@ import TagComponent from './InnterComps/TagComponent';
 interface CurrrentProps{
     MyPost : string;
 	Paras : Array<string>;
+	tags : Array<string>;
 }
 const CustomPost:React.FC<CurrrentProps> = (props) => {
 	const [readFull,setReadFull] = useState<boolean>(false)
   return (
     <div className=' h-fit w-full  max-sm:text-sm'>
-			<TagComponent tags={["ai",'ml','deeplearning']}/>
+			<TagComponent tags={props.tags}/>
 				<div className='h-[450px] w-full'>
 					<iframe width="100%" 
 					height={"100%"}
 					srcDoc={props.MyPost}
 					></iframe>
 				</div>
-			<div className={` ${!readFull ? " overflow-hidden h-[115px] text-ellipsis " : "h-fit" }  transition-all  flex flex-col gap-3`}>
+			<div className={` ${!readFull ? " overflow-hidden h-[115px] text-ellipsis " : "h-fit" }
+			  transition-all  flex flex-col gap-3`}>
 						{props.Paras.map((para,id)=>
 							<p id={`BP-${id}`}>{para}</p>
 						)}

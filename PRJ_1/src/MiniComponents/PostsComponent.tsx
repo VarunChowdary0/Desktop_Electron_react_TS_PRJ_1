@@ -104,65 +104,82 @@ const PostsComponent:React.FC = () => {
 </body>
 </html>
 `;
+
+
+  const PostsObjectArr = [
+    {
+      type : 'BlogPost',
+      name : "varun",
+      occupation : occupation,
+      profileLink : profileLink,
+      Paras : BlogPostParas,
+      tags:["mern","webdevelopment","fullstack","node","react","mongodb"],
+      prjInfo : {
+        imgLink : "https://blog-it-ten.vercel.app/static/media/home_pc.c323c8481dd5355b7845.png",
+        prjLink : "https://blog-it-ten.vercel.app/"
+      },
+      isLiked : true,
+      noOfStars : 1403,
+      noofCommas : 21 ,
+      noOfShares : 15
+    },
+    {
+      type : 'BlogImagePost',
+      name : name,
+      occupation : occupation,
+      profileLink : profileLink,
+      Paras : BlogImagePostParas,
+      tags : ["placements","internship","collage","competitiveprogramming"],
+      images : BlogImagePostImages,
+      isLiked : false,
+      noOfStars : 156,
+      noofCommas : 11 ,
+      noOfShares : 2,
+    },{
+      type : 'CustomPost',
+      name : name,
+      occupation : occupation,
+      profileLink : profileLink,
+      Post_code : MyPost,
+      Paras : CustomPostParas,
+      tags : ["ai",'ml','deeplearning'],
+      isLiked : true,
+      noOfStars : 58,
+      noofCommas : 9 ,
+      noOfShares : 5,
+    }
+  ] 
+
   return (
     <div className='__posts__ h-fit w-full flex gap-10 flex-col
     items-center px-10 py-5 max-sm:px-5'>
 
-
-		 <div className=" w-[500px] h-fit  bg-white
-         dark:bg-dark_dark_200 dark:text-white shadow-sm
-         max-sm:w-[100%] flex flex-col p-2 rounded-md gap-3">
-        <PostHeader name={name} profileUrl={profileLink} occupation={occupation}/>
-        <BlogPost Paras={BlogPostParas}/>
+      {
+        PostsObjectArr.map((post,idx)=>
+        <div key={`_posts_`+idx} className=" w-[500px] h-fit  bg-white
+        dark:bg-dark_dark_200 dark:text-white shadow-sm
+          max-sm:w-[100%] flex flex-col p-2 rounded-md gap-3">
+        <PostHeader name={post.name} profileUrl={post.profileLink} occupation={post.occupation}/>
+         {
+          post.type === 'BlogPost' && 
+          <BlogPost prjInfo={post.prjInfo} Paras={post.Paras} tags={post.tags}/>
+         }
+         {
+          post.type === 'BlogImagePost' &&
+          <BolgImagePost Paras={post.Paras} imagesLinks={post.images||[]} tags={post.tags}/>
+         }
+         {
+          post.type === 'CustomPost' &&
+          <CustomPost Paras={post.Paras} 
+          MyPost={post.Post_code || ""}
+          tags={post.tags}
+          />
+         }
         <DivideLine/>
-			  <PostFooter isLiked={true} noOfStars={1403} noOfComms={21}  noOfShares={15}  />
-         </div>
-
-		 <div className=" w-[500px] h-fit  bg-white 
-         dark:bg-dark_dark_200 dark:text-white shadow-sm
-         max-sm:w-[100%] flex flex-col p-2 rounded-md gap-3">
-        <PostHeader name={name} profileUrl={profileLink} occupation={occupation}/>
-        <BolgImagePost Paras={BlogImagePostParas} imagesLinks={BlogImagePostImages}/>
-        <DivideLine/>
-        <PostFooter  isLiked={false} noOfStars={156} noOfComms={11}  noOfShares={2}/>
-         </div>
-
-		 <div className=" w-[500px] h-fit  bg-white
-         dark:bg-dark_dark_200 dark:text-white shadow-sm
-         max-sm:w-[100%] flex flex-col p-2 rounded-md gap-3">
-        <PostHeader name={name} profileUrl={profileLink} occupation={occupation}/>
-        <CustomPost MyPost={MyPost} Paras={CustomPostParas}/>
-        <DivideLine/>
-        <PostFooter  isLiked={true} noOfStars={58} noOfComms={9}  noOfShares={5}/>
-         </div>
-      
-         <div className=" w-[500px] h-fit  bg-white
-         dark:bg-dark_dark_200 dark:text-white shadow-sm
-         max-sm:w-[100%] flex flex-col p-2 rounded-md gap-3">
-        <PostHeader name={name} profileUrl={profileLink} occupation={occupation}/>
-        <BlogPost Paras={BlogPostParas}/>
-        <DivideLine/>
-			  <PostFooter isLiked={true} noOfStars={1403} noOfComms={21}  noOfShares={15}  />
-         </div>
-
-		 <div className=" w-[500px] h-fit  bg-white 
-         dark:bg-dark_dark_200 dark:text-white shadow-sm
-         max-sm:w-[100%] flex flex-col p-2 rounded-md gap-3">
-        <PostHeader name={name} profileUrl={profileLink} occupation={occupation}/>
-        <BolgImagePost Paras={BlogImagePostParas} imagesLinks={BlogImagePostImages}/>
-        <DivideLine/>
-        <PostFooter  isLiked={false} noOfStars={156} noOfComms={11}  noOfShares={2}/>
-         </div>
-
-		 <div className=" w-[500px] h-fit  bg-white
-         dark:bg-dark_dark_200 dark:text-white shadow-sm
-         max-sm:w-[100%] flex flex-col p-2 rounded-md gap-3">
-        <PostHeader name={name} profileUrl={profileLink} occupation={occupation}/>
-        <CustomPost MyPost={MyPost} Paras={CustomPostParas}/>
-        <DivideLine/>
-        <PostFooter  isLiked={true} noOfStars={58} noOfComms={9}  noOfShares={5}/>
-         </div>
-
+        <PostFooter isLiked={post.isLiked} noOfStars={post.noOfStars} noOfComms={post.noofCommas}  noOfShares={post.noOfShares}  />
+          </div>
+        )
+      }
     </div>
   )
 }

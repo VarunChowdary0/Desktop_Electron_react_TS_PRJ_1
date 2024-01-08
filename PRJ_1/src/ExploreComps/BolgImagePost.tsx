@@ -4,6 +4,7 @@ import TagComponent from './InnterComps/TagComponent'
 interface CurrentProps{
   Paras : Array<string>;
   imagesLinks : Array<string>;
+  tags : Array<string>;
 }
 const BolgImagePost:React.FC<CurrentProps>= (props) => {
   const [readFull,setReadFull] = useState<boolean>(false)
@@ -19,7 +20,7 @@ const BolgImagePost:React.FC<CurrentProps>= (props) => {
           <span className=' tracking-wider'>...</span>
           <p className=' font-semibold'>see {!readFull?"more":"less"}</p>
         </div>
-        <TagComponent tags={["placements","internship","collage","competitiveprogramming"]}/>
+        <TagComponent tags={props.tags}/>
         <div className=' p-3 flex overflow-x-auto gap-3 items-center snap-x'>
               {
                 props.imagesLinks.map((link,idx)=>

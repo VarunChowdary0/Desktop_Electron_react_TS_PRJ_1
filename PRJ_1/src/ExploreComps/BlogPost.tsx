@@ -4,6 +4,11 @@ import TagComponent from './InnterComps/TagComponent'
 
 interface CurrentProps{
 	Paras : Array<string>;
+	tags : Array<string>;
+	prjInfo: {
+		imgLink : string,
+		prjLink : string
+	} | any;
   }
 const BlogPost:React.FC<CurrentProps> = (props) => {
 	const [readFull,setReadFull] = useState<boolean>(false)
@@ -19,14 +24,14 @@ const BlogPost:React.FC<CurrentProps> = (props) => {
 				<span className=' tracking-wider'>...</span>
 				<p className=' font-semibold'>see {!readFull?"more":"less"}</p>
 				</div>
-				<TagComponent tags={["mern","webdevelopment","fullstack","node","react","mongodb"]}/>
+				<TagComponent tags={props.tags}/>
 				<div className=' w-full h-fit px-10 mt-4 flex justify-end'>
-					<a href='https://blog-it-ten.vercel.app/'
+					<a href={props.prjInfo.prjLink}
 					   target='_blank'
 					 className=' h-[90px] w-[170px] overflow-hidden
 					 bg-[#2f2f2f] rounded-lg relative  hover:cursor-pointer'>
 						<img className='w-full' 
-						src='https://blog-it-ten.vercel.app/static/media/home_pc.c323c8481dd5355b7845.png'	
+						src={props.prjInfo.imgLink}	
 	 					alt="Not Found" />
 						<div className=' absolute h-7 w-7
 						 flex items-center justify-center
