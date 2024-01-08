@@ -10,7 +10,7 @@ const CustomPost:React.FC<CurrrentProps> = (props) => {
   return (
     <div className=' h-fit w-full  max-sm:text-sm'>
 			<TagComponent tags={props.tags}/>
-				<div className='h-[450px] w-full'>
+				<div className='h-[450px] w-full max-sm:h-[400px]'>
 					<iframe width="100%" 
 					height={"100%"}
 					srcDoc={props.MyPost}

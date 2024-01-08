@@ -17,10 +17,13 @@ const ParaFormater:React.FC<CurrentProps> = (props) => {
         setReadFull(true)
         setShort(true);
       }
-    },[])
+    },[props.Paras])
+    useEffect(()=>{
+      console.log(readFull)
+    },[readFull])
   return (
     <>
-    <div className={` flex flex-col gap-3 h-fit
+    <div className={` flex flex-col gap-3 
         ${!readFull?"h-[114px] max-sm:h-[157px] overflow-hidden ":"h-fit"} transition-all `}>
             {props.Paras.map((para,id)=>
              <p id={`BIP_para-`+id}>{para}</p>
