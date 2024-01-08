@@ -193,9 +193,9 @@ const PostsComponent:React.FC = () => {
       }
       <div onClick={()=>{setPostAdder(true)}}
       className='__Skill__ fixed bottom-14 right-14 h-12 w-12 pb-2 shadow-md
-       bg-blue-500 rounded-full flex justify-center
+       bg-blue-500 rounded-full flex justify-center max-sm:pb-0
         active:scale-110 transition-all items-center max-sm:right-3 '>
-        <p className=' text-center text-white font-thin text-5xl'>+</p>
+        <p className=' text-center text-white font-thin text-5xl max-sm:text-3xl'>+</p>
         <div className='__Remove__ absolute bottom-[-35px] rounded-md
         px-2 py-1 bg-black/20 w-[70px] text-xs max-sm:bottom-0 right-11
         dark:bg-white/20  text-white'>
