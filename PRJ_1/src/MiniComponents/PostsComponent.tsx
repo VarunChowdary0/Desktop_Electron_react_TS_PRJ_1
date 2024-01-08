@@ -1,7 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { GlobalContext } from '../Contexts/GlobalContext'
 import { UserInfoContext } from '../Contexts/UserInfoContext';
 import MainPostComp from '../ExploreComps/MainPostComp';
+import NewPost from './AddPostComponents/NewPost';
 
 const PostsComponent:React.FC = () => {
   const {
@@ -11,6 +12,8 @@ const PostsComponent:React.FC = () => {
   } = useContext<any>(GlobalContext);
 
   const {username} = useContext<any>(UserInfoContext);
+
+  const [ShowPostAdder,setPostAdder] = useState<boolean>(false)
 
   const BlogImagePostParas = [
     "Average new programmer following long tutorial on youtube!",
@@ -188,7 +191,24 @@ const PostsComponent:React.FC = () => {
         <MainPostComp key={`_posts_`+idx} DataObj={post}/>
         )
       }
-      
+      <div onClick={()=>{setPostAdder(true)}}
+      className='__Skill__ fixed bottom-14 right-14 h-12 w-12 pb-2 shadow-md
+       bg-blue-500 rounded-full flex justify-center
+        active:scale-110 transition-all items-center max-sm:right-3 '>
+        <p className=' text-center text-white font-thin text-5xl'>+</p>
+        <div className='__Remove__ absolute bottom-[-35px] rounded-md
+        px-2 py-1 bg-black/20 w-[70px] text-xs max-sm:bottom-0 right-11
+        dark:bg-white/20  text-white'>
+          Add Post
+        </div>
+       </div>
+       <div>
+        <div className={` h-fit w-full fixed z-[20]
+         ${ShowPostAdder?" translate-y-0":" translate-y-[110vh]"}
+        bottom-0 right-0 left-0 transition-all duration-500 `}>
+          <NewPost setPostAdder={setPostAdder}/>
+        </div>
+       </div>
     </div>
   )
 }
