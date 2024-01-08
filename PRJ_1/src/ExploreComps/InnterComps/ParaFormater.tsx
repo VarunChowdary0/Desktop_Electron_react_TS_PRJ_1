@@ -18,9 +18,7 @@ const ParaFormater:React.FC<CurrentProps> = (props) => {
         setShort(true);
       }
     },[props.Paras])
-    useEffect(()=>{
-      console.log(readFull)
-    },[readFull])
+
   return (
     <>
     <div className={` flex flex-col gap-3 

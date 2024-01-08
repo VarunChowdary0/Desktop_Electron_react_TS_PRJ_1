@@ -28,7 +28,7 @@ const CommentsComp:React.FC<CurrentProps> = (props) => {
                     </div>
                 </div>
                 <div>
-                    <p className=' font-thin text-sm'>
+                    <p className=' font-thin text-sm max-sm:text-xs'>
                         I wonder how much more of the full bringers 
                         we’ll get since almost all of them felt like they 
                         just showed up to say hi and left
@@ -47,7 +47,7 @@ const CommentsComp:React.FC<CurrentProps> = (props) => {
                     </div>
                 </div>
                 <div>
-                    <p className=' font-thin text-sm'>
+                    <p className=' font-thin text-sm max-sm:text-xs'>
                         I wonder how much more of the full bringers 
                         we’ll get since almost all of them felt like they 
                         just showed up to say hi and left
@@ -66,7 +66,7 @@ const CommentsComp:React.FC<CurrentProps> = (props) => {
                     </div>
                 </div>
                 <div>
-                    <p className=' font-thin text-sm'>
+                    <p className=' font-thin text-sm max-sm:text-xs'>
                         I wonder how much more of the full bringers 
                         we’ll get since almost all of them felt like they 
                         just showed up to say hi and left
