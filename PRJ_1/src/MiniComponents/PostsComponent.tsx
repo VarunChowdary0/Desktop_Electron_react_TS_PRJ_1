@@ -203,7 +203,7 @@ const PostsComponent:React.FC = () => {
         </div>
        </div>
        <div>
-        <div className={` h-fit w-full fixed z-[20]
+        <div className={` h-fit w-full fixed max-sm:z-[20] z-[100]
          ${ShowPostAdder?" translate-y-0":" translate-y-[110vh]"}
         bottom-0 right-0 left-0 transition-all duration-500 `}>
           <NewPost setPostAdder={setPostAdder}/>
