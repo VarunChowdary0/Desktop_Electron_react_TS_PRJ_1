@@ -25,6 +25,7 @@ interface CurrentProps {
       prjInfo: {
         imgLink: string;
         prjLink: string;
+        githubLink:string|"";
       } | undefined;
       noOfStars: number;
       noofCommas: number;
@@ -58,7 +59,8 @@ const MainPostComp:React.FC<CurrentProps> = (props) => {
             }
             <DivideLine/>
             <PostFooter isLiked={props.DataObj.isLiked} noOfStars={props.DataObj.noOfStars} 
-            noOfComms={props.DataObj.noofCommas}  noOfShares={props.DataObj.noOfShares}  
+            noOfComms={props.DataObj.noofCommas}  noOfShares={props.DataObj.noOfShares} 
+             githubLink={props.DataObj.type==="BlogPost"?props.DataObj.prjInfo.githubLink:""}
             showComments={showComments} setShowComments={setShowComments} postID={props.DataObj.postID} />
         </div>
         <div className=' flex flex-col gap-3' >

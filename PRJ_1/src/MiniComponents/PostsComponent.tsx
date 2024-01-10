@@ -125,7 +125,8 @@ const PostsComponent:React.FC = () => {
       tags:["mern","webdevelopment","fullstack","node","react","mongodb"],
       prjInfo : {
         imgLink : "https://blog-it-ten.vercel.app/static/media/home_pc.c323c8481dd5355b7845.png",
-        prjLink : "https://blog-it-ten.vercel.app/"
+        prjLink : "https://blog-it-ten.vercel.app/",
+        githubLink : "https://github.com/VarunChowdary0" 
       },
       likedBy : [], // _ usernames _
       isLiked : DidIlikeIt(["Sai Varun Chowdary Poludasu","1","varun_chowdary"]), // boolean -> check if

@@ -285,6 +285,10 @@ const GlobalContextProvider: React.FC <GlobalContextProviderProps> = ({children}
             Spoj : {
                       link : "",
                       icon : 6
+            },
+            Leet__Code :{
+                link : "k",
+                icon: 2
             }
         }
         const SavedLinks = localStorage.getItem("SavedCODE_Links");

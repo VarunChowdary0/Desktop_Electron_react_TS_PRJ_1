@@ -12,8 +12,8 @@ const Profile:React.FC = () => {
     const {Skills} = useContext<any>(GlobalContext)
     const {name} = useContext<any>(GlobalContext)
     const {occupation} = useContext<any>(GlobalContext)
-    const {profileLink} = useContext<any>(GlobalContext)
-
+    const {profileLink,EducationDetails,
+        InternshipINFO,ProjectDetails } = useContext<any>(GlobalContext)
     const {
         coverBG_color,
         SkillBG_col,
@@ -64,18 +64,27 @@ const Profile:React.FC = () => {
                     </div>
             </div>
         </div>
+        {AboutBG.trim()!==0 && 
         <div className=' __widgets__ '>
             <About_me bg_Color={AboutBG}/>
         </div>
+        }
+        {EducationDetails.length > 0 && 
         <div className=' __widgets__ '>
             <Eduacation bg_color={coverBG_color}/>
         </div>
-        <div className=' __widgets__ '>
-            <InternShips bgCol={SkillBG_col}/>
-        </div>
-        <div className=' __widgets__ '>
-            <MiniProject_Wid/>
-        </div>
+        }
+        {
+            InternshipINFO.length > 0 &&
+            <div className=' __widgets__ '>
+                <InternShips bgCol={SkillBG_col}/>
+            </div>
+        }
+        {ProjectDetails.length > 0 && 
+            <div className=' __widgets__ '>
+                <MiniProject_Wid/>
+            </div>
+        }
         <div className=' __widgets__ '>
             <Social_Media/>
         </div>

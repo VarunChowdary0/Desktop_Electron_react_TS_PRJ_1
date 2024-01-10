@@ -13,9 +13,9 @@ export const Editabel_Social_Media:React.FC = () => {
   const Add_NEW_LINK = (x:string) =>{
     setShowEditPlatform(true);
     setCurrnetEdit(x);
-    // console.log(Links[x])
     setSync(true)
   } 
+  console.log(Links)
   return (
     <div className=' w-[500px] 
     bg-gradient-to-r from-indigo-500 to-pink-500
@@ -28,7 +28,9 @@ export const Editabel_Social_Media:React.FC = () => {
         text-[#1cceff]  text-2xl'>Technical Platforms</h1>
               {Object.keys(Links).map((socialMedia) => {
                   const linkData = Links[socialMedia];
-                  if (socialMedia!=="_id"){
+                  console.log(linkData)
+                  if (socialMedia!=="_id")
+                  {
                   return (
                     <div key={socialMedia} className='scale-125 max-sm:pr-[80px] flex relative items-center justify-center'>
                       <div className='bg-black/0 py-1 max-h-7 rounded-lg w-[50%] flex flex-row items-center gap-5 pl-5'>

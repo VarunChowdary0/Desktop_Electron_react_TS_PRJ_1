@@ -2,6 +2,7 @@ import React from 'react'
 import StarIcon from '../../icons/Type3_icons/StarIcon'
 import CommentsIcon from '../../icons/Type3_icons/CommentsIcon'
 import ShareIcon from '../../icons/Type3_icons/ShareIcon'
+import Git_hub from '../../icons/Git_hub';
 
 interface CurrrentProps{
     isLiked : boolean;
@@ -11,6 +12,7 @@ interface CurrrentProps{
     postID : string;
     showComments:boolean;
     setShowComments:React.Dispatch<React.SetStateAction<boolean>>;
+    githubLink : string;
 }
 const PostFooter:React.FC<CurrrentProps> = (props) => {
     const handle_comms = () =>{
@@ -55,6 +57,17 @@ const PostFooter:React.FC<CurrrentProps> = (props) => {
            <p className=' text-[8px]'>{props.noOfShares}</p>
            </div>
        </div>
+       {props.githubLink.trim()!=="" &&
+       <div className=' scale-125 hover:cursor-pointer '>
+           <div className=' flex items-center gap-2 
+           '>
+               <a href={props.githubLink} target='_balnk'
+                className=' active:scale-125 transition-all'>
+                   <Git_hub/>
+               </a>
+           </div>
+       </div>
+       }
    </div>
   )
 }

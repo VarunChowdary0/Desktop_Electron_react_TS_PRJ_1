@@ -8,7 +8,8 @@ interface CurrentProps{
 	tags : Array<string>;
 	prjInfo: {
 		imgLink : string,
-		prjLink : string
+		prjLink : string,
+		githubLink : string,
 	} | any;
   }
 const BlogPost:React.FC<CurrentProps> = (props) => {
@@ -16,7 +17,11 @@ const BlogPost:React.FC<CurrentProps> = (props) => {
     <div className='h-fit  w-full bg-red-700/0 max-sm:text-sm'>
         <ParaFormater Paras={props.Paras}/>
 				<TagComponent tags={props.tags}/>
-				<div className=' w-full h-fit px-10 mt-4 flex justify-end'>
+				<div className=' w-full h-fit px-10 mt-4 flex items-center 
+				justify-between bg-black/0'>
+					{props.prjInfo.githubLink.trim() !== "" &&
+						<div className=' flex items-center gap-5'>
+					</div>}
 					<a href={props.prjInfo.prjLink}
 					   target='_blank'
 					 className=' h-[90px] w-[170px] overflow-hidden
