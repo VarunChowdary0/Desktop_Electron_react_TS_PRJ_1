@@ -1,17 +1,23 @@
-import React, { useState } from 'react'
+import React from 'react'
 import CloseIcon from '../../icons/CloseIcon';
 
-const ParaAdder:React.FC = () => {
-    const [PerviousParas,AddPreviousPara] = useState<Array<string>>([]); 
-    const [currentPara,setCurrentPara] = useState<string>("");
+interface CurrentProps{
+  PerviousParas:Array<string>;
+  AddPreviousPara : React.Dispatch<React.SetStateAction<Array<string>>>;
+  currentPara:string;
+  setCurrentPara:React.Dispatch<React.SetStateAction<string>>;
+}
+const ParaAdder:React.FC<CurrentProps> = (props) => {
+    // const [PerviousParas,AddPreviousPara] = useState<Array<string>>([]); 
+    // const [currentPara,setCurrentPara] = useState<string>("");
 
     const handleAddTOParas = () => {
-        AddPreviousPara([...PerviousParas,currentPara]);
-        setCurrentPara("");
+        props.AddPreviousPara([...props.PerviousParas,props.currentPara]);
+        props.setCurrentPara("");
     }
     const RemoveThisPara = (idx:number) =>{
-        const UpdatedPrev = [...PerviousParas.slice(0,idx),...PerviousParas.slice(idx+1)]
-        AddPreviousPara(UpdatedPrev);
+        const UpdatedPrev = [...props.PerviousParas.slice(0,idx),...props.PerviousParas.slice(idx+1)]
+        props.AddPreviousPara(UpdatedPrev);
     }
   return (
     <>
@@ -20,9 +26,9 @@ const ParaAdder:React.FC = () => {
     p-5 pl-10 flex flex-col gap-4' >
             <div className=' flex flex-col gap-2 max-h-[200px] 
             bg-black/0 overflow-y-auto px-3 max-sm:p-1'>
-              {PerviousParas.map((ele,idx)=>
+              {props.PerviousParas.map((ele,idx)=>
                 <div key={"para_number_"+idx} className=' px-3
-                 relative bg-black/20 h-[50px] min-h-[50px] flex items-center
+                 relative bg-white dark:bg-dark_dark_100/20 h-[50px] min-h-[50px] flex items-center
                  text-nowrap overflow-hidden rounded-md max-sm:text-sm'>
                     <p>
                         {ele.substring(0,40)}
@@ -44,18 +50,23 @@ const ParaAdder:React.FC = () => {
                 </div>
               )}
             </div>
-            <textarea className=' min-h-[60%] max-h-[50vh] w-full dark:bg-dark_dark_100
+            <textarea onKeyDown={(e)=>{
+              console.log(e.key);
+            }}
+            className=' min-h-[60%] max-h-[50vh] w-full dark:bg-dark_dark_100
              outline-none border-[#00000020] shadow-lg p-5 
-            border rounded-md ' value={currentPara}
-            onChange={(e)=>{setCurrentPara(e.target.value)}}
+            border rounded-md ' value={props.currentPara}
+            onChange={(e)=>{props.setCurrentPara(e.target.value)}}
              placeholder='Text here ... '
             cols={30} rows={10}>
             </textarea>
-            {currentPara.trim() !== ''
+            {props.currentPara.trim() !== ''
                 &&
             <div  className=' flex items- justify-center p-4'>
-              <div className=' bg-black rounded-3xl w-fit'>
-                <button onClick={handleAddTOParas} className=' border'>Add to Text</button>
+              <div className=' dark:bg-black shadow-lg bg-white 
+              rounded-3xl w-fit'>
+                <button onClick={handleAddTOParas} className=' text-black hover:text-white
+                 dark:text-white border transition-all'>Add to Text</button>
               </div>
             </div>
             }

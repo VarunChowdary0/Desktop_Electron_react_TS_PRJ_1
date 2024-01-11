@@ -21,10 +21,10 @@ const ParaFormater:React.FC<CurrentProps> = (props) => {
 
   return (
     <>
-    <div className={` flex flex-col gap-3 
+    <div key={"Pardaccsas"+props.Paras.length} className={` flex flex-col gap-3 
         ${!readFull?"h-[114px] max-sm:h-[157px] overflow-hidden ":"h-fit"} transition-all `}>
             {props.Paras.map((para,id)=>
-             <p id={`BIP_para-`+id}>{para}</p>
+             <p key={`BIP_para-`+id} id={`BIP_para-`+id}>{para}</p>
             )}
         </div>
         {!isShort ?

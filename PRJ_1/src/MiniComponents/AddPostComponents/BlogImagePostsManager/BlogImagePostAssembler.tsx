@@ -1,43 +1,42 @@
-import React, {  useContext, useState } from 'react'
-import TagManager from './TagManager';
-import PrjAssebler from './PrjAssebler';
-import ParaAdder from './ParaAdder';
-import { GlobalContext } from '../../Contexts/GlobalContext';
-import { UserInfoContext } from '../../Contexts/UserInfoContext';
-import ArrowIcon from '../../icons/ArrowIcon';
+import React, { useContext, useState } from 'react'
+import { GlobalContext } from '../../../Contexts/GlobalContext';
+import TagManager from '../TagManager';
+import ParaAdder from '../ParaAdder';
+import PhotosManager from './PhotosManager';
+import { UserInfoContext } from '../../../Contexts/UserInfoContext';
+import ArrowIcon from '../../../icons/ArrowIcon';
 
 interface CurrentProps{
-  setOptions:React.Dispatch<React.SetStateAction<string>>;
+    setOptions:React.Dispatch<React.SetStateAction<string>>;
 }
-const ReportAssembler:React.FC<CurrentProps> = (props) => {
+const BlogImagePostAssembler:React.FC<CurrentProps> = (props) => {
     const [tagArr,setTags] = useState<Array<string>>([]);
     const [CurrnetTag,setCurrentTag] = useState<string>("");
-    const [PrgDirectLink,setPrgDirectLink] = useState<string>("");
-    const [previewImg,setPreviewImg] = useState<string>("")
-    const [Git_hub_repo_link,set_Git_hub_repo_link] = useState<string>("")
     const [PerviousParas,AddPreviousPara] = useState<Array<string>>([]); 
     const [currentPara,setCurrentPara] = useState<string>("");
+    
     const { name,
           occupation,
           profileLink,
     } = useContext<any>(GlobalContext);
 
-    const { setD , setPreview} = useContext<any>(UserInfoContext);
+    const [imagesArray,AddImage] = useState<Array<string>>(
+        []
+        );
+    const [currentImg,setCurrntImg] = useState<string>("");
+
+  const {setPreview,setD} = useContext<any>(UserInfoContext);
     const handleSavePost = () => {
       const PostObject = {
           postID : "POST_ID",
           identifiers : [],
-          type : 'BlogPost',
+          type : 'BlogImagePost',
           name : name,
           occupation : occupation,
           profileLink : profileLink,
           Paras : PerviousParas,
           tags : tagArr,
-          prjInfo : {
-            imgLink : previewImg,
-            prjLink : PrgDirectLink,
-            githubLink : Git_hub_repo_link || "",
-          },
+          images : imagesArray,
           likedBy : [],
           isLiked : false,
           noOfStars : 0,
@@ -68,13 +67,12 @@ const ReportAssembler:React.FC<CurrentProps> = (props) => {
               setTags={setTags}
               CurrnetTag={CurrnetTag}
               setCurrentTag={setCurrentTag}/>
-              <PrjAssebler PrgDirectLink={PrgDirectLink}
-              previewImg={previewImg} 
-              Git_hub_repo_link={Git_hub_repo_link} 
-              setPreviewImg={setPreviewImg}
-              setPrgDirectLink={setPrgDirectLink}
-              set_Git_hub_repo_link={set_Git_hub_repo_link}
-        />
+              <PhotosManager 
+              imagesArray={imagesArray} 
+              AddImage={AddImage}
+              currentImg={currentImg}
+              setCurrntImg={setCurrntImg}
+              />
       <div className=' w-full max-sm:flex items-center justify-center'>
           <div className=' dark:bg-black shadow-lg bg-white 
                   rounded-3xl w-fit'>
@@ -83,8 +81,9 @@ const ReportAssembler:React.FC<CurrentProps> = (props) => {
           </div>
       </div>
     </div>
+    
     </>
   )
 }
 
-export default ReportAssembler
+export default BlogImagePostAssembler

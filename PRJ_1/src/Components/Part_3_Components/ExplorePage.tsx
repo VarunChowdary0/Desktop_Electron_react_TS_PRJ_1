@@ -3,9 +3,10 @@ import { UserInfoContext } from '../../Contexts/UserInfoContext'
 import PostsComponent from '../../MiniComponents/PostsComponent';
 import ContibutionsComponent from '../../MiniComponents/ContibutionsComponent';
 import TrendingComponent from '../../MiniComponents/TrendingComponent';
+import PostPreviewer from '../../ExploreComps/PreviewComponents/PostPreviewer';
 
 const ExplorePage:React.FC = () => {
-    const {ExploreSubPage,setExploreSubPage} = useContext<any>(UserInfoContext);
+    const {ExploreSubPage,setExploreSubPage,showPreview,D} = useContext<any>(UserInfoContext);
   return (
     <div className=' w-full h-fit min-h-screen max-sm:ml-0
      pb-10 flex items-center flex-col dark:text-white
@@ -46,6 +47,9 @@ const ExplorePage:React.FC = () => {
             {(ExploreSubPage === "trending")&&
                 <TrendingComponent/>
             }
+            {showPreview && 
+        <PostPreviewer Data={D}/>
+    }
     </div>
   )
 }

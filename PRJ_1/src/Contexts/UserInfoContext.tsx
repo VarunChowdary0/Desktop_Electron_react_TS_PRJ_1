@@ -19,13 +19,20 @@ interface ExplorePage_Content{
     ExploreSubPage:string;
     setExploreSubPage:React.Dispatch<React.SetStateAction<string>>;
 }
+interface Preview{
+    showPreview:boolean
+    setPreview:React.Dispatch<React.SetStateAction<boolean>>;
+    D : object;
+    setD : React.Dispatch<React.SetStateAction<object>>;
+}
 
 interface UserInfoContextType extends 
 logStatus,
 USER_UID,
 username,
 popUps,
-ExplorePage_Content
+ExplorePage_Content,
+Preview
 {}
 
 
@@ -50,6 +57,9 @@ const UserInfoContextProvider:React.FC<UserInfoContextProviderProps> = ({childre
     const [showConnectionsPopUp,setshowConnectionPopUp] = useState(false);
 
     const [ExploreSubPage,setExploreSubPage] = useState("posts")
+
+    const [showPreview,setPreview] = useState(false);
+    const [D,setD] = useState({})
     return (
         <UserInfoContext.Provider
             value = {{
@@ -60,6 +70,8 @@ const UserInfoContextProvider:React.FC<UserInfoContextProviderProps> = ({childre
                 USER_UID,
                 showConnectionsPopUp,setshowConnectionPopUp,
                 ExploreSubPage,setExploreSubPage,
+                showPreview,setPreview,
+                D,setD
             }}
          >
             {children}

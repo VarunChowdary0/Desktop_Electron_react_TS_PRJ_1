@@ -54,7 +54,7 @@ export const isLink = (str:string) => {
     // console.log(str)
     if(
     (str.includes("https://")||str.includes("http://"))
-    && (str.includes(".com")) &&
+    && ((str.includes(".com")) || (str.includes(".in")) || (str.includes(".app")) || (str.includes(".cc"))) &&
     (str.length >= 13) && 
     !(str.includes(" "))){
         return true

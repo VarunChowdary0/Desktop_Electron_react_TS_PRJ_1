@@ -18,12 +18,12 @@ const TagManager:React.FC<CurrentProps> = (props) => {
     }
   return (
     <>
-    <div className=' __TagBlock__ w-[100%] max-h-[200px] max-sm:max-h-[120px]
+    <div className=' __TagBlock__ w-[100%] max-h-[200px] max-sm:max-h-[170px]
          overflow-y-auto
          bg-black/0 rounded-lg flex p-5 flex-wrap gap-4 '>
             {
                 props.tagArr.map((ele,idx)=>
-                <div key={'TagID_'+idx} className='__Skill__ bg-black/10 px-2 relative
+                <div key={'TagID_'+idx} className='__Skill__ bg-white px-2 relative
                 py-1 rounded-md h-fit w-fit text-dark_Match_200 hover:bg-black/20 
                 transition-all'>
                     #{ele}

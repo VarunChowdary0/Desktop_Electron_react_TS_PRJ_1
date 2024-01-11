@@ -114,6 +114,26 @@ const PostsComponent:React.FC = () => {
       } 
 
   const PostsObjectArr = [
+    {   
+        postID:"POST_ID",
+        identifiers:[],
+        type : 'BlogPost',
+        name:"The Admin of REzZUMY",
+        occupation:"Adminstrator",
+        profileLink:"https://i.postimg.cc/bdXB5cNW/Screenshot-2023-08-22-185748.png",
+        Paras:["Test text.comfk"],
+        tags:["placements","internship","collage","competitiveprogramming","mern","kkmk\\"],
+        prjInfo:{
+            imgLink:"https://www.livemint.com/lm-img/img/2024/01/11/600x338/im-910163_1704964507663_1704964545560.jpg",
+            prjLink:"www.www.com",
+            githubLink:"3lcfn3ccfkj"
+        },
+        likedBy:[],
+        isLiked:false,
+        noOfStars:0,
+        noofCommas:0,
+        noOfShares:0
+    },
     {
       postID:"PostID_here",
       identifiers : ["id_1","id_2","id_3"],
