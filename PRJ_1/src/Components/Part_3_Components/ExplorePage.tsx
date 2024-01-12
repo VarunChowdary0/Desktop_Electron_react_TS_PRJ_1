@@ -11,7 +11,7 @@ const ExplorePage:React.FC = () => {
     <div className=' w-full h-fit min-h-screen max-sm:ml-0
      pb-10 flex items-center flex-col dark:text-white
      bg-[#eae8ed] gap-12 overflow-y-auto dark:bg-dark_dark_100
-     pt-[50px] overflow-x-hidden mt-[50px]
+     pt-[20px] overflow-x-hidden 
     '>
         <div className=' w-full flex justify-around bg-white dark:bg-dark_dark_100
              font-light fixed top-0 pl-[100px] max-sm:pl-0 z-10  '>
