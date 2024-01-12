@@ -48,7 +48,7 @@ const ExplorePage:React.FC = () => {
                 <TrendingComponent/>
             }
             {showPreview && 
-        <PostPreviewer Data={D}/>
+        <PostPreviewer  Data={D}/>
     }
     </div>
   )

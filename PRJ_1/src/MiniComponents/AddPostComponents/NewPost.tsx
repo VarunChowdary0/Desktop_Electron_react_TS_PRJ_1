@@ -1,13 +1,14 @@
-import React, {  useState } from 'react'
+import React, {  useContext } from 'react'
 import ReportAssembler from './ReportAssembler';
 import BlogImagePostAssembler from './BlogImagePostsManager/BlogImagePostAssembler';
 import CustomAssembler from './CustomBlogComps/CustomAssembler';
+import { UserInfoContext } from '../../Contexts/UserInfoContext';
 
 interface CurrentProps{
     setPostAdder:React.Dispatch<React.SetStateAction<boolean>>;
 }
 const NewPost:React.FC<CurrentProps> = (props) => {
-  const [showOPtions,setOptions] = useState<string>("");
+  const {showOPtions,setOptions} = useContext<any>(UserInfoContext);
   return (
     <div className=' h-[100vh] w-full bg-[#f2ebeb]/10  flex-col
      flex items-center justify-center dark:bg-dark_dark_200/20 backdrop-blur-sm '>

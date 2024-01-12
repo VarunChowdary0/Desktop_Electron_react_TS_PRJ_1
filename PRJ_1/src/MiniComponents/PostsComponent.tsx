@@ -226,7 +226,7 @@ const PostsComponent:React.FC = () => {
     Fetch();
   },[])
   return (
-    <div className='__posts__ h-fit w-full flex gap-10 flex-col
+    <div className='__posts__ h-fit w-full flex gap-10 flex-col-reverse
     items-center px-10 py-5 max-sm:px-5'>
       {FetchedData.length > 0 ?
         FetchedData.map((post:object,idx:number)=>

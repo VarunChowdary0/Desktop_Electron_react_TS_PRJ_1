@@ -12,7 +12,7 @@ interface CurrentProps{
 const PostPreviewer:React.FC<CurrentProps> = (props) => {
   const [isLoad,setLoad] = useState<boolean>(false);
   const [showButtom,setButton] = useState<boolean>(true);
-  const {setPreview} = useContext<any>(UserInfoContext);
+  const {setPreview,setOptions} = useContext<any>(UserInfoContext);
   const [message,setMsg] = useState<string>("")
   // console.log(props.Data)
 const postIT = async () => {
@@ -24,6 +24,7 @@ const postIT = async () => {
       console.log("OK");
       setLoad(false);
       setMsg("😃 Post Saved !")
+      setOptions("")
     }
     else{
       console.log("Failed")
@@ -62,7 +63,7 @@ const postIT = async () => {
           }
          {(message.length>0) &&
           <div className=' px-3 py-1 bg-white z-50 rounded-lg'>
-            <p className=' '>{message}</p>
+            <p className=' text-black'>{message}</p>
           </div>}
       </div>
     </div>

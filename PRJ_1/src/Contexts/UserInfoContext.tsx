@@ -24,10 +24,14 @@ interface Preview{
     setPreview:React.Dispatch<React.SetStateAction<boolean>>;
     D : object;
     setD : React.Dispatch<React.SetStateAction<object>>;
+
+    showOPtions:string
+    setOptions:React.Dispatch<React.SetStateAction<string>>;
 }
 interface Fetched{
     FetchedData:Array<object>;
     setFetchData:React.Dispatch<React.SetStateAction<Array<object>>>;
+
 }
 
 interface UserInfoContextType extends 
@@ -63,6 +67,9 @@ const UserInfoContextProvider:React.FC<UserInfoContextProviderProps> = ({childre
 
     const [ExploreSubPage,setExploreSubPage] = useState("posts")
 
+    const [showOPtions,setOptions] = useState<string>("");
+
+
     const [showPreview,setPreview] = useState(false);
     const [D,setD] = useState({})
 
@@ -79,6 +86,7 @@ const UserInfoContextProvider:React.FC<UserInfoContextProviderProps> = ({childre
                 showConnectionsPopUp,setshowConnectionPopUp,
                 ExploreSubPage,setExploreSubPage,
                 showPreview,setPreview,
+                showOPtions,setOptions,
                 D,setD,
                 FetchedData,setFetchData
             }}
