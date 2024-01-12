@@ -25,6 +25,10 @@ interface Preview{
     D : object;
     setD : React.Dispatch<React.SetStateAction<object>>;
 }
+interface Fetched{
+    FetchedData:Array<object>;
+    setFetchData:React.Dispatch<React.SetStateAction<Array<object>>>;
+}
 
 interface UserInfoContextType extends 
 logStatus,
@@ -32,6 +36,7 @@ USER_UID,
 username,
 popUps,
 ExplorePage_Content,
+Fetched,
 Preview
 {}
 
@@ -60,6 +65,9 @@ const UserInfoContextProvider:React.FC<UserInfoContextProviderProps> = ({childre
 
     const [showPreview,setPreview] = useState(false);
     const [D,setD] = useState({})
+
+    const [FetchedData,setFetchData] = useState<Array<object>>([]);
+
     return (
         <UserInfoContext.Provider
             value = {{
@@ -71,7 +79,8 @@ const UserInfoContextProvider:React.FC<UserInfoContextProviderProps> = ({childre
                 showConnectionsPopUp,setshowConnectionPopUp,
                 ExploreSubPage,setExploreSubPage,
                 showPreview,setPreview,
-                D,setD
+                D,setD,
+                FetchedData,setFetchData
             }}
          >
             {children}

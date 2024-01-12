@@ -18,7 +18,7 @@ const BlogPost:React.FC<CurrentProps> = (props) => {
         <ParaFormater Paras={props.Paras}/>
 				<TagComponent tags={props.tags}/>
 				<div className=' w-full h-fit px-10 mt-4 flex items-center 
-				justify-between bg-black/0'>
+				justify-end bg-black/0'>
 					{props.prjInfo.githubLink.trim() !== "" &&
 						<div className=' flex items-center gap-5'>
 					</div>}

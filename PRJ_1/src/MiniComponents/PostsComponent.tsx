@@ -1,17 +1,18 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../Contexts/GlobalContext'
 import { UserInfoContext } from '../Contexts/UserInfoContext';
 import MainPostComp from '../ExploreComps/MainPostComp';
 import NewPost from './AddPostComponents/NewPost';
+import { fetch_All_posts } from '../Controllers/FetchPosts';
 
 const PostsComponent:React.FC = () => {
-  const {
-    profileLink,
-    name,
-    occupation
-  } = useContext<any>(GlobalContext);
+  // const {
+  //   profileLink,
+  //   name,
+  //   occupation
+  // } = useContext<any>(GlobalContext);
 
-  const {username} = useContext<any>(UserInfoContext);
+  // const {FetchedData,setFetched} = useContext<any>(UserInfoContext);
 
   const [ShowPostAdder,setPostAdder] = useState<boolean>(false)
 
@@ -106,111 +107,133 @@ const PostsComponent:React.FC = () => {
 </html>
 `;
 
-      const DidIlikeIt = (likedBy:Array<string>) =>{
-          if(likedBy.includes(username)){
-              return true;
-          }
-          return false;
-      } 
+  const {FetchedData,setFetchData} = useContext<any>(UserInfoContext);
 
-  const PostsObjectArr = [
-    {   
-        postID:"POST_ID",
-        identifiers:[],
-        type : 'BlogPost',
-        name:"The Admin of REzZUMY",
-        occupation:"Adminstrator",
-        profileLink:"https://i.postimg.cc/bdXB5cNW/Screenshot-2023-08-22-185748.png",
-        Paras:["Test text.comfk"],
-        tags:["placements","internship","collage","competitiveprogramming","mern","kkmk\\"],
-        prjInfo:{
-            imgLink:"https://www.livemint.com/lm-img/img/2024/01/11/600x338/im-910163_1704964507663_1704964545560.jpg",
-            prjLink:"www.www.com",
-            githubLink:"3lcfn3ccfkj"
-        },
-        likedBy:[],
-        isLiked:false,
-        noOfStars:0,
-        noofCommas:0,
-        noOfShares:0
-    },
-    {
-      postID:"PostID_here",
-      identifiers : ["id_1","id_2","id_3"],
-      type : 'BlogPost',
-      name : "Rocket Launcher",
-      occupation : occupation,
-      profileLink : profileLink, 
-      Paras : BlogPostParas, // Array of String
-      tags:["mern","webdevelopment","fullstack","node","react","mongodb"],
-      prjInfo : {
-        imgLink : "https://blog-it-ten.vercel.app/static/media/home_pc.c323c8481dd5355b7845.png",
-        prjLink : "https://blog-it-ten.vercel.app/",
-        githubLink : "https://github.com/VarunChowdary0" 
-      },
-      likedBy : [], // _ usernames _
-      isLiked : DidIlikeIt(["Sai Varun Chowdary Poludasu","1","varun_chowdary"]), // boolean -> check if
-      noOfStars : 1403,
-      noofCommas : 21 ,
-      noOfShares : 15
-    },
-    {
-      postID : "PostID_here",
-      identifiers : ['id1','id2'],
-      type : 'BlogImagePost',
-      name : name,
-      occupation : occupation,
-      profileLink : profileLink ,
-      Paras : [`By wrapping the arrow function in an additional set of parentheses and immediately
-       calling it with (), TypeScript should recognize it as an expression and allow the return type to be React.ReactNode.`],
-      tags : [],
-      images : ["https://i.postimg.cc/8kHst0Hh/Screenshot-2024-01-08-185051.png"],
-      likedBy : [],
-      isLiked : false,
-      noOfStars : 32334,
-      noofCommas : 21 ,
-      noOfShares : 259
-    },  
-    {
-      postID:"PostID_here",
-      identifiers : ["id_1","id_2","id_3"],
-      type : 'BlogImagePost',
-      name : name,
-      occupation : occupation,
-      profileLink : profileLink,
-      Paras : BlogImagePostParas,
-      tags : ["placements","internship","collage","competitiveprogramming"],
-      images : BlogImagePostImages,
-      likedBy : [], // _ usernames _
-      isLiked : DidIlikeIt(["Sai Varun Chowdary Poludasu","1","varun_chowdary_90"]), // boolean -> check if
-      noOfStars : 156,
-      noofCommas : 11 ,
-      noOfShares : 2,
-    },
-    {
-      postID:"PostID_here",
-      identifiers : ["id_1","id_2","id_3"],
-      type : 'CustomPost',
-      name : name,
-      occupation : occupation,
-      profileLink : profileLink,
-      Post_code : MyPost,
-      Paras : CustomPostParas,
-      tags : ["ai",'ml','deeplearning'],
-      likedBy : ["Sai Varun Chowdary Poludasu","1","varun_chowdary"], // _ usernames _
-      isLiked : DidIlikeIt(["Sai Varun Chowdary Poludasu","1","varun_chowdary"]), // boolean -> check if
-      noOfStars : 58,
-      noofCommas : 9 ,
-      noOfShares : 5,
+
+
+  //  [
+  //   {   
+  //       postID:"POST_ID",
+  //       USER_UID : "",
+  //       identifiers:[],
+  //       type : 'BlogPost',
+  //       name:"The Admin of REzZUMY",
+  //       occupation:"Adminstrator",
+  //       profileLink:"https://i.postimg.cc/bdXB5cNW/Screenshot-2023-08-22-185748.png",
+  //       Paras:["Test text.comfk"],
+  //       tags:["placements","internship","collage","competitiveprogramming","mern","kkmk\\"],
+  //       prjInfo:{
+  //           imgLink:"https://www.livemint.com/lm-img/img/2024/01/11/600x338/im-910163_1704964507663_1704964545560.jpg",
+  //           prjLink:"www.www.com",
+  //           githubLink:"3lcfn3ccfkj"
+  //       },
+  //       likedBy:[],
+  //       isLiked:false,
+  //       noOfStars:0,
+  //       noofCommas:0,
+  //       noOfShares:0
+  //   },
+  //   {
+  //     postID:"PostID_here",
+  //     USER_UID : "",
+  //     identifiers : ["id_1","id_2","id_3"],
+  //     type : 'BlogPost',
+  //     name : "Rocket Launcher",
+  //     occupation : occupation,
+  //     profileLink : profileLink, 
+  //     Paras : BlogPostParas, // Array of String
+  //     tags:["mern","webdevelopment","fullstack","node","react","mongodb"],
+  //     prjInfo : {
+  //       imgLink : "https://blog-it-ten.vercel.app/static/media/home_pc.c323c8481dd5355b7845.png",
+  //       prjLink : "https://blog-it-ten.vercel.app/",
+  //       githubLink : "https://github.com/VarunChowdary0" 
+  //     },
+  //     likedBy : [], // _ usernames _
+  //     isLiked : DidIlikeIt(["Sai Varun Chowdary Poludasu","1","varun_chowdary"]), // boolean -> check if
+  //     noOfStars : 1403,
+  //     noofCommas : 21 ,
+  //     noOfShares : 15
+  //   },
+  //   {
+  //     postID : "PostID_here",
+  //     USER_UID : "",
+  //     identifiers : ['id1','id2'],
+  //     type : 'BlogImagePost',
+  //     name : name,
+  //     occupation : occupation,
+  //     profileLink : profileLink ,
+  //     Paras : [`By wrapping the arrow function in an additional set of parentheses and immediately
+  //      calling it with (), TypeScript should recognize it as an expression and allow the return type to be React.ReactNode.`],
+  //     tags : [],
+  //     images : ["https://i.postimg.cc/8kHst0Hh/Screenshot-2024-01-08-185051.png"],
+  //     likedBy : [],
+  //     isLiked : false,
+  //     noOfStars : 32334,
+  //     noofCommas : 21 ,
+  //     noOfShares : 259
+  //   },  
+  //   {
+  //     postID:"PostID_here",
+  //     USER_UID : "",
+  //     identifiers : ["id_1","id_2","id_3"],
+  //     type : 'BlogImagePost',
+  //     name : name,
+  //     occupation : occupation,
+  //     profileLink : profileLink,
+  //     Paras : BlogImagePostParas,
+  //     tags : ["placements","internship","collage","competitiveprogramming"],
+  //     images : BlogImagePostImages,
+  //     likedBy : [username], // _ usernames _
+  //     isLiked : DidIlikeIt(["Sai Varun Chowdary Poludasu","1","varun_chowdary_90"]), // boolean -> check if
+  //     noOfStars : 156,
+  //     noofCommas : 11 ,
+  //     noOfShares : 2,
+  //   },
+  //   {
+  //     postID:"PostID_here",
+  //     USER_UID : "",
+  //     identifiers : ["id_1","id_2","id_3"],
+  //     type : 'CustomPost',
+  //     name : name,
+  //     occupation : occupation,
+  //     profileLink : profileLink,
+  //     Post_code : MyPost,
+  //     Paras : CustomPostParas,
+  //     tags : ["ai",'ml','deeplearning'],
+  //     likedBy : ["Sai Varun Chowdary Poludasu","1","varun_chowdary"], // _ usernames _
+  //     isLiked : DidIlikeIt(["Sai Varun Chowdary Poludasu","1","varun_chowdary"]), // boolean -> check if
+  //     noOfStars : 58,
+  //     noofCommas : 9 ,
+  //     noOfShares : 5,
+  //   }
+  // ] 
+
+  const Fetch = async () =>{
+    if(FetchedData.length === 0){
+      const response = await  fetch_All_posts();
+      if(response.status){
+        setFetchData(response.data);
+        console.log(response.data)
+      }
+      else{
+        console.log("⚠️ Something went wrong !")
+      }
+    console.log(FetchedData)
     }
-  ] 
+    
+  }
+  useEffect(()=>{
+    Fetch();
+  },[])
   return (
     <div className='__posts__ h-fit w-full flex gap-10 flex-col
     items-center px-10 py-5 max-sm:px-5'>
-      {
-        PostsObjectArr.map((post,idx)=>
+      {FetchedData.length > 0 ?
+        FetchedData.map((post:object,idx:number)=>
         <MainPostComp key={`_posts_`+idx} DataObj={post}/>
         )
+        :
+        "Loading... "
       }
       <div onClick={()=>{setPostAdder(true)}}
       className='__Skill__ fixed bottom-14 right-14 h-12 w-12 pb-2 shadow-md

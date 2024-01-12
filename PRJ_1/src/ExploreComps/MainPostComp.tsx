@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import PostHeader from './InnterComps/PostHeader';
 import BlogPost from './BlogPost';
 import BolgImagePost from './BolgImagePost';
@@ -8,9 +8,11 @@ import PostFooter from './InnterComps/PostFooter';
 import CommentsComp from './CommentsComp';
 import CloseIcon from '../icons/CloseIcon';
 import AddComment from './AddComment';
+import { UserInfoContext } from '../Contexts/UserInfoContext';
 interface CurrentProps {
     DataObj: {
       postID: string;
+      USER_UID:string;
       identifiers: string[];
       type: string;
       name: string;
@@ -35,13 +37,24 @@ interface CurrentProps {
   
 const MainPostComp:React.FC<CurrentProps> = (props) => { 
     const [showComments,setShowComments] = useState<boolean>(false)
-   
+    const {username} = useContext<any>(UserInfoContext);
+
+    const DidIlikeIt = (likedBy:Array<string>) =>{
+      // console.log(likedBy)
+      if(likedBy.includes(username)){
+          return true;
+      }
+      return false;
+}
   return (
     <div className=' flex gap-4  max-sm:flex-col w-fit transition-all overflow-hidden'>
         <div className=" w-[500px] h-fit  bg-white
         dark:bg-dark_dark_200 dark:text-white shadow-sm
         max-sm:w-[100%] flex flex-col p-2 rounded-md gap-3">
-            <PostHeader name={props.DataObj.name} profileUrl={props.DataObj.profileLink} occupation={props.DataObj.occupation}/>
+            <PostHeader name={props.DataObj.name} 
+            profileUrl={props.DataObj.profileLink}
+            USER_UID={props.DataObj.USER_UID}
+            occupation={props.DataObj.occupation}/>
             {
             props.DataObj.type === 'BlogPost' && 
             <BlogPost prjInfo={props.DataObj.prjInfo} Paras={props.DataObj.Paras} tags={props.DataObj.tags}/>
@@ -58,7 +71,7 @@ const MainPostComp:React.FC<CurrentProps> = (props) => {
             />
             }
             <DivideLine/>
-            <PostFooter isLiked={props.DataObj.isLiked} noOfStars={props.DataObj.noOfStars} 
+            <PostFooter isLiked={DidIlikeIt(props.DataObj.likedBy)} noOfStars={props.DataObj.noOfStars} 
             noOfComms={props.DataObj.noofCommas}  noOfShares={props.DataObj.noOfShares} 
              githubLink={props.DataObj.type==="BlogPost"?props.DataObj.prjInfo.githubLink:""}
             showComments={showComments} setShowComments={setShowComments} postID={props.DataObj.postID} />

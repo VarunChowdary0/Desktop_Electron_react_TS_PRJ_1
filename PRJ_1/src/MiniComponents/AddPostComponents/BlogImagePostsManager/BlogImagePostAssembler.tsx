@@ -5,6 +5,7 @@ import ParaAdder from '../ParaAdder';
 import PhotosManager from './PhotosManager';
 import { UserInfoContext } from '../../../Contexts/UserInfoContext';
 import ArrowIcon from '../../../icons/ArrowIcon';
+import { v4 as uuidv4 } from 'uuid'
 
 interface CurrentProps{
     setOptions:React.Dispatch<React.SetStateAction<string>>;
@@ -25,27 +26,46 @@ const BlogImagePostAssembler:React.FC<CurrentProps> = (props) => {
         );
     const [currentImg,setCurrntImg] = useState<string>("");
 
-  const {setPreview,setD} = useContext<any>(UserInfoContext);
+  const {setPreview,setD,USER_UID} = useContext<any>(UserInfoContext);
+  const [flasher,setFlasher] = useState("")
+
     const handleSavePost = () => {
-      const PostObject = {
-          postID : "POST_ID",
-          identifiers : [],
-          type : 'BlogImagePost',
-          name : name,
-          occupation : occupation,
-          profileLink : profileLink,
-          Paras : PerviousParas,
-          tags : tagArr,
-          images : imagesArray,
-          likedBy : [],
-          isLiked : false,
-          noOfStars : 0,
-          noofCommas : 0,
-          noOfShares : 0
-      }
-      // console.log(JSON.stringify(PostObject));
-      setD(PostObject);
-      setPreview(true);
+      if(
+        (PerviousParas.length !== 0 
+         ||
+         tagArr.length !== 0)
+         &&
+         (imagesArray.length!==0)
+       ){
+            const PostObject = {
+            postID : uuidv4()+"_post",
+            USER_UID:USER_UID,
+            identifiers : [],
+            type : 'BlogImagePost',
+            name : name,
+            occupation : occupation,
+            profileLink : profileLink,
+            Paras : PerviousParas,
+            tags : tagArr,
+            images : imagesArray,
+            likedBy : [],
+            isLiked : false,
+            noOfStars : 0,
+            noofCommas : 0,
+            noOfShares : 0
+        }
+        // console.log(JSON.stringify(PostObject));
+        setD(PostObject);
+        setPreview(true);
+       }
+       else{
+        console.log("Empty")
+        setFlasher("⚠️ Cannot post can't be empty");
+        setTimeout(()=>{
+          setFlasher("");
+        },2000)
+       }
+      
     }
   return (
     <>
@@ -74,6 +94,7 @@ const BlogImagePostAssembler:React.FC<CurrentProps> = (props) => {
               setCurrntImg={setCurrntImg}
               />
       <div className=' w-full max-sm:flex items-center justify-center'>
+      <p className=' mb-10'>{flasher}</p>
           <div className=' dark:bg-black shadow-lg bg-white 
                   rounded-3xl w-fit'>
             <button onClick={handleSavePost} className=' text-black hover:text-white

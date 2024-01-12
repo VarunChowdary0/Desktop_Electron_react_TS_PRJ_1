@@ -5,6 +5,8 @@ import ParaAdder from './ParaAdder';
 import { GlobalContext } from '../../Contexts/GlobalContext';
 import { UserInfoContext } from '../../Contexts/UserInfoContext';
 import ArrowIcon from '../../icons/ArrowIcon';
+import { v4 as uuidv4 } from 'uuid'
+
 
 interface CurrentProps{
   setOptions:React.Dispatch<React.SetStateAction<string>>;
@@ -22,31 +24,59 @@ const ReportAssembler:React.FC<CurrentProps> = (props) => {
           profileLink,
     } = useContext<any>(GlobalContext);
 
-    const { setD , setPreview} = useContext<any>(UserInfoContext);
-    const handleSavePost = () => {
+    const { setD ,
+       setPreview,
+        USER_UID ,
+  } = useContext<any>(UserInfoContext);
+
+  const [flasher,setFlasher] = useState("")
+
+  const handleSavePost = () => {
+    if(
+      (PerviousParas.length !== 0 
+       ||
+       tagArr.length !== 0)
+       &&
+       (
+        previewImg.length !== 0
+        ||
+        PrgDirectLink.length !== 0
+        ||
+        Git_hub_repo_link.length !== 0
+       )
+     ){
       const PostObject = {
-          postID : "POST_ID",
-          identifiers : [],
-          type : 'BlogPost',
-          name : name,
-          occupation : occupation,
-          profileLink : profileLink,
-          Paras : PerviousParas,
-          tags : tagArr,
-          prjInfo : {
-            imgLink : previewImg,
-            prjLink : PrgDirectLink,
-            githubLink : Git_hub_repo_link || "",
-          },
-          likedBy : [],
-          isLiked : false,
-          noOfStars : 0,
-          noofCommas : 0,
-          noOfShares : 0
-      }
-      // console.log(JSON.stringify(PostObject));
-      setD(PostObject);
-      setPreview(true);
+            postID : uuidv4()+"_post",
+            USER_UID : USER_UID,
+            identifiers : [],
+            type : 'BlogPost',
+            name : name,
+            occupation : occupation,
+            profileLink : profileLink,
+            Paras : PerviousParas,
+            tags : tagArr,
+            prjInfo : {
+              imgLink : previewImg,
+              prjLink : PrgDirectLink,
+              githubLink : Git_hub_repo_link || "",
+            },
+            likedBy : [],
+            isLiked : false,
+            noOfStars : 0,
+            noofCommas : 0,
+            noOfShares : 0
+        }
+        // console.log(JSON.stringify(PostObject));
+        setD(PostObject);
+        setPreview(true);
+     }
+     else{
+      console.log("Empty")
+      setFlasher("⚠️ Cannot post can't be empty");
+      setTimeout(()=>{
+        setFlasher("");
+      },2000)
+     }
     }
   return (
     <>
@@ -75,7 +105,8 @@ const ReportAssembler:React.FC<CurrentProps> = (props) => {
               setPrgDirectLink={setPrgDirectLink}
               set_Git_hub_repo_link={set_Git_hub_repo_link}
         />
-      <div className=' w-full max-sm:flex items-center justify-center'>
+      <div className=' w-full max-sm:flex items-center justify-center '>
+      <p className=' mb-10'>{flasher}</p>
           <div className=' dark:bg-black shadow-lg bg-white 
                   rounded-3xl w-fit'>
             <button onClick={handleSavePost} className=' text-black hover:text-white

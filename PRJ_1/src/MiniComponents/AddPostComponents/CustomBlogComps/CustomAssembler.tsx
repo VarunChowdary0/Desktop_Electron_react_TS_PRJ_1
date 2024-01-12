@@ -4,6 +4,7 @@ import TagManager from '../TagManager';
 import { GlobalContext } from '../../../Contexts/GlobalContext';
 import { UserInfoContext } from '../../../Contexts/UserInfoContext';
 import ArrowIcon from '../../../icons/ArrowIcon';
+import { v4 as uuidv4 } from 'uuid'
 
 interface CurrentProps{
     setOptions:React.Dispatch<React.SetStateAction<string>>;
@@ -19,7 +20,7 @@ const CustomAssembler:React.FC<CurrentProps> = (props) => {
           occupation,
           profileLink,
     } = useContext<any>(GlobalContext);
-  const {setPreview,setD} = useContext<any>(UserInfoContext);
+  const {setPreview,setD,USER_UID} = useContext<any>(UserInfoContext);
   
 
   const [CurrentCode,setCurrentCode] = useState<string>(`
@@ -80,11 +81,20 @@ const CustomAssembler:React.FC<CurrentProps> = (props) => {
 </html>
   `)
 
- 
+  const [flasher,setFlasher] = useState("")
+
 
     const handleSavePost = () => {
-      const PostObject = {
-          postID : "POST_ID",
+      if(
+       (PerviousParas.length !== 0 
+        ||
+        tagArr.length !== 0)
+        &&
+        (CurrentCode.length!==0)
+      ){
+        const PostObject = {
+          postID : uuidv4()+"_post",
+          USER_UID:USER_UID,
           identifiers : [],
           type : 'CustomPost',
           name : name,
@@ -102,6 +112,14 @@ const CustomAssembler:React.FC<CurrentProps> = (props) => {
     //   console.log(JSON.stringify(PostObject));
       setD(PostObject);
       setPreview(true);
+      }
+      else{
+        console.log("Empty")
+        setFlasher("⚠️ Cannot post can't be empty");
+        setTimeout(()=>{
+          setFlasher("");
+        },2000)
+       }
     }
   return (
     <>
@@ -173,6 +191,7 @@ const CustomAssembler:React.FC<CurrentProps> = (props) => {
                  ></textarea>
               </div>
       <div className=' w-full max-sm:flex items-center justify-center'>
+      <p className=' mb-10'>{flasher}</p>
           <div className=' dark:bg-black shadow-lg bg-white 
                   rounded-3xl w-fit'>
             <button onClick={handleSavePost} className=' text-black hover:text-white
@@ -180,8 +199,6 @@ const CustomAssembler:React.FC<CurrentProps> = (props) => {
           </div>
       </div>
     </div>
-
-    
     </>
   )
 }
