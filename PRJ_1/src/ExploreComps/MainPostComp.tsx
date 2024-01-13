@@ -34,6 +34,7 @@ interface CurrentProps {
       noofCommas: number;
       noOfShares: number;
     } | any ;
+    index : number
   }
   
 const MainPostComp:React.FC<CurrentProps> = (props) => { 
@@ -76,6 +77,7 @@ const MainPostComp:React.FC<CurrentProps> = (props) => {
             <PostFooter isLiked={DidIlikeIt(props.DataObj.likedBy)} noOfStars={props.DataObj.noOfStars} 
             noOfComms={props.DataObj.noofCommas}  noOfShares={props.DataObj.noOfShares} 
              githubLink={props.DataObj.type==="BlogPost"?props.DataObj.prjInfo.githubLink:""}
+             LikedBy={props.DataObj.likedBy} index={props.index}
             showComments={showComments} setShowComments={setShowComments} postID={props.DataObj.postID} />
         </div>
         <div className=' flex flex-col gap-3' >

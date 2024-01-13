@@ -102,7 +102,8 @@ const ViewStats:React.FC = () => {
                 myPosts.map((ele,idx)=>
                     <div className='  scale-75 max-sm:scale-100 flex items-center snap-center
                     justify-center' key={"mypost-"+idx}>
-                        <MainPostComp  DataObj={ele}/>
+                        <MainPostComp  DataObj={ele} index={idx}/> 
+                        {/* handle here ... */}
                     </div>
                 )
             }

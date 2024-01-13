@@ -8,6 +8,7 @@ orbit.register()
 
 interface CurrentProps{
     Data : object;
+    index : number;
 }
 const PostPreviewer:React.FC<CurrentProps> = (props) => {
   const [isLoad,setLoad] = useState<boolean>(false);
@@ -46,7 +47,7 @@ const postIT = async () => {
         <div onClick={()=>setPreview(false)} className=' absolute top-0 left-0 
         right-0 bottom-0 bg-[#1b1a1a4d] backdrop-blur-lg  z-0  overflow-auto'></div>
           <div className=' z-50 max-h-[700px] overflow-y-auto rounded-md '>
-            <MainPostComp DataObj={props.Data} />
+            <MainPostComp DataObj={props.Data} index={props.index} />
           </div>
       <div className=' absolute top-10 right-10'>
       { showButtom &&
