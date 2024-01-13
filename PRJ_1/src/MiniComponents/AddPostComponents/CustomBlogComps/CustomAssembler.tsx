@@ -5,6 +5,7 @@ import { GlobalContext } from '../../../Contexts/GlobalContext';
 import { UserInfoContext } from '../../../Contexts/UserInfoContext';
 import ArrowIcon from '../../../icons/ArrowIcon';
 import { v4 as uuidv4 } from 'uuid'
+import HeightComp from './heightComp';
 
 interface CurrentProps{
     setOptions:React.Dispatch<React.SetStateAction<string>>;
@@ -15,6 +16,7 @@ const CustomAssembler:React.FC<CurrentProps> = (props) => {
     const [CurrnetTag,setCurrentTag] = useState<string>("");
     const [PerviousParas,AddPreviousPara] = useState<Array<string>>([]); 
     const [currentPara,setCurrentPara] = useState<string>("");
+    const [postHeight,setPostheight] = useState<number>(450);
     
     const { name,
           occupation,
@@ -97,6 +99,7 @@ const CustomAssembler:React.FC<CurrentProps> = (props) => {
           USER_UID:USER_UID,
           identifiers : [],
           type : 'CustomPost',
+          postHeight : postHeight,
           name : name,
           occupation : occupation,
           profileLink : profileLink,
@@ -190,14 +193,29 @@ const CustomAssembler:React.FC<CurrentProps> = (props) => {
                  value={CurrentCode}
                  ></textarea>
               </div>
-      <div className=' w-full max-sm:flex items-center justify-center'>
+            <abbr title="adjust the frame height">
+            <div className=' flex gap-2 flex-row items-center justify-center'>
+                <div>frame height</div>
+                <input 
+                value={postHeight}
+                onChange={(e)=>{
+                  setPostheight(parseInt(e.target.value))
+                }}
+                 placeholder=' Set frame height ?'
+                className=' px-3 absolute outline-none
+                 right-[100px] py-2 w-[180px] rounded-lg bg-black/40'
+                  type="number" max={600} min={100}/>
+              </div>
+            </abbr>
+      <div className=' w-full max-sm:flex items-center justify-center mb-5 max-sm:mb-0'>
       <p className=' mb-10'>{flasher}</p>
-          <div className=' dark:bg-black shadow-lg bg-white 
+          <div className='max-sm:mt-[50px] dark:bg-black shadow-lg bg-white 
                   rounded-3xl w-fit'>
             <button onClick={handleSavePost} className=' text-black hover:text-white
-              dark:text-white border transition-all'>Preview</button>
+              dark:text-white border transition-all '>Preview</button>
           </div>
       </div>
+      <HeightComp/>
     </div>
     </>
   )

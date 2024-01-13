@@ -50,7 +50,7 @@ const postIT = async () => {
           </div>
       <div className=' absolute top-10 right-10'>
       { showButtom &&
-           <div className=' bg-black rounded-3xl 
+           <div className=' bg-black rounded-3xl
         active:scale-75 transition-all text-white '>
           <button onClick={postIT}>Post</button>
           </div>}

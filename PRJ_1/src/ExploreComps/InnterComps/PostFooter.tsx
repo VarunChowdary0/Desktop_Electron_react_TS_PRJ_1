@@ -21,6 +21,8 @@ const PostFooter:React.FC<CurrrentProps> = (props) => {
             window.location.href = `#${props.postID}`
         },200)
     }
+    // Add likes
+    
   return (
     <div className=' w-full h-[40px]
     px-5 justify-around  flex items-center'>

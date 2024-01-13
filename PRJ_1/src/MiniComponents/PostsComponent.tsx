@@ -116,12 +116,12 @@ const PostsComponent:React.FC = () => {
       const response = await  fetch_All_posts();
       if(response.status){
         setFetchData(response.data);
-        console.log(response.data)
+        // console.log(response.data)
       }
       else{
         console.log("⚠️ Something went wrong !")
       }
-    console.log(FetchedData)
+    // console.log(FetchedData)
     }
     
   }

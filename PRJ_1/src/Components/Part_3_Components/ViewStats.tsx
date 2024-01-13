@@ -1,7 +1,9 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../../Contexts/GlobalContext'
 import { UserInfoContext } from '../../Contexts/UserInfoContext'
 import UsersConnections from '../../PopUps/POPUPS_2/UsersConnections'
+import { fetch_this_posts } from '../../Controllers/FetchPosts'
+import MainPostComp from '../../ExploreComps/MainPostComp'
 
 const ViewStats:React.FC = () => {
     const {
@@ -9,15 +11,29 @@ const ViewStats:React.FC = () => {
         name
     } = useContext<any>(GlobalContext)
     const {username} = useContext<any>(UserInfoContext);
-    const {showConnectionsPopUp,setshowConnectionPopUp} = useContext<any>(UserInfoContext);
-
+    const {
+        showConnectionsPopUp
+        ,setshowConnectionPopUp,
+        USER_UID
+    } = useContext<any>(UserInfoContext);
+    const [myPosts,setMyposts] = useState<Array<object>>([]);
+    const userPosts = async () =>{
+        console.log(USER_UID)
+        await fetch_this_posts(USER_UID)
+            .then((res)=>{
+                setMyposts(res.data.data);
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+    }
     useEffect(()=>{
-        console.log(showConnectionsPopUp)
-    })
+        userPosts();
+    },[])
   return (
     <div className=' w-full h-fit min-h-screen pb-10
     flex items-center flex-col pt-[200px] max-sm:pt-[100px]
-      dark:text-white bg-[#eae8ed] gap-12 overflow-y-auto
+      dark:text-white bg-[#eae8ed] gap-12 overflow-y-auto overflow-x-hidden
       dark:bg-dark_dark_100 '>
         <div className=' w-[80%] h-[300px] 
          max-md:flex-col max-md:h-fit
@@ -81,6 +97,16 @@ const ViewStats:React.FC = () => {
             </div>
         </div>
         {showConnectionsPopUp&&<UsersConnections/>}
+        <div className=' w-full h-fit flex bg-black/10 snap-x overflow-x-auto p-10 gap-10'>
+            {
+                myPosts.map((ele,idx)=>
+                    <div className='  scale-75 max-sm:scale-100 flex items-center snap-center
+                    justify-center' key={"mypost-"+idx}>
+                        <MainPostComp  DataObj={ele}/>
+                    </div>
+                )
+            }
+        </div>
     </div>
   )
 }

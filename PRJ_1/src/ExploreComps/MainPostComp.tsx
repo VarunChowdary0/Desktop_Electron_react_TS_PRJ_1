@@ -15,6 +15,7 @@ interface CurrentProps {
       USER_UID:string;
       identifiers: string[];
       type: string;
+      postHeight : number | undefined;
       name: string;
       occupation: string;
       profileLink: string;
@@ -67,7 +68,8 @@ const MainPostComp:React.FC<CurrentProps> = (props) => {
             props.DataObj.type === 'CustomPost' &&
             <CustomPost Paras={props.DataObj.Paras} 
             MyPost={props.DataObj.Post_code || ""}
-            tags={props.DataObj.tags}
+            tags={props.DataObj.tags} 
+            postHeight={props.DataObj.postHeight}
             />
             }
             <DivideLine/>
