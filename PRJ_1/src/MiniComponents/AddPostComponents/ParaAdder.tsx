@@ -50,9 +50,10 @@ const ParaAdder:React.FC<CurrentProps> = (props) => {
                 </div>
               )}
             </div>
-            <textarea onKeyDown={(e)=>{
-              // console.log(e.key);
-            }}
+            <textarea 
+            // onKeyDown={(e)=>{
+            //   // console.log(e.key);
+            // }}
             className=' min-h-[60%] max-h-[50vh] w-full dark:bg-dark_dark_100
              outline-none border-[#00000020] shadow-lg p-5 
             border rounded-md ' value={props.currentPara}
