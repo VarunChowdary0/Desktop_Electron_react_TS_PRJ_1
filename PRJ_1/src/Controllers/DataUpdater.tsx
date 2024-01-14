@@ -33,9 +33,9 @@ const DataUpdater:React.FC = () => {
 
     const SyncWithDataBase = (data:object) => {
         console.log("Called")
-        // axios.post('http://localhost:9898/save_data',data) // local
         // axios.post('http://20.20.18.189:9898/save_data',data) // collage
         // axios.post('http://192.168.58.7:9898/save_data',data) // hostel
+        // axios.post('http://localhost:9898/save_data',data) // local
         axios.post('https://rezzumy-server-897988-assbjksa-23.vercel.app/save_data',data) // deployed
             .then((res)=>{
                console.log(res.data);

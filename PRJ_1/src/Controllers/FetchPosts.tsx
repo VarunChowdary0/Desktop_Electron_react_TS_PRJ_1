@@ -1,8 +1,8 @@
 import axios from "axios";
 
-// const URL = "http://localhost:9898/"; // local
 // const URL = "http://20.20.18.189:9898/" // collage
 // const URL = "http://192.168.58.7:9898/" // hostel
+// const URL = "http://localhost:9898/"; // local
 const URL = "https://rezzumy-server-897988-assbjksa-23.vercel.app/" // deployed
 
 export const fetch_All_posts = () =>{
@@ -20,13 +20,13 @@ export const fetch_All_posts = () =>{
 
 
 export const fetch_this_posts = (userId:String) =>{
-    console.log(userId)
+    // console.log(userId)
     return axios
         .post(URL+"get_all_posts_of_user",{
             USER_UID : userId
         })
             .then((res)=>{
-                console.log(res);
+                // console.log(res);
                 return {status:true,data : res.data}
             })
             .catch((err)=>{

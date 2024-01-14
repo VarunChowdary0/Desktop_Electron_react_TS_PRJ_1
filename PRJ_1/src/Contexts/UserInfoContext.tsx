@@ -31,7 +31,19 @@ interface Preview{
 interface Fetched{
     FetchedData:Array<object>;
     setFetchData:React.Dispatch<React.SetStateAction<Array<object>>>;
+}
+interface Stats{
+    UserStats:object;
+    setUserStats:React.Dispatch<React.SetStateAction<object>>;
 
+    userConnections : Array<object>;
+    setuserConnections :React.Dispatch<React.SetStateAction<Array<object>>>;
+
+    CRD_S : number ;
+    setCRD_S : React.Dispatch<React.SetStateAction<number>>;
+
+    ConnectionUIDs : Array<string>;
+    setConnectionUIDs : React.Dispatch<React.SetStateAction<Array<string>>>;
 }
 
 interface UserInfoContextType extends 
@@ -41,7 +53,8 @@ username,
 popUps,
 ExplorePage_Content,
 Fetched,
-Preview
+Preview,
+Stats
 {}
 
 
@@ -75,6 +88,15 @@ const UserInfoContextProvider:React.FC<UserInfoContextProviderProps> = ({childre
 
     const [FetchedData,setFetchData] = useState<Array<object>>([]);
 
+    const [UserStats,setUserStats] = useState<object>({});
+
+    const [userConnections,setuserConnections] = useState([{}]);
+
+    const [ CRD_S,setCRD_S] = useState(0);
+
+    const [ConnectionUIDs,setConnectionUIDs] = useState<Array<string>>([]);
+
+    // Contrinbtons
     return (
         <UserInfoContext.Provider
             value = {{
@@ -88,7 +110,11 @@ const UserInfoContextProvider:React.FC<UserInfoContextProviderProps> = ({childre
                 showPreview,setPreview,
                 showOPtions,setOptions,
                 D,setD,
-                FetchedData,setFetchData
+                FetchedData,setFetchData,
+                UserStats,setUserStats,
+                userConnections,setuserConnections,
+                CRD_S,setCRD_S,
+                ConnectionUIDs,setConnectionUIDs
             }}
          >
             {children}

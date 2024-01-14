@@ -9,11 +9,12 @@ interface CurrrentProps{
 }
 const CustomPost:React.FC<CurrrentProps> = (props) => {
   return (
-    <div className=' h-fit w-full  max-sm:text-sm'>
+    <div className=' h-fit w-full  max-sm:text-sm '>
 			<TagComponent tags={props.tags}/>
-				<div className={`h-[${props.postHeight||"450px"}px] w-full 
-				max-sm:h-[${(props.postHeight+70 < 600) ? props.postHeight+70 :
-				 props.postHeight+(600-props.postHeight) }px]`}>
+				<div className={`h-[${props.postHeight||"450px"}px] w-full
+				 max-sm:h-[${(props.postHeight+65 < 600) ? props.postHeight+65 :
+				props.postHeight+(600-props.postHeight) }px]
+				`}>
 					<iframe width="100%" 
 					height={"100%"}
 					srcDoc={props.MyPost}
@@ -23,5 +24,6 @@ const CustomPost:React.FC<CurrrentProps> = (props) => {
 	</div>
   )
 }
+
 
 export default CustomPost

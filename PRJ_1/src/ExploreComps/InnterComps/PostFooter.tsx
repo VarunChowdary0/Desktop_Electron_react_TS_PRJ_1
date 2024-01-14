@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import StarIcon from '../../icons/Type3_icons/StarIcon'
 import CommentsIcon from '../../icons/Type3_icons/CommentsIcon'
 import ShareIcon from '../../icons/Type3_icons/ShareIcon'
@@ -70,6 +70,7 @@ const PostFooter:React.FC<CurrrentProps> = (props) => {
     // useEffect(() => {
     //   console.log(noOfStars,isLiked);
     // }, [noOfStars]);
+
 
   return (
     <div className=' w-full h-[40px]

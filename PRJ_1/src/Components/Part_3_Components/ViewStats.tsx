@@ -4,6 +4,7 @@ import { UserInfoContext } from '../../Contexts/UserInfoContext'
 import UsersConnections from '../../PopUps/POPUPS_2/UsersConnections'
 import { fetch_this_posts } from '../../Controllers/FetchPosts'
 import MainPostComp from '../../ExploreComps/MainPostComp'
+import { fetch_stats_info } from '../../Controllers/ControlStatsPage'
 
 const ViewStats:React.FC = () => {
     const {
@@ -17,6 +18,9 @@ const ViewStats:React.FC = () => {
         USER_UID
     } = useContext<any>(UserInfoContext);
     const [myPosts,setMyposts] = useState<Array<object>>([]);
+    const [CS_,setCS] = useState<number>(0);
+    const [myConnections,setConnections] = useState<Array<object>>([]);
+    // Add contributions
     const userPosts = async () =>{
         console.log(USER_UID)
         await fetch_this_posts(USER_UID)
@@ -27,7 +31,22 @@ const ViewStats:React.FC = () => {
                 console.log(err)
             })
     }
+    const Fetch_Stats = async () =>{
+      await  fetch_stats_info(USER_UID)
+            .then((res)=>{
+                if(res.status){
+                    console.log(res.data.data);
+                    const info = res.data.data;
+                    setCS(info.credit_score);
+                    setConnections(info.connections)
+                }
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+    }
     useEffect(()=>{
+        Fetch_Stats();
         userPosts();
     },[])
   return (
@@ -65,7 +84,7 @@ const ViewStats:React.FC = () => {
                 flex items-center justify-end
                 max-sm:scale-75 relative hover:cursor-help
                 bg-orange-500 text-white gap-4'>
-                    <p className=' text-5xl'>1000</p> 
+                    <p className=' text-5xl'>{CS_}</p> 
                     <span className=' font-thin text-center 
                     text-xl pt-3'>
                         CS
@@ -85,7 +104,7 @@ const ViewStats:React.FC = () => {
              text-white flex items-center gap-3 hover:cursor-pointer
               active:scale-100
              px-5 py-2 bg-purple-500 rounded-md w-fit'>
-                <p className=' text-xl'>133</p>
+                <p className=' text-xl'>{myConnections.length}</p>
                 <span className=' text-xs pt-1 font-thin'>Connections.</span>
             </div>
             <div className='hover:scale-105 transition-all
@@ -96,11 +115,17 @@ const ViewStats:React.FC = () => {
                 <span className=' text-xs pt-1 font-thin'>Contributions.</span>
             </div>
         </div>
-        {showConnectionsPopUp&&<UsersConnections/>}
-        <div className=' w-full h-fit flex bg-black/10 snap-x overflow-x-auto p-10 gap-10'>
-            {
+        {showConnectionsPopUp&&<UsersConnections MyConnections={myConnections}/>}
+        <div className=' w-full h-fit flex bg-[#f2f2f2] dark:bg-black/10 snap-x
+         relative overflow-x-auto pt-10 pb-5 px-10 gap-10 max-h-screen'>
+            <div className=' sticky top-5 left-10 w-fit max-sm:left-0'>
+                <p className=' text-2xl dark:text-white w-[100px]'>My Posts</p>
+            </div>
+            { myPosts.length === 0 ? 
+              <div className=' items-center justify-center flex'>loading...</div>
+            :
                 myPosts.map((ele,idx)=>
-                    <div className='  scale-75 max-sm:scale-100 flex items-center snap-center
+                    <div className=' max-sm:pt-[100px]  scale-75 max-sm:scale-100 flex items-center snap-center
                     justify-center' key={"mypost-"+idx}>
                         <MainPostComp  DataObj={ele} index={idx}/> 
                         {/* handle here ... */}
