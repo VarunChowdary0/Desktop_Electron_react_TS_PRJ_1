@@ -40,8 +40,10 @@ const UsersConnections:React.FC<CurrentProps> = (props) => {
                         },idx:number)=>
                         <div key={"connection_"+idx} className="flex justify-between gap-x-6 py-5 max-sm:gap-x-3">
                             <div className="flex min-w-0 gap-x-4">
-                            <img className="h-12 w-12 flex-none rounded-full bg-gray-50" 
+                          <div className=' h-12 w-12 overflow-hidden rounded-full'>
+                          <img className=" flex-none  bg-gray-50" 
                             src={connection.profileLink} alt="NF"/>
+                          </div>
                             <div className="min-w-0 flex-auto">
                                 <p className="text-sm font-semibold leading-6
                                 text-gray-900 dark:text-dark_Match_500 ">
