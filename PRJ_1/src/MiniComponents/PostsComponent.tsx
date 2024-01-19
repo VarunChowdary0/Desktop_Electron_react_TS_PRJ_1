@@ -14,7 +14,7 @@ const PostsComponent:React.FC = () => {
   const {FetchedData,setFetchData} = useContext<any>(UserInfoContext);
 
 
-  const [isLoading,setLoding] = useState<boolean>(true);
+  const [isLoading,setLoding] = useState<boolean>(FetchedData.length===0?true:false);
 
   const Fetch = async () =>{
     if(FetchedData.length === 0){
