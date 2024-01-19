@@ -96,7 +96,7 @@ const PostHeader:React.FC<CurrrentProps> = (props) => {
           <div onClick={Make_Connection}
            className=' absolute right-5 text-blue-400 p-4 top-3
            active:scale-90 transition-all
-          max-sm:text-sm max-sm:mt-1'>Connect</div>
+          max-sm:text-sm max-sm:mt-0'>Connect</div>
         </abbr>
         :
         (  ( USER_UID !== props.USER_UID ) &&
@@ -104,7 +104,7 @@ const PostHeader:React.FC<CurrrentProps> = (props) => {
           <div onClick={Remove_Connection}
           className=' absolute right-5 text-blue-400  top-3 p-4
           active:scale-90 transition-all
-          max-sm:text-sm max-sm:mt-1'>disconnect</div>
+          max-sm:text-sm max-sm:mt-0'>disconnect</div>
         </abbr>
         )
       }
