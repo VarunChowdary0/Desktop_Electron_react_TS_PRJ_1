@@ -8,9 +8,31 @@ interface CurrentProps{
         Connection_USER_UID:string,
         occupation:string,
         mail:string}> | any ;
+    
+    setViewer : React.Dispatch<React.SetStateAction<{
+        name : string,
+        profileLink : string,
+        USER_UID : string
+    } | any >>;
 }
 const UsersConnections:React.FC<CurrentProps> = (props) => {
-    const {setshowConnectionPopUp} = useContext<any>(UserInfoContext);
+    const {setshowConnectionPopUp,setIsSeeingOther,USER_UID} = useContext<any>(UserInfoContext);
+    const handleSeeViewr = (n:string,prf:string,usID:string) =>{
+        if(usID===USER_UID){
+            setIsSeeingOther(false);
+            setshowConnectionPopUp(false);
+        }
+        else{
+            props.setViewer(
+                {
+                    name : n,
+                    profileLink : prf,
+                    USER_UID : usID,
+                }
+            )
+            setIsSeeingOther(true);
+        }
+    }
   return (
     <>
     <div onClick={()=>{setshowConnectionPopUp(false)}} className='fixed top-0 
@@ -38,9 +60,12 @@ const UsersConnections:React.FC<CurrentProps> = (props) => {
                             occupation:string,
                             mail:string
                         },idx:number)=>
-                        <div key={"connection_"+idx} className="flex justify-between gap-x-6 py-5 max-sm:gap-x-3">
+                        <div 
+                        onClick={()=>handleSeeViewr(connection.name,connection.profileLink,connection.Connection_USER_UID)}
+                        key={"connection_"+idx} 
+                        className="flex justify-between gap-x-6 py-5 max-sm:gap-x-3">
                             <div className="flex min-w-0 gap-x-4">
-                          <div className=' h-12 w-12 overflow-hidden rounded-full'>
+                          <div className=' h-12 w-12 overflow-hidden bg-black rounded-full'>
                           <img className=" flex-none  bg-gray-50" 
                             src={connection.profileLink} alt="NF"/>
                           </div>

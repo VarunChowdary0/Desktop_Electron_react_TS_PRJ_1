@@ -46,6 +46,14 @@ interface Stats{
     setConnectionUIDs : React.Dispatch<React.SetStateAction<Array<string>>>;
 }
 
+interface ViewOther{
+    
+    isSeeingOther:boolean;
+    setIsSeeingOther:React.Dispatch<React.SetStateAction<boolean>>;
+
+    ViewerInfo : object;
+    setViewer : React.Dispatch<React.SetStateAction<object|any>>;
+}
 interface UserInfoContextType extends 
 logStatus,
 USER_UID,
@@ -54,7 +62,8 @@ popUps,
 ExplorePage_Content,
 Fetched,
 Preview,
-Stats
+Stats,
+ViewOther
 {}
 
 
@@ -96,6 +105,16 @@ const UserInfoContextProvider:React.FC<UserInfoContextProviderProps> = ({childre
 
     const [ConnectionUIDs,setConnectionUIDs] = useState<Array<string>>([]);
 
+    const [isSeeingOther,setIsSeeingOther] = useState<boolean>(false);
+
+    const [ViewerInfo,setViewer]=useState<{
+        name : string,
+        profileLink : string,
+        USER_UID : string}>({
+            name : "",
+            profileLink : "",
+            USER_UID : ""
+        });
     // Contrinbtons
     return (
         <UserInfoContext.Provider
@@ -114,7 +133,9 @@ const UserInfoContextProvider:React.FC<UserInfoContextProviderProps> = ({childre
                 UserStats,setUserStats,
                 userConnections,setuserConnections,
                 CRD_S,setCRD_S,
-                ConnectionUIDs,setConnectionUIDs
+                ConnectionUIDs,setConnectionUIDs,
+                isSeeingOther,setIsSeeingOther,
+                ViewerInfo,setViewer
             }}
          >
             {children}

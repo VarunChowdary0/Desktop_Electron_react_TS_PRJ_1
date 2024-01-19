@@ -14,10 +14,12 @@ const PostHeader:React.FC<CurrrentProps> = (props) => {
     USER_UID,
     userConnections,
     setuserConnections,
+    setViewer,
   } = useContext<any>(UserInfoContext);
   const {
     name,
     profileLink,
+    setRout,
     occupation
   } = useContext<any>(GlobalContext);
   const [MyCs,setMyCs] = useState<Array<string>>([]);
@@ -59,31 +61,49 @@ const PostHeader:React.FC<CurrrentProps> = (props) => {
       const fg = new Set(x);
       setMyCs(Array.from(fg));
   },[userConnections])
+
+  const handleOpenPrf = () => {
+    console.log(props.USER_UID);
+    setViewer({
+      name : props.name,
+      profileLink : props.profileUrl,
+      USER_UID : props.USER_UID
+    })
+    setRout('/stats/other')
+    console.log({
+      name : props.name,
+      profileLink : props.profileUrl,
+      USER_UID : props.USER_UID
+    })
+  }
   return (
-    <div className=' h-[70px] flex max-sm:h-[50px] max-sm:mb-2
+    <div
+    className=' h-[70px] flex max-sm:h-[50px] max-sm:mb-2 
 			w-full  items-center max-sm:gap-3 gap-5 relative hover:cursor-pointer'>
-        <div className='h-[100%] w-[70px] bg-black/50 max-sm:w-[50px]
+        <div onClick={handleOpenPrf} className='h-[100%] w-[70px] bg-black/50 max-sm:w-[50px]
         rounded-2xl overflow-hidden'>
         <img src={props.profileUrl} alt="prf" />
         </div>
-        <div>
+        <div className=' flex-1' onClick={handleOpenPrf}>
             <p className=' max-sm:text-sm truncate font-light'>{props.name}</p>
             <p className=' text-dark_Match_300 truncate
              dark:text-dark_Match_600'>{props.occupation}</p>
-            </div>
+        </div>
        {( USER_UID !== props.USER_UID && 
       !MyCs.includes(props.USER_UID)
         )  ?
         <abbr title={`Connect with ${props.name}`}>
           <div onClick={Make_Connection}
-           className=' absolute right-5 text-blue-400 
+           className=' absolute right-5 text-blue-400 p-4 top-3
+           active:scale-90 transition-all
           max-sm:text-sm max-sm:mt-1'>Connect</div>
         </abbr>
         :
         (  ( USER_UID !== props.USER_UID ) &&
           <abbr title={`disconnect with ${props.name}`}>
           <div onClick={Remove_Connection}
-          className=' absolute right-5 text-blue-400 
+          className=' absolute right-5 text-blue-400  top-3 p-4
+          active:scale-90 transition-all
           max-sm:text-sm max-sm:mt-1'>disconnect</div>
         </abbr>
         )

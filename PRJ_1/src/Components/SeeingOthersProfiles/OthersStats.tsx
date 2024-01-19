@@ -1,31 +1,28 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { GlobalContext } from '../../Contexts/GlobalContext'
-import { UserInfoContext } from '../../Contexts/UserInfoContext'
-import UsersConnections from '../../PopUps/POPUPS_2/UsersConnections'
-import { fetch_this_posts } from '../../Controllers/FetchPosts'
-import MainPostComp from '../../ExploreComps/MainPostComp'
-import { fetch_stats_info } from '../../Controllers/ControlStatsPage'
-import { helix } from 'ldrs'
-import { bouncyArc } from 'ldrs'
-import OthersStats from '../SeeingOthersProfiles/OthersStats'
+import { UserInfoContext } from '../../Contexts/UserInfoContext';
+import UsersConnections from '../../PopUps/POPUPS_2/UsersConnections';
+import MainPostComp from '../../ExploreComps/MainPostComp';
+import { fetch_this_posts } from '../../Controllers/FetchPosts';
+import { fetch_stats_info } from '../../Controllers/ControlStatsPage';
 
-helix.register()
+interface CurrentProps{
+    profileLink : string;
+    name : string;
+    USER_UID : string;
 
+    ViewerInfo:object;
+     setViewer : React.Dispatch<React.SetStateAction<{
+        name : string,
+        profileLink : string,
+        USER_UID : string
+    } | any >>;
+}
 
-bouncyArc.register()
-
-const ViewStats:React.FC = () => {
-    const {
-        profileLink,
-        name
-    } = useContext<any>(GlobalContext)
-    const {username} = useContext<any>(UserInfoContext);
+const OthersStats:React.FC<CurrentProps> = (props) => {
     const {
         showConnectionsPopUp
         ,setshowConnectionPopUp,
-        USER_UID,
-        isSeeingOther,
-        // setIsSeeingOther
+        setIsSeeingOther,
     } = useContext<any>(UserInfoContext);
     const [myPosts,setMyposts] = useState<Array<object>>([]);
     const [CS_,setCS] = useState<number>(0);
@@ -33,11 +30,15 @@ const ViewStats:React.FC = () => {
     const [connectionLoad,setConnectionLoad] = useState(true);
     const [isPostsFetched,setPostsFect] = useState(false);
     // Add contributions
+    const [othersOcc,setOthersOcc] = useState("NA");
     const userPosts = async () =>{
-        // console.log(USER_UID)
-        await fetch_this_posts(USER_UID)
+        // console.log(props.USER_UID)
+        await fetch_this_posts(props.USER_UID)
             .then((res)=>{
                 setMyposts(res.data.data);
+                if(res.data.data.length !== 0){
+                    setOthersOcc(res.data.data[0].occupation);
+                }
                 setPostsFect(true);
             })
             .catch((err)=>{
@@ -45,7 +46,7 @@ const ViewStats:React.FC = () => {
             })
     }
     const Fetch_Stats = async () =>{
-      await  fetch_stats_info(USER_UID)
+      await  fetch_stats_info(props.USER_UID)
             .then((res)=>{
                 if(res.status){
                     // console.log(res.data.data);
@@ -62,37 +63,28 @@ const ViewStats:React.FC = () => {
     useEffect(()=>{
         Fetch_Stats();
         userPosts();
-    },[])
-    const {ViewerInfo,setViewer} = useContext<any>(UserInfoContext);
-    useEffect(()=>{
-        // setIsSeeingOther(false);
-        setshowConnectionPopUp(false);
-    },[])
+    },[props.ViewerInfo])
     useEffect(()=>{
         setshowConnectionPopUp(false);
-        // console.log(ViewerInfo)
-    },[ViewerInfo])
+    },[])
+    const skjbvdj = () =>{
+        setIsSeeingOther(false);
+    }
   return (
-    <>
-         {
-        isSeeingOther ?
-        <OthersStats 
-        name={ViewerInfo.name} 
-        profileLink={ViewerInfo.profileLink}
-        USER_UID={ViewerInfo.USER_UID}
-        ViewerInfo={ViewerInfo}
-        setViewer={setViewer}
-         />
-        :
-        <div className=' w-full h-fit min-h-screen pb-10
+    <div className=' w-full h-fit min-h-screen pb-10 z-100
     flex items-center flex-col pt-[200px] max-sm:pt-[100px]
       dark:text-white bg-[#eae8ed] gap-12 overflow-y-auto overflow-x-hidden
       dark:bg-dark_dark_100 '>
+        <div
+        onClick={skjbvdj} 
+        className=' fixed top-10 right-5 p-2 text-white bg-black rounded-xl text-center'>
+            back
+        </div>
         <div className=' w-[80%] h-[300px] 
          max-md:flex-col max-md:h-fit
          border-[1px] flex bg-white dark:bg-dark_dark_200/90
           rounded-r-[20px] max-sm:gap-14 right_bottom_shadow
-           rounded-[50vh] items-center gap-10
+           rounded-[50vh] items-center gap-10 relative
         shadow-xl dark:border-none transition-all'>
             <div className=' h-[320px] w-[320px] dark:bg-dark_dark_100
              bg-[#eae8ed]
@@ -101,7 +93,7 @@ const ViewStats:React.FC = () => {
                 h-[100%] w-[100%] bg-[#3c3c3c]
                 overflow-hidden rounded-full  '>
                     <img className=' select-none hover:scale-110 transition-all'
-                    alt='RETRY' src={profileLink}/>
+                    alt='RETRY' src={props.profileLink}/>
                 </div>
             </div>
             <div className=' flex items-center flex-1 
@@ -111,9 +103,9 @@ const ViewStats:React.FC = () => {
                 bg-black/0 flex flex-col gap-3'>
                     <p className=' text-2xl
                     max-sm:text-xl
-                    font-thin'>{name}</p>
-                    <p className=' opacity-50 text-md'>{username}</p>
-                </div>
+                    font-thin'>{props.name}</p>
+                    <p className=' opacity-50 text-md'>{othersOcc}</p>
+                </div> 
                 <div className=' __Skill__  h-[100px] w-fit px-7 rounded-md
                 flex items-center justify-end
                 max-sm:scale-75 relative hover:cursor-help
@@ -130,6 +122,12 @@ const ViewStats:React.FC = () => {
                         Credit score
                     </div>
                 </div>
+                <div className='hover:scale-105 transition-all
+             text-white flex items-center gap-3 hover:cursor-pointer
+              active:scale-100 absolute bottom-4 right-5
+             px-5 py-2 bg-purple-500 rounded-md w-fit'>
+                <span className=' text-sm font-thin'>connect</span>
+            </div>
             </div>
         </div>
         <div className=' bg-black/0  w-[80%] flex gap-10  max-sm:gap-5'>
@@ -164,12 +162,12 @@ const ViewStats:React.FC = () => {
         </div>
         {showConnectionsPopUp&&<UsersConnections 
         MyConnections={myConnections}
-        setViewer={setViewer}
+        setViewer={props.setViewer}
         />}
         <div className=' w-full h-fit flex bg-[#f2f2f2] dark:bg-black/0 snap-x
          relative overflow-x-auto pt-10 pb-5 px-10 gap-10 max-h-screen'>
             <div className=' sticky top-5 left-10 w-fit max-sm:left-0'>
-                <p className=' text-2xl dark:text-white w-[100px]'>My Posts</p>
+                <p className=' text-2xl dark:text-white w-[100px]'>Posts</p>
             </div>
             { !isPostsFetched  ? 
               <div className=' items-center justify-center flex w-full'>
@@ -189,11 +187,9 @@ const ViewStats:React.FC = () => {
                 )
             }
         </div>
-       
     </div>
-    }
-    </>    
   )
 }
 
-export default ViewStats
+
+export default OthersStats

@@ -8,11 +8,13 @@ import WholeLoader_11 from './Components/WholeLoader_11';
 import ViewStats from './Components/Part_3_Components/ViewStats';
 import HomeLoader from './Components/Loader';
 import ExplorePage from './Components/Part_3_Components/ExplorePage';
+import { UserInfoContext } from './Contexts/UserInfoContext';
 
 
 const Router = () => {
   const { rout , WholeLoader } = useContext<any>(GlobalContext);
   const [content, setContent] = useState<React.ReactNode | null>(null);
+  const {setIsSeeingOther} = useContext<any>(UserInfoContext);
   useEffect(()=>{
     //window.scroll(0,0);
   },[content])
@@ -50,6 +52,12 @@ const Router = () => {
       setContent(
         <ExplorePage/>
       )
+    }
+    else if(rout === '/stats/other'){
+      setContent(
+        <ViewStats/>
+      );
+      setIsSeeingOther(true);
     }
     else {
       setContent(
