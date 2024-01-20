@@ -122,12 +122,6 @@ const OthersStats:React.FC<CurrentProps> = (props) => {
                         Credit score
                     </div>
                 </div>
-                <div className='hover:scale-105 transition-all
-             text-white flex items-center gap-3 hover:cursor-pointer
-              active:scale-100 absolute bottom-4 right-5
-             px-5 py-2 bg-purple-500 rounded-md w-fit'>
-                <span className=' text-sm font-thin'>connect</span>
-            </div>
             </div>
         </div>
         <div className=' bg-black/0  w-[80%] flex gap-10  max-sm:gap-5'>

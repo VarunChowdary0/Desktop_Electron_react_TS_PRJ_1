@@ -15,3 +15,6 @@ postMessage({ payload: 'removeLoading' }, '*')
 window.ipcRenderer.on('main-process-message', (_event, message) => {
   console.log(message)
 })
+
+
+// current  108 files / components. 
